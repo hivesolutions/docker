@@ -2,9 +2,7 @@ import logging
 import netius.extra
 
 hosts = {
-    "cameria.bemisc.com" : "http://127.0.0.1:8181",
-    "omnix.bemisc.com" : "http://127.0.0.1:8282",
-    "crossline.bemisc.com" : "http://127.0.0.1:8383"
+    "cameria.bemisc.com" : "http://hive-neo-9c45d442.hivesolutions.svc.tutum.io:8001"
 }
 server = netius.extra.ReverseProxyServer(
     hosts = hosts

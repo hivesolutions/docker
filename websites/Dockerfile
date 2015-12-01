@@ -8,10 +8,8 @@ ENV SERVER netius
 ENV HOST 0.0.0.0
 ENV PORT 8080
 
-ADD requirements.txt /
+RUN apt-get update && apt-get install -y -q python python-setuptools python-dev python-pip git
+RUN git clone https://hive_development:4mBSDQdQzTW4NvmJ@bitbucket.org/hivesolutions/websites.git
+RUN pip install -r /websites/requirements.txt && pip install --upgrade netius
 
-RUN apt-get update && apt-get install -y -q python python-setuptools python-dev python-pip
-RUN pip install -r /requirements.txt && pip install --upgrade netius
-RUN git clone https://hive_development:4mBSDQdQzTW4NvmJ@bitbucket.org/hivesolutions/websites.git src
-
-CMD python /src/default/main.py
+CMD python /websites/src/default/main.py

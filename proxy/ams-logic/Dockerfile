@@ -1,11 +1,11 @@
 FROM ubuntu:latest
 MAINTAINER Hive Solutions
 
-EXPOSE 80
+EXPOSE 8080
 
 ENV LEVEL INFO
 ENV HOST 0.0.0.0
-ENV PORT 80
+ENV PORT 8080
 
 ADD proxy.py /proxy.py
 

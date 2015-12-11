@@ -13,7 +13,7 @@ hosts = {
     "campaigner.bemisc.com" : "http://campaigner-4a9f12ed-1.hivesolutions.cont.tutum.io:8007",
     "instashow.bemisc.com" : "http://instashow-17632612-1.hivesolutions.cont.tutum.io:8008",
     "libs.bemisc.com" : "http://libs-2ca151e2-1.hivesolutions.cont.tutum.io:8009",
-    "extras.oibiquini.com" : "http://libs-2ca151e2-1.hivesolutions.cont.tutum.io:8010"
+    "extras.oibiquini.com" : "http://oibiquini-extras-a9d0f203-1.hivesolutions.cont.tutum.io:8010"
 }
 regex = (
     (re.compile("https?://([a-zA-Z_]+)\.hive\.pt"), "http://127.0.0.1:8181"),

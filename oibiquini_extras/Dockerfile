@@ -16,6 +16,6 @@ ENV SHOPIFY_STORE SHOPIFY_SECRET
 
 RUN apt-get update && apt-get install -y -q python python-setuptools python-dev python-pip git
 RUN git clone https://hive_development:4mBSDQdQzTW4NvmJ@bitbucket.org/hivesolutions/oibiquini_extras.git
-RUN pip install -r /websites/requirements.txt && pip install --upgrade netius
+RUN pip install -r /oibiquini_extras/requirements.txt && pip install --upgrade netius
 
 CMD python /oibiquini_exras/src/oibiquini_exras/main.py

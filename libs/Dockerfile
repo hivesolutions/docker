@@ -16,4 +16,4 @@ RUN git clone https://github.com/hivesolutions/uxf_bin.git /libs/uxf
 RUN git clone https://github.com/hivesolutions/layout.git /libs/layout
 RUN pip install --upgrade netius
 
-CMD BASE_PATH=/libs python /websites/src/default/main.py
+CMD BASE_PATH=/libs python -m netius.extra.filea

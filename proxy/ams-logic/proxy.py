@@ -10,7 +10,7 @@ hosts = {
     "lugardajoia.com" : "http://websites-97afa40c-1.hivesolutions.cont.tutum.io:8005",
     "passatempo.oibiquini.com" : "http://websites-353a812f-1.hivesolutions.cont.tutum.io:8006",
     "campaigner.bemisc.com" : "http://campaigner-4a9f12ed-1.hivesolutions.cont.tutum.io:8007",
-    "instashow.bemisc.com" : "http://instashow-4a9f12ed-1.hivesolutions.cont.tutum.io:8008"
+    "instashow.bemisc.com" : "http://instashow-17632612-1.hivesolutions.cont.tutum.io:8008/"
 }
 regex = (
     (re.compile("https?://hive\.pt"), "http://hive-neo-9c45d442-1.hivesolutions.cont.tutum.io:8001"),

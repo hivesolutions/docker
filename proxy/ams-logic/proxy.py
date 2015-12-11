@@ -6,7 +6,8 @@ hosts = {
     "cameria.bemisc.com" : "http://cameria-adc13c3f.hivesolutions.svc.tutum.io:8002/",
     "crossline.bemisc.com" : "http://crossline-d3f0b911.hivesolutions.svc.tutum.io:8003/",
     "omnix.bemisc.com" : "http://omnix-0743d1f2.hivesolutions.svc.tutum.io:8004/",
-    "lugardajoia.com" : "http://websites-97afa40c.hivesolutions.svc.tutum.io:8005/"
+    "lugardajoia.com" : "http://websites-97afa40c.hivesolutions.svc.tutum.io:8005/",
+    "passatempo.oibiquini.com" : "http://websites-353a812f.hivesolutions.svc.tutum.io:8006/"
 }
 server = netius.extra.ReverseProxyServer(
     hosts = hosts

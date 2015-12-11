@@ -14,9 +14,7 @@ hosts = {
     "instashow.bemisc.com" : "http://instashow-17632612-1.hivesolutions.cont.tutum.io:8008/"
 }
 regex = (
-    (re.compile("https?://hive\.pt"), "http://hive-neo-9c45d442-1.hivesolutions.cont.tutum.io:8001"),
-    (re.compile("https?://www.hive\.pt"), "http://hive-neo-9c45d442-1.hivesolutions.cont.tutum.io:8001"),
-    (re.compile("https?://([a-zA-Z_]+)\.hive\.pt"), "http://127.0.0.1:8181")
+    (re.compile("https?://([a-zA-Z_]+)\.hive\.pt"), "http://127.0.0.1:8181"),
 )
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,

@@ -20,7 +20,6 @@ regex = (
 )
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,
-    regex = regex,
-    reuse = False
+    regex = regex
 )
 server.serve(env = True)

@@ -1,4 +1,0 @@
-appier
-appier_extras
-jinja2
-shopify_api

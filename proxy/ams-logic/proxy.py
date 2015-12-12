@@ -16,7 +16,8 @@ hosts = {
     "extras.oibiquini.com" : "http://oibiquini-extras-a9d0f203-1.hivesolutions.cont.tutum.io:8010",
     "repos.bemisc.com" : "http://repos-a2dd9087-1.hivesolutions.cont.tutum.io:8011",
     "colony.bemisc.com" : "http://repos-a2dd9087-1.hivesolutions.cont.tutum.io:8011",
-    "proyectos.bemisc.com" : "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"
+    "proyectos.bemisc.com" : "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012",
+    "print.bemisc.com" : "http://colony-print-fd22a30b-1.hivesolutions.cont.tutum.io:8013"
 }
 regex = (
     (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/static"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),

@@ -17,7 +17,8 @@ hosts = {
     "repos.bemisc.com" : "http://repos-a2dd9087-1.hivesolutions.cont.tutum.io:8011",
     "colony.bemisc.com" : "http://repos-a2dd9087-1.hivesolutions.cont.tutum.io:8011",
     "proyectos.bemisc.com" : "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012",
-    "print.bemisc.com" : "http://colony-print-fd22a30b-1.hivesolutions.cont.tutum.io:8013"
+    "print.bemisc.com" : "http://colony-print-fd22a30b-1.hivesolutions.cont.tutum.io:8013",
+    "shopdesk.bemisc.com" : "http://shopdesk-4c45ec56-1.hivesolutions.cont.tutum.io:8014"
 }
 regex = (
     (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/static"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),

@@ -19,6 +19,9 @@ hosts = {
     "proyectos.bemisc.com" : "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"
 }
 regex = (
+    (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/static"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
+    (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/appier"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
+    (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/render"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
     (re.compile("https?://([a-zA-Z_]+)\.hive\.pt"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012/render/{0}"),
 )
 server = netius.extra.ReverseProxyServer(

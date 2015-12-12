@@ -15,10 +15,11 @@ hosts = {
     "libs.bemisc.com" : "http://libs-2ca151e2-1.hivesolutions.cont.tutum.io:8009",
     "extras.oibiquini.com" : "http://oibiquini-extras-a9d0f203-1.hivesolutions.cont.tutum.io:8010",
     "repos.bemisc.com" : "http://repos-a2dd9087-1.hivesolutions.cont.tutum.io:8011",
-    "colony.bemisc.com" : "http://repos-a2dd9087-1.hivesolutions.cont.tutum.io:8011"
+    "colony.bemisc.com" : "http://repos-a2dd9087-1.hivesolutions.cont.tutum.io:8011",
+    "proyectos.bemisc.com" : "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"
 }
 regex = (
-    (re.compile("https?://([a-zA-Z_]+)\.hive\.pt"), "http://127.0.0.1:8181"),
+    (re.compile("https?://([a-zA-Z_]+)\.hive\.pt"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
 )
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,

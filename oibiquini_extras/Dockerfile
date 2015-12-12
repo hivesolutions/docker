@@ -15,7 +15,7 @@ ENV SHOPIFY_SECRET SHOPIFY_SECRET
 ENV SHOPIFY_STORE SHOPIFY_STORE
 ENV PYTHONPATH /oibiquini_extras/src
 
-RUN apt-get update && apt-get install -y -q python python-setuptools python-dev python-pip git libpng12-dev libjpeg-turbo8-dev
+RUN apt-get update && apt-get install -y -q python python-setuptools python-dev python-pip git libpng12-dev libjpeg-turbo8-dev libwebp-dev
 RUN git clone https://hive_development:4mBSDQdQzTW4NvmJ@bitbucket.org/hivesolutions/oibiquini_extras.git
 RUN pip install -r /oibiquini_extras/requirements.txt && pip install --upgrade netius
 

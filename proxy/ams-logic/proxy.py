@@ -19,7 +19,8 @@ hosts = {
     "proyectos.bemisc.com" : "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012",
     "print.bemisc.com" : "http://colony-print-fd22a30b-1.hivesolutions.cont.tutum.io:8013",
     "shopdesk.bemisc.com" : "http://shopdesk-4c45ec56-1.hivesolutions.cont.tutum.io:8014",
-    "hello_quorum.bemisc.com" : "http://hello-quorum-c444e039-1.hivesolutions.cont.tutum.io:8015"
+    "hello_quorum.bemisc.com" : "http://hello-quorum-c444e039-1.hivesolutions.cont.tutum.io:8015",
+    "hive.frontdoorhd.com" : "http://omni-3ab9fff2-1.hivesolutions.cont.tutum.io:8016"
 }
 regex = (
     (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/static"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),

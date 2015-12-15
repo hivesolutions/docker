@@ -21,7 +21,8 @@ hosts = {
     "shopdesk.bemisc.com" : "http://shopdesk-4c45ec56-1.hivesolutions.cont.tutum.io:8014",
     "hello_quorum.bemisc.com" : "http://hello-quorum-c444e039-1.hivesolutions.cont.tutum.io:8015",
     "hive.frontdoorhd.com" : "http://omni-3ab9fff2-1.hivesolutions.cont.tutum.io:8016",
-    "hive.takethebill.com" : "http://take-the-bill-2bea3565-1.hivesolutions.cont.tutum.io:8017"
+    "hive.takethebill.com" : "http://take-the-bill-2bea3565-1.hivesolutions.cont.tutum.io:8017",
+    "metrium.bemisc.com" : "http://metrium-930da490-1.hivesolutions.cont.tutum.io:8018"
 }
 regex = (
     (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/static"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),

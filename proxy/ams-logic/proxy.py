@@ -4,7 +4,6 @@ import netius.extra
 
 hosts = {
     "hive.pt" : "http://hive-neo-9c45d442-1.hivesolutions.cont.tutum.io:8001",
-    "www.hive.pt" : "http://hive-neo-9c45d442-1.hivesolutions.cont.tutum.io:8001",
     "cameria.bemisc.com" : "http://cameria-adc13c3f-1.hivesolutions.cont.tutum.io:8002",
     "crossline.bemisc.com" : "http://crossline-d3f0b911-1.hivesolutions.cont.tutum.io:8003",
     "omnix.bemisc.com" : "http://omnix-0743d1f2-1.hivesolutions.cont.tutum.io:8004",

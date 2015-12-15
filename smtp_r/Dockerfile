@@ -15,4 +15,4 @@ ENV SMTP_HOST SMTP_HOST
 RUN apt-get update && apt-get install -y -q python python-setuptools python-dev python-pip
 RUN pip install --upgrade netius
 
-CMD cd $ROOTDIR && python -m netius.extra.smtp_r
+CMD cd $ROOT_DIR && python -m netius.extra.smtp_r

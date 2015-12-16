@@ -25,7 +25,9 @@ hosts = {
     "hive.takethebill.com" : "http://take-the-bill-2bea3565-1.hivesolutions.cont.tutum.io:8017",
     "metrium.bemisc.com" : "http://metrium-930da490-1.hivesolutions.cont.tutum.io:8018",
     "webook.pt" : "http://webook-c8e2419e-1.hivesolutions.cont.tutum.io:8019",
-    "www.webook.pt" : "http://webook-c8e2419e-1.hivesolutions.cont.tutum.io:8019"
+    "www.webook.pt" : "http://webook-c8e2419e-1.hivesolutions.cont.tutum.io:8019",
+    "amiranda.frontdoorhd.com" : "http://omni-5061ef71-1.hivesolutions.cont.tutum.io:8020",
+    "amiranda.takethebill.com" : "http://take-the-bill-84398ba4-1.hivesolutions.cont.tutum.io:8021"
 }
 regex = (
     (re.compile("https?://www\.hive\.pt"), "http://hive-neo-9c45d442-1.hivesolutions.cont.tutum.io:8001"),

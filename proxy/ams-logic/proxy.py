@@ -28,8 +28,8 @@ hosts = {
     "www.webook.pt" : "http://webook-c8e2419e-1.hivesolutions.cont.tutum.io:8019",
     "amiranda.frontdoorhd.com" : "http://omni-5061ef71-1.hivesolutions.cont.tutum.io:8020",
     "amiranda.takethebill.com" : "http://take-the-bill-84398ba4-1.hivesolutions.cont.tutum.io:8021",
-    "blog.hive.pt" : "http://hive-legacy-6cad8bc6-1.hivesolutions.cont.tutum.io:8022/mvc/blog",
-    "openid.hive.pt" : "http://hive-legacy-6cad8bc6-1.hivesolutions.cont.tutum.io:8022/mvc/openid",
+    "blog.hive.pt" : "http://hive-legacy-6cad8bc6-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog",
+    "openid.hive.pt" : "http://hive-legacy-6cad8bc6-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid",
     "getcolony.com" : "http://hive-legacy-6cad8bc6-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site",
     "www.getcolony.com" : "http://hive-legacy-6cad8bc6-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site"
 }

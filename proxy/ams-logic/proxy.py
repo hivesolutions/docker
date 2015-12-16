@@ -28,15 +28,15 @@ hosts = {
     "www.webook.pt" : "http://webook-c8e2419e-1.hivesolutions.cont.tutum.io:8019",
     "amiranda.frontdoorhd.com" : "http://omni-5061ef71-1.hivesolutions.cont.tutum.io:8020",
     "amiranda.takethebill.com" : "http://take-the-bill-84398ba4-1.hivesolutions.cont.tutum.io:8021",
-    "blog.hive.pt" : "http://hive-legacy-e7feda33-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog",
-    "openid.hive.pt" : "http://hive-legacy-e7feda33-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid",
-    "getcolony.com" : "http://hive-legacy-e7feda33-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site",
-    "www.getcolony.com" : "http://hive-legacy-e7feda33-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site"
+    "blog.hive.pt" : "http://hive-legacy-eab98775-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog",
+    "openid.hive.pt" : "http://hive-legacy-eab98775-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid",
+    "getcolony.com" : "http://hive-legacy-eab98775-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site",
+    "www.getcolony.com" : "http://hive-legacy-eab98775-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site"
 }
 regex = (
     (re.compile("https?://www\.hive\.pt"), "http://hive-neo-9c45d442-1.hivesolutions.cont.tutum.io:8001"),
-    (re.compile("https?://blog\.hive\.pt"), "http://hive-legacy-e7feda33-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog"),
-    (re.compile("https?://openid\.hive\.pt"), "http://hive-legacy-e7feda33-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid"),
+    (re.compile("https?://blog\.hive\.pt"), "http://hive-legacy-eab98775-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog"),
+    (re.compile("https?://openid\.hive\.pt"), "http://hive-legacy-eab98775-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid"),
     (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/static"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
     (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/appier"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
     (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/render"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),

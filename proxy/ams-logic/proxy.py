@@ -27,7 +27,11 @@ hosts = {
     "webook.pt" : "http://webook-c8e2419e-1.hivesolutions.cont.tutum.io:8019",
     "www.webook.pt" : "http://webook-c8e2419e-1.hivesolutions.cont.tutum.io:8019",
     "amiranda.frontdoorhd.com" : "http://omni-5061ef71-1.hivesolutions.cont.tutum.io:8020",
-    "amiranda.takethebill.com" : "http://take-the-bill-84398ba4-1.hivesolutions.cont.tutum.io:8021"
+    "amiranda.takethebill.com" : "http://take-the-bill-84398ba4-1.hivesolutions.cont.tutum.io:8021",
+    "blog.hive.pt" : "http://hive-legacy-6cad8bc6-1.hivesolutions.cont.tutum.io:8022/mvc/blog",
+    "openid.hive.pt" : "http://hive-legacy-6cad8bc6-1.hivesolutions.cont.tutum.io:8022/mvc/openid",
+    "getcolony.com" : "http://hive-legacy-6cad8bc6-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site",
+    "www.getcolony.com" : "http://hive-legacy-6cad8bc6-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site"
 }
 regex = (
     (re.compile("https?://www\.hive\.pt"), "http://hive-neo-9c45d442-1.hivesolutions.cont.tutum.io:8001"),

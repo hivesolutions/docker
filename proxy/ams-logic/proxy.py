@@ -31,7 +31,8 @@ hosts = {
     "blog.hive.pt" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog",
     "openid.hive.pt" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid",
     "getcolony.com" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site",
-    "www.getcolony.com" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site"
+    "www.getcolony.com" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site",
+    "internus.bemisc.com" : "http://internus-f596ab5f-1.hivesolutions.cont.tutum.io:8023"
 }
 regex = (
     (re.compile("https?://www\.hive\.pt"), "http://hive-neo-9c45d442-1.hivesolutions.cont.tutum.io:8001"),

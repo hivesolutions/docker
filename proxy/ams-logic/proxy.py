@@ -33,13 +33,13 @@ hosts = {
     "getcolony.com" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site",
     "www.getcolony.com" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site",
     "internus.bemisc.com" : "http://internus-f596ab5f-1.hivesolutions.cont.tutum.io:8023",
-    "joaomagalhaes.eu" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024/",
-    "www.joaomagalhaes.eu" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024/",
-    "blog.joaomagalhaes.eu" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024/",
-    "joamag.com" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024/",
-    "www.joamag.com" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024/",
-    "joao.me" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024/",
-    "www.joao.me" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024/"
+    "joaomagalhaes.eu" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
+    "www.joaomagalhaes.eu" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
+    "blog.joaomagalhaes.eu" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
+    "joamag.com" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
+    "www.joamag.com" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
+    "joao.me" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
+    "www.joao.me" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024"
 }
 regex = (
     (re.compile("https?://www\.hive\.pt"), "http://hive-neo-06808309-1.hivesolutions.cont.tutum.io:8001"),

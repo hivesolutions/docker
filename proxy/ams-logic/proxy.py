@@ -35,7 +35,7 @@ hosts = {
     "internus.bemisc.com" : "http://internus-f596ab5f-1.hivesolutions.cont.tutum.io:8023"
 }
 regex = (
-    (re.compile("https?://www\.hive\.pt"), "http://hive-neo-9c45d442-1.hivesolutions.cont.tutum.io:8001"),
+    (re.compile("https?://www\.hive\.pt"), "http://hive-neo-06808309-1.hivesolutions.cont.tutum.io:8001"),
     (re.compile("https?://blog\.hive\.pt"), "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog"),
     (re.compile("https?://openid\.hive\.pt"), "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid"),
     (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/static"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),

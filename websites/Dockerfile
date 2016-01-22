@@ -13,4 +13,4 @@ RUN apt-get update && apt-get install -y -q python python-setuptools python-dev 
 RUN git clone https://hive_development:4mBSDQdQzTW4NvmJ@bitbucket.org/hivesolutions/websites.git
 RUN pip install -r /websites/requirements.txt && pip install --upgrade netius
 
-CMD python /websites/src/default/main.py
+CMD ["/usr/bin/python", "/websites/src/default/main.py"]

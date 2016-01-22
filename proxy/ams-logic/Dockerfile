@@ -12,4 +12,4 @@ ADD proxy.py /proxy.py
 RUN apt-get update && apt-get install -y -q python python-setuptools python-dev python-pip
 RUN pip install --upgrade netius
 
-CMD python /proxy.py
+CMD ["/usr/bin/python", "/proxy.py"]

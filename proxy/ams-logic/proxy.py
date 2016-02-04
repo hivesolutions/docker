@@ -42,7 +42,8 @@ hosts = {
     "joamag.com" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
     "www.joamag.com" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
     "joao.me" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
-    "www.joao.me" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024"
+    "www.joao.me" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
+    "emailme.bemisc.com" : "http://mailme-ed9d9cea-1.hivesolutions.cont.tutum.io:8025"
 }
 regex = (
     (re.compile("https?://www\.hive\.pt"), "http://hive-neo-06808309-1.hivesolutions.cont.tutum.io:8001"),

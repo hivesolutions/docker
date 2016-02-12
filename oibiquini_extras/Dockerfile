@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:wily
 MAINTAINER Hive Solutions
 
 EXPOSE 8080

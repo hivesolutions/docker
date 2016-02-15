@@ -1,4 +1,4 @@
-FROM alpine:3.2
+FROM alpine:latest
 MAINTAINER Hive Solutions
 
 RUN apk update &&\

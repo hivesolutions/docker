@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM hivesolutions/alpine_dev:latest
 MAINTAINER Hive Solutions
 
 EXPOSE 8080
@@ -9,7 +9,6 @@ ENV PORT 8080
 
 ADD proxy.py /proxy.py
 
-RUN apt-get update && apt-get install -y -q python python-setuptools python-dev python-pip
-RUN pip install --upgrade netius
+RUN pip3 install --upgrade netius
 
-CMD ["/usr/bin/python", "/proxy.py"]
+CMD ["/usr/bin/python3", "/proxy.py"]

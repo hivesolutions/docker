@@ -7,7 +7,9 @@ import netius.extra
 
 hosts = {
     "hive.pt" : "http://hive-neo-06808309-1.hivesolutions.cont.tutum.io:8001",
+    "hiveinc.co" : "http://hive-neo-06808309-1.hivesolutions.cont.tutum.io:8001",
     "www.hive.pt" : "http://hive-neo-06808309-1.hivesolutions.cont.tutum.io:8001",
+    "www.hiveinc.co" : "http://hive-neo-06808309-1.hivesolutions.cont.tutum.io:8001",
     "cameria.bemisc.com" : "http://cameria-adc13c3f-1.hivesolutions.cont.tutum.io:8002",
     "crossline.bemisc.com" : "http://crossline-d3f0b911-1.hivesolutions.cont.tutum.io:8003",
     "omnix.bemisc.com" : "http://omnix-0743d1f2-1.hivesolutions.cont.tutum.io:8004",
@@ -32,7 +34,9 @@ hosts = {
     "amiranda.frontdoorhd.com" : "http://omni-5061ef71-1.hivesolutions.cont.tutum.io:8020",
     "amiranda.takethebill.com" : "http://take-the-bill-84398ba4-1.hivesolutions.cont.tutum.io:8021",
     "blog.hive.pt" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog",
+    "blog.hivein.co" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog",
     "openid.hive.pt" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid",
+    "openid.hiveinc.co" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid",
     "getcolony.com" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site",
     "www.getcolony.com" : "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/colony_site",
     "internus.bemisc.com" : "http://internus-f596ab5f-1.hivesolutions.cont.tutum.io:8023",
@@ -47,13 +51,13 @@ hosts = {
     "hello_appier.bemisc.com" : "http://hello-appier-9bf14b98-1.hivesolutions.cont.tutum.io:8026"
 }
 regex = (
-    (re.compile("https?://www\.hive\.pt"), "http://hive-neo-06808309-1.hivesolutions.cont.tutum.io:8001"),
-    (re.compile("https?://blog\.hive\.pt"), "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog"),
-    (re.compile("https?://openid\.hive\.pt"), "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid"),
-    (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/static"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
-    (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/appier"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
-    (re.compile("https?://([a-zA-Z_]+)\.hive\.pt/render"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
-    (re.compile("https?://([a-zA-Z_]+)\.hive\.pt"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012/render/{0}"),
+    (re.compile(r"https?://www\.((hive\.pt)|(hiveinc\.co))"), "http://hive-neo-06808309-1.hivesolutions.cont.tutum.io:8001"),
+    (re.compile(r"https?://blog\.((hive\.pt)|(hiveinc\.co))"), "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog"),
+    (re.compile(r"https?://openid\.((hive\.pt)|(hiveinc\.co))"), "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid"),
+    (re.compile(r"https?://([a-zA-Z_]+)\.((hive\.pt)|(hiveinc\.co))/static"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
+    (re.compile(r"https?://([a-zA-Z_]+)\.((hive\.pt)|(hiveinc\.co))/appier"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
+    (re.compile(r"https?://([a-zA-Z_]+)\.((hive\.pt)|(hiveinc\.co))/render"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
+    (re.compile(r"https?://([a-zA-Z_]+)\.((hive\.pt)|(hiveinc\.co))"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012/render/{0}"),
 )
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,

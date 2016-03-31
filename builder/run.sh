@@ -9,10 +9,10 @@ FULL_NAME=${FULL_NAME-$REPO/$NAME}
 
 echo "Building '$FULL_NAME' using '$BUILDER' and '$EXEC'"
 
-docker daemon -s overlay &
+cgroupfs.mount && docker daemon -s overlay &
 
 if [ "$BUILDER" == "Dockerfile" ]; then
-    docker build --no-cache -t $FULL_NAME .$EXEC
+    docker build --no-cache -t $FULL_NAME .$EXEC 
 else
     NAME=$NAME FULL_NAME=$FULL_NAME BUILDER=$BUILDER /repo/$EXEC
 fi

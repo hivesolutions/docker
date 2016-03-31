@@ -2,6 +2,7 @@ FROM hivesolutions/alpine_dev:latest
 MAINTAINER Hive Solutions
 
 VOLUME /repo
+VOLUME /var/run/docker.sock
 
 USER root
 

@@ -9,6 +9,7 @@ FULL_NAME=${FULL_NAME-$REPO/$NAME}
 
 echo "Building '$FULL_NAME' using '$BUILDER' and '$EXEC'"
 
+mkdir -p /lib/modules
 cgroupfs.mount && docker daemon -s overlay &
 
 if [ "$BUILDER" == "Dockerfile" ]; then

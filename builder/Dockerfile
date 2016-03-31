@@ -4,7 +4,7 @@ MAINTAINER Hive Solutions
 VOLUME /repo
 
 ENV NAME ""
-ENV EXEC "Dockerfile"
+ENV EXEC "."
 ENV BUILDER "Dockerfile"
 
 ADD run.sh /run.sh

@@ -3,6 +3,8 @@ MAINTAINER Hive Solutions
 
 VOLUME /repo
 
+USER root
+
 ENV NAME ""
 ENV EXEC "/"
 ENV BUILDER "Dockerfile"

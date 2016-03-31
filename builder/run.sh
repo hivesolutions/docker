@@ -1,7 +1,10 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
-NAME=${NAME-$(date +%s)}
+if [ "$NAME" == "" ]; then
+    NAME=$(date +%s)
+fi
+
 FULL_NAME=${FULL_NAME-$REPO/$NAME}
 
 echo "Building '$NAME' using '$BUILDER' and '$EXEC'"

@@ -10,7 +10,8 @@ FULL_NAME=${FULL_NAME-$REPO/$NAME}
 echo "Building '$FULL_NAME' using '$BUILDER' and '$EXEC'"
 
 mkdir -p /lib/modules
-docker daemon -s vfs &
+mount -t cgroup devices 1 /sys/fs/cgroup
+docker daemon -s overlay &
 
 if [ "$BUILDER" == "Dockerfile" ]; then
     docker build --no-cache -t $FULL_NAME .$EXEC 

@@ -10,7 +10,7 @@ FULL_NAME=${FULL_NAME-$REPO/$NAME}
 echo "Building '$NAME' using '$BUILDER' and '$EXEC'"
 
 if [ "$BUILDER" == "Dockerfile" ]; then
-    docker build --no-cache -t $FULL_NAME $EXEC
+    docker build --no-cache -t $FULL_NAME ./$EXEC
 else
     NAME=$NAME FULL_NAME=$FULL_NAME BUILDER=$BUILDER /repo/$EXEC
 fi

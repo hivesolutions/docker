@@ -1,6 +1,8 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
+set -e +h
+
 if [ "$NAME" == "" ]; then
     NAME=$(date +%s)
 fi

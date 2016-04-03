@@ -1,4 +1,9 @@
-FROM evarga/jenkins-slave:latest
+FROM hivesolutions/alpine_devlatest
 MAINTAINER Hive Solutions
 
-RUN apt-get update && apt-get install -y -q git python python-pip
+EXPOSE 22
+
+RUN apk update && apk add openssh
+RUN adduser --quiet jenkins && echo "jenkins:jenkins" | chpasswd
+
+CMD ["/usr/sbin/sshd", "-D"]

@@ -5,6 +5,6 @@ EXPOSE 22
 
 RUN apk update && apk add openssh openjdk7
 RUN ssh-keygen -A
-RUN adduser -D jenkins && echo "jenkins:jenkins" | chpasswd
+RUN adduser -D jenkins && echo "jenkins:jenkins" | chpasswd && echo "root:root" | chpasswd
 
 CMD ["/usr/sbin/sshd", "-D"]

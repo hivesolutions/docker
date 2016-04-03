@@ -1,4 +1,4 @@
-FROM hivesolutions/alpine_devlatest
+FROM hivesolutions/alpine_dev:latest
 MAINTAINER Hive Solutions
 
 EXPOSE 22

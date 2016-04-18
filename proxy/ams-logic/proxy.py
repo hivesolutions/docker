@@ -48,7 +48,8 @@ hosts = {
     "joao.me" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
     "www.joao.me" : "http://joamag-neo-aa18f272-1.hivesolutions.cont.tutum.io:8024",
     "mailme.bemisc.com" : "http://mailme-ed9d9cea-1.hivesolutions.cont.tutum.io:8025",
-    "hello_appier.bemisc.com" : "http://hello-appier-9bf14b98-1.hivesolutions.cont.tutum.io:8026"
+    "hello_appier.bemisc.com" : "http://hello-appier-9bf14b98-1.hivesolutions.cont.tutum.io:8026",
+    "story.bemisc.com" : "http://story-2330baee-1.hivesolutions.cont.tutum.io:8027"
 }
 regex = (
     (re.compile(r"https?://www\.((hive\.pt)|(hiveinc\.co))"), "http://hive-neo-06808309-1.hivesolutions.cont.tutum.io:8001"),

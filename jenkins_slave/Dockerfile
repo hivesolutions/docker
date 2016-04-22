@@ -3,9 +3,6 @@ MAINTAINER Hive Solutions
 
 EXPOSE 22
 
-ENV LD_LIBRARY_PATH "/opt/lib:/usr/local/lib:/usr/lib:/lib"
-ENV LIBRARY_PATH "/opt/lib:/usr/local/lib:/usr/lib:/lib"
-
 RUN apk update && apk add openssh openjdk7
 RUN ssh-keygen -A
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config

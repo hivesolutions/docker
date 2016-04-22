@@ -55,10 +55,10 @@ regex = (
     (re.compile(r"https?://www\.((hive\.pt)|(hiveinc\.co))"), "http://hive-neo-06808309-1.hivesolutions.cont.tutum.io:8001"),
     (re.compile(r"https?://blog\.((hive\.pt)|(hiveinc\.co))"), "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_blog"),
     (re.compile(r"https?://openid\.((hive\.pt)|(hiveinc\.co))"), "http://hive-legacy-0d6bac2d-1.hivesolutions.cont.tutum.io:8022/mvc/hive_openid"),
-    (re.compile(r"https?://([a-zA-Z_]+)\.((hive\.pt)|(hiveinc\.co))/static"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
-    (re.compile(r"https?://([a-zA-Z_]+)\.((hive\.pt)|(hiveinc\.co))/appier"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
-    (re.compile(r"https?://([a-zA-Z_]+)\.((hive\.pt)|(hiveinc\.co))/render"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
-    (re.compile(r"https?://([a-zA-Z_]+)\.((hive\.pt)|(hiveinc\.co))"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012/render/{0}"),
+    (re.compile(r"https?://([a-zA-Z_-]+)\.((hive\.pt)|(hiveinc\.co))/static"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
+    (re.compile(r"https?://([a-zA-Z_-]+)\.((hive\.pt)|(hiveinc\.co))/appier"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
+    (re.compile(r"https?://([a-zA-Z_-]+)\.((hive\.pt)|(hiveinc\.co))/render"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012"),
+    (re.compile(r"https?://([a-zA-Z_-]+)\.((hive\.pt)|(hiveinc\.co))"), "http://proyectos-e2b381d1-1.hivesolutions.cont.tutum.io:8012/render/{0}"),
 )
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,

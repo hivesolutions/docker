@@ -23,7 +23,8 @@ hosts = {
     "ustore.lugardajoia.com" : "http://172.17.0.1:8002"
 }
 auth_regex = (
-    (re.compile(r"https://(www.)?lugardajoia.com/*"), auth_tuple),
+    (re.compile(r"https://lugardajoia.com/*"), auth_tuple),
+    (re.compile(r"https://www.lugardajoia.com/*"), auth_tuple),
     (re.compile(r"https://*"), None)
 )
 redirect = {

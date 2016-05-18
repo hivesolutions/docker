@@ -31,6 +31,7 @@ redirect = {
 }
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,
+    auth_regex = auth_regex,
     redirect = redirect,
     reuse = False
 )

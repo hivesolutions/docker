@@ -20,7 +20,8 @@ hosts = {
     "lugardajoia.com" : "http://172.17.0.1:8002",
     "www.lugardajoia.com" : "http://172.17.0.1:8002",
     "budy.lugardajoia.com" : "http://172.17.0.1:8001",
-    "ustore.lugardajoia.com" : "http://172.17.0.1:8002"
+    "ustore.lugardajoia.com" : "http://172.17.0.1:8002",
+    "omnix.lugardajoia.com" : "http://172.17.0.1:8003"
 }
 auth = {
     "lugardajoia.com" : auth_tuple,

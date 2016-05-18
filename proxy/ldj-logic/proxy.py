@@ -15,8 +15,12 @@ hosts = {
     "budy.lugardajoia.com" : "http://172.17.0.1:8001",
     "ustore.lugardajoia.com" : "http://172.17.0.1:8002"
 }
+redirect = {
+    "lugardajoia.com" : "www.lugardajoia.com"
+}
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,
+    redirect = redirect,
     reuse = False
 )
 server._ssl_contexts = netius.common.LetsEncryptDict(

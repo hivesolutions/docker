@@ -22,17 +22,16 @@ hosts = {
     "budy.lugardajoia.com" : "http://172.17.0.1:8001",
     "ustore.lugardajoia.com" : "http://172.17.0.1:8002"
 }
-auth_regex = (
-    (re.compile(r"https://lugardajoia.com/*"), auth_tuple),
-    (re.compile(r"https://www.lugardajoia.com/*"), auth_tuple),
-    (re.compile(r"https://*"), None)
+auth = (
+    "lugardajoia.com" : auth_tuple,
+    "www.lugardajoia.com" : auth_tuple
 )
 redirect = {
     "lugardajoia.com" : "www.lugardajoia.com"
 }
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,
-    auth_regex = auth_regex,
+    auth = auth,
     redirect = redirect,
     reuse = False
 )

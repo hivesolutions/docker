@@ -22,10 +22,10 @@ hosts = {
     "budy.lugardajoia.com" : "http://172.17.0.1:8001",
     "ustore.lugardajoia.com" : "http://172.17.0.1:8002"
 }
-auth = (
+auth = {
     "lugardajoia.com" : auth_tuple,
     "www.lugardajoia.com" : auth_tuple
-)
+}
 redirect = {
     "lugardajoia.com" : "www.lugardajoia.com"
 }

@@ -1,7 +1,7 @@
 FROM hivesolutions/alpine_dev:latest
 MAINTAINER Hive Solutions
 
-EXPOSE 69
+EXPOSE 69/udp
 
 ENV LEVEL INFO
 ENV HOST 0.0.0.0

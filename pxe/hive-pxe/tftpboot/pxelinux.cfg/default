@@ -1,0 +1,10 @@
+default coreos
+prompt 1
+timeout 15
+
+display boot.msg
+
+label coreos
+    menu default
+    kernel http://archive.hive/repos/coreos/coreos_production_pxe.vmlinuz
+    append initrd=http://archive.hive/repos/coreos/coreos_production_pxe_image.cpio.gz cloud-config-url=http://archive.hive.pt/repos/coreos/cloudconfig.yaml

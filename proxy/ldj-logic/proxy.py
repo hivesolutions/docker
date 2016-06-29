@@ -23,6 +23,12 @@ hosts = {
     "ustore.lugardajoia.com" : "http://172.17.0.1:8002",
     "omnix.lugardajoia.com" : "http://172.17.0.1:8003"
 }
+regex = (
+    (
+        re.compile(r".+/.well-known/acme-challenge/.+"),
+        "http://172.17.0.1:8004"
+    )
+)
 auth = {
     "lugardajoia.com" : auth_tuple,
     "www.lugardajoia.com" : auth_tuple
@@ -32,6 +38,7 @@ redirect = {
 }
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,
+    regex = regex,
     auth = auth,
     redirect = redirect,
     reuse = False

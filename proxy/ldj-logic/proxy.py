@@ -27,7 +27,7 @@ regex = (
     (
         re.compile(r".+/.well-known/acme-challenge/.+"),
         "http://172.17.0.1:8004"
-    )
+    ),
 )
 auth = {
     "lugardajoia.com" : auth_tuple,

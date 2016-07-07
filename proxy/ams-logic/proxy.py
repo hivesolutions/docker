@@ -7,24 +7,24 @@ import logging
 import netius.extra
 
 hosts = {
-    "hive.pt" : "http://tutum-hive-neo.bemisc.com:8001",
-    "hiveinc.co" : "http://tutum-hive-neo.bemisc.com:8001",
-    "www.hive.pt" : "http://tutum-hive-neo.bemisc.com:8001",
-    "www.hiveinc.co" : "http://tutum-hive-neo.bemisc.com:8001",
-    "cameria.bemisc.com" : "http://tutum-cameria.bemisc.com:8002",
+    "hive.pt" : "http://ams-data-1.bemisc.com:8001",
+    "hiveinc.co" : "http://ams-data-1.bemisc.com:8001",
+    "www.hive.pt" : "http://ams-data-1.bemisc.com:8001",
+    "www.hiveinc.co" : "http://ams-data-1.bemisc.com:8001",
+    "cameria.bemisc.com" : "http://ams-data-1.bemisc.com:8002",
     "crossline.bemisc.com" : "http://tutum-crossline.bemisc.com:8003",
     "omnix.bemisc.com" : "http://tutum-omnix.bemisc.com:8004",
     "lugardajoia.com" : "http://tutum-websites-ldj.bemisc.com:8005",
     "www.lugardajoia.com" : "http://tutum-websites-ldj.bemisc.com:8005",
     "passatempo.oibiquini.com" : "http://tutum-websites-oibiquini.bemisc.com:8006",
     "campaigner.bemisc.com" : "http://tutum-campaigner.bemisc.com:8007",
-    "instashow.bemisc.com" : "http://tutum-instashow.bemisc.com:8008",
+    "instashow.bemisc.com" : "http://ams-data-1.bemisc.com:8008",
     "libs.bemisc.com" : "http://tutum-libs.bemisc.com:8009",
     "extras.oibiquini.com" : "http://tutum-oibiquini-extras.bemisc.com:8010",
     "repos.bemisc.com" : "http://tutum-repos.bemisc.com:8011",
     "colony.bemisc.com" : "http://tutum-repos.bemisc.com:8011",
     "proyectos.bemisc.com" : "http://tutum-proyectos.bemisc.com:8012",
-    "print.bemisc.com" : "http://tutum-colony-print.bemisc.com:8013",
+    "print.bemisc.com" : "http://ams-data-1.bemisc.com:8013",
     "shopdesk.bemisc.com" : "http://tutum-shopdesk.bemisc.com:8014",
     "hello_quorum.bemisc.com" : "http://tutum-hello-quorum.bemisc.com:8015",
     "hive.frontdoorhd.com" : "http://tutum-omni-hive.bemisc.com:8016",
@@ -50,10 +50,10 @@ hosts = {
     "www.joao.me" : "http://tutum-joamag-neo.bemisc.com:8024",
     "mailme.bemisc.com" : "http://tutum-mailme.bemisc.com:8025",
     "hello_appier.bemisc.com" : "http://tutum-hello-appier.bemisc.com:8026",
-    "story.bemisc.com" : "http://tutum-story.bemisc.com:8027"
+    "story.bemisc.com" : "http://ams-data-1.bemisc.com:8027"
 }
 regex = (
-    (re.compile(r"https?://www\.((hive\.pt)|(hiveinc\.co))"), "http://tutum-hive-neo.bemisc.com:8001"),
+    (re.compile(r"https?://www\.((hive\.pt)|(hiveinc\.co))"), "http://ams-data-1.bemisc.com:8001"),
     (re.compile(r"https?://blog\.((hive\.pt)|(hiveinc\.co))"), "http://tutum-hive-legacy.bemisc.com:8022/mvc/hive_blog"),
     (re.compile(r"https?://openid\.((hive\.pt)|(hiveinc\.co))"), "http://tutum-hive-legacy.bemisc.com:8022/mvc/hive_openid"),
     (re.compile(r"https?://([a-zA-Z_-]+)\.((hive\.pt)|(hiveinc\.co))/static"), "http://tutum-proyectos.bemisc.com:8012"),

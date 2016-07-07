@@ -1,2 +1,2 @@
-FROM hivesolutions/alpine_dev
+FROM hivesolutions/alpine_dev:latest
 MAINTAINER Hive Solutions

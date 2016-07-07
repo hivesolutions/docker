@@ -1,4 +1,4 @@
-FROM hivesolutions/alpine_dev:latest
+FROM hivesolutions/python:latest
 MAINTAINER Hive Solutions
 
 EXPOSE 8080

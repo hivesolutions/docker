@@ -48,7 +48,7 @@ hosts = {
     "www.joamag.com" : "http://tutum-joamag-neo.bemisc.com:8024",
     "joao.me" : "http://tutum-joamag-neo.bemisc.com:8024",
     "www.joao.me" : "http://tutum-joamag-neo.bemisc.com:8024",
-    "mailme.bemisc.com" : "http://tutum-mailme.bemisc.com:8025",
+    "mailme.bemisc.com" : "http://ams-logic-2.bemisc.com:8025",
     "hello_appier.bemisc.com" : "http://tutum-hello-appier.bemisc.com:8026",
     "story.bemisc.com" : "http://ams-logic-1.bemisc.com:8027"
 }

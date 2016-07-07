@@ -11,4 +11,4 @@ ADD proxy.py /proxy.py
 
 RUN pip install --upgrade netius
 
-CMD ["/usr/bin/pypy", "/proxy.py"]
+CMD ["/usr/local/bin/pypy", "/proxy.py"]

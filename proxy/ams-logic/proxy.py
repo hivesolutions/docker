@@ -40,7 +40,7 @@ hosts = {
     "openid.hiveinc.co" : "http://tutum-hive-legacy.bemisc.com:8022/mvc/hive_openid",
     "getcolony.com" : "http://tutum-hive-legacy.bemisc.com:8022/mvc/colony_site",
     "www.getcolony.com" : "http://tutum-hive-legacy.bemisc.com:8022/mvc/colony_site",
-    "internus.bemisc.com" : "http://tutum-internus.bemisc.com:8023",
+    "internus.bemisc.com" : "http://ams-data-1.bemisc.com:8023",
     "joaomagalhaes.eu" : "http://tutum-joamag-neo.bemisc.com:8024",
     "www.joaomagalhaes.eu" : "http://tutum-joamag-neo.bemisc.com:8024",
     "blog.joaomagalhaes.eu" : "http://tutum-joamag-neo.bemisc.com:8024",

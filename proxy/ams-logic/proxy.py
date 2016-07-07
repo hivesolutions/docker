@@ -17,7 +17,7 @@ hosts = {
     "lugardajoia.com" : "http://tutum-websites-ldj.bemisc.com:8005",
     "www.lugardajoia.com" : "http://tutum-websites-ldj.bemisc.com:8005",
     "passatempo.oibiquini.com" : "http://tutum-websites-oibiquini.bemisc.com:8006",
-    "campaigner.bemisc.com" : "http://tutum-campaigner.bemisc.com:8007",
+    "campaigner.bemisc.com" : "http://ams-data-1.bemisc.com:8007",
     "instashow.bemisc.com" : "http://ams-data-1.bemisc.com:8008",
     "libs.bemisc.com" : "http://tutum-libs.bemisc.com:8009",
     "extras.oibiquini.com" : "http://tutum-oibiquini-extras.bemisc.com:8010",

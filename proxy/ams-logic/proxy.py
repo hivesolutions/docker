@@ -13,7 +13,7 @@ hosts = {
     "www.hiveinc.co" : "http://ams-logic-1.bemisc.com:8001",
     "cameria.bemisc.com" : "http://ams-logic-2.bemisc.com:8002",
     "crossline.bemisc.com" : "http://tutum-crossline.bemisc.com:8003",
-    "omnix.bemisc.com" : "http://ams-logic-2.bemisc.com:8004",
+    "omnix.bemisc.com" : "http://ams-logic-1.bemisc.com:8004",
     "lugardajoia.com" : "http://ams-logic-2.bemisc.com:8005",
     "www.lugardajoia.com" : "http://ams-logic-2.bemisc.com:8005",
     "passatempo.oibiquini.com" : "http://tutum-websites-oibiquini.bemisc.com:8006",

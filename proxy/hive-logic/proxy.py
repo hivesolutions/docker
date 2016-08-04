@@ -16,6 +16,7 @@ host_prefixes = netius.conf(
     ["%s.stage.hive.pt", "%s.stage.hive"],
     cast = list
 )
+host_prefixes += ["%s.proxy"]
 
 hosts = {}
 regex = []
@@ -33,21 +34,22 @@ for worker in workers:
         hosts[host_u] = "http://127.0.0.1:%d" % base_port
     base_port += 1
 
-hosts["hq.hive.pt"] = "http://127.0.0.1:9000"
-hosts["archive.hive.pt"] = "http://127.0.0.1:9000"
-hosts["mirrors.hive.pt"] = "http://127.0.0.1:9000"
-hosts["hq.hive"] = "http://127.0.0.1:9000"
-hosts["archive.hive"] = "http://127.0.0.1:9000"
-hosts["mirrors.hive"] = "http://127.0.0.1:9000"
+if "viriatum.proxy" in hosts:
+    hosts["hq.hive.pt"] = hosts["viriatum.proxy"]
+    hosts["archive.hive.pt"] = hosts["viriatum.proxy"]
+    hosts["mirrors.hive.pt"] = hosts["viriatum.proxy"]
+    hosts["hq.hive"] = hosts["viriatum.proxy"]
+    hosts["archive.hive"] = hosts["viriatum.proxy"]
+    hosts["mirrors.hive"] = hosts["viriatum.proxy"]
 
-if "repos.stage.hive.pt" in hosts:
-    hosts["colony.private.hive.pt"] = hosts["repos.stage.hive.pt"]
+if "repos.proxy" in hosts:
+    hosts["colony.private.hive.pt"] = hosts["repos.proxy"]
 
-if "letsencrypt.stage.hive.pt" in hosts:
+if "letsencrypt.proxy" in hosts:
     regex.append(
         (
             re.compile(r".+/.well-known/acme-challenge/.+"),
-            hosts["letsencrypt.stage.hive.pt"]
+            hosts["letsencrypt.proxy"]
         )
     )
 

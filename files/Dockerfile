@@ -3,7 +3,7 @@ MAINTAINER Hive Solutions
 
 EXPOSE 8080
 
-VOLUE /data
+VOLUME /data
 
 ENV LEVEL INFO
 ENV HOST 0.0.0.0

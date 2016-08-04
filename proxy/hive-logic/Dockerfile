@@ -1,4 +1,4 @@
-FROM hivesolutions/pypy:latest
+FROM hivesolutions/python:latest
 MAINTAINER Hive Solutions
 
 EXPOSE 8080
@@ -12,6 +12,6 @@ ENV PORT 8080
 
 ADD proxy.py /proxy.py
 
-RUN pip install --upgrade netius hpack
+RUN pip3 install --upgrade netius hpack
 
-CMD ["/usr/bin/python", "/proxy.py"]
+CMD ["/usr/bin/python3", "/proxy.py"]

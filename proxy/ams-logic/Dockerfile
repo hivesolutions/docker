@@ -9,6 +9,6 @@ ENV PORT 8080
 
 ADD proxy.py /proxy.py
 
-RUN pip3 install --upgrade netius
+RUN pip3 install --upgrade netius hpack
 
 CMD ["/usr/bin/python3", "/proxy.py"]

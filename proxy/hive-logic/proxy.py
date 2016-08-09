@@ -8,7 +8,7 @@ import logging
 import netius.extra
 import netius.common
 
-base_port = netius.conf("BASE_PORT", 9000, cast = int)
+base_port = netius.conf("BASE_PORT", 9001, cast = int)
 workers_path = netius.conf("WORKERS_PATH", "/workers")
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
 host_prefixes = netius.conf(

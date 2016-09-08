@@ -1,0 +1,12 @@
+FROM hivesolutions/ubuntu_dev:latest
+MAINTAINER Hive Solutions
+
+EXPOSE 22
+
+RUN apt-get update && apt-get install -y ssh openjdk-8-jre
+RUN ssh-keygen -A
+RUN sed -i '/PermitRootLogin prohibit-password/c\PermitRootLogin yes' /etc/ssh/sshd_config
+RUN adduser --disabled-login --disabled-password --gecos "jenkins" jenkins &&\
+    (echo "jenkins:jenkins" | chpasswd) && (echo "root:root" | chpasswd)
+
+CMD ["/usr/sbin/sshd", "-D"]

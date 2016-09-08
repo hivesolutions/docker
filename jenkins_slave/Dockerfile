@@ -1,4 +1,4 @@
-FROM hivesolutions/python:latest
+FROM hivesolutions/alpine_dev:latest
 MAINTAINER Hive Solutions
 
 EXPOSE 22

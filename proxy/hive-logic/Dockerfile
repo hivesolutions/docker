@@ -4,7 +4,7 @@ MAINTAINER Hive Solutions
 EXPOSE 8080
 
 VOLUME /workers
-VOLUME /data/letsencrypt 
+VOLUME /data/letsencrypt
 
 ENV LEVEL INFO
 ENV HOST 0.0.0.0

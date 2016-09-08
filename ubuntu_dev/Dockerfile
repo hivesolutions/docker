@@ -1,7 +1,9 @@
 FROM hivesolutions/ubuntu:latest
 MAINTAINER Hive Solutions
 
-RUN apt-get update &&\
+RUN echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list &&\
+	apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893 &&\
+	apt-get update &&\
     apt-get install -y sudo gcc make pypy linux-headers-generic python-dev python3-dev
 
 CMD ["/bin/bash"]

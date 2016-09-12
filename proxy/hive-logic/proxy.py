@@ -9,6 +9,7 @@ import netius.extra
 import netius.common
 
 base_port = netius.conf("BASE_PORT", 9001, cast = int)
+auth_password = netius.conf("AUTH_PASSWORD", None)
 workers_path = netius.conf("WORKERS_PATH", "/workers")
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
 host_prefixes = netius.conf(
@@ -20,6 +21,7 @@ host_prefixes += ["%s.proxy"]
 
 hosts = {}
 regex = []
+auth = {}
 workers = os.listdir(workers_path)
 workers.sort()
 
@@ -53,9 +55,16 @@ if "letsencrypt.proxy" in hosts:
         )
     )
 
+if "docker.proxy" in hosts and auth_password:
+    auth_tuple = (netius.SimpleAuth(password = auth_password),)
+    auth["docker.proxy"] = auth_tuple
+    auth["docker.stage.hive.pt"] = auth_tuple
+    auth["docker.stage.hive"] = auth_tuple
+
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,
     regex = regex,
+    auth = auth,
     level = logging.INFO
 )
 server._ssl_contexts = netius.common.LetsEncryptDict(

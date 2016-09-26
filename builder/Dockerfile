@@ -14,6 +14,6 @@ ADD run.sh /run.sh
 
 WORKDIR /repo
 
-RUN apk add docker
+RUN apk update && apk add docker
 
 CMD ["/run.sh"]

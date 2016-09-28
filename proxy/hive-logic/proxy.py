@@ -55,9 +55,6 @@ if "letsencrypt.proxy" in hosts:
         )
     )
 
-if "docker.proxy" in hosts:
-    hosts["docker.proxy"] = hosts["docker.proxy"].replace("http://", "https://")
-
 if "docker.proxy" in hosts and auth_password:
     auth_tuple = (netius.SimpleAuth(password = auth_password),)
     auth["docker.proxy"] = auth_tuple

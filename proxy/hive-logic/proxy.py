@@ -9,9 +9,9 @@ import netius.extra
 import netius.common
 
 base_port = netius.conf("BASE_PORT", 9001, cast = int)
-auth_password = netius.conf("AUTH_PASSWORD", None)
 workers_path = netius.conf("WORKERS_PATH", "/workers")
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
+auth_passwords = netius.conf("AUTH_PASSWORDS", [], cast = list)
 host_prefixes = netius.conf(
     "HOST_PREFIXES",
     ["%s.stage.hive.pt", "%s.stage.hive"],
@@ -22,8 +22,13 @@ host_prefixes += ["%s.proxy"]
 hosts = {}
 regex = []
 auth = {}
+auth_tuple = []
 workers = os.listdir(workers_path)
 workers.sort()
+
+for auth_password in auth_passwords:
+    simple_auth = netius.SimpleAuth(password = auth_password)
+    auth_tuple.append(simple_auth)
 
 for worker in workers:
     base, _extension = os.path.splitext(worker)
@@ -55,8 +60,7 @@ if "letsencrypt.proxy" in hosts:
         )
     )
 
-if "docker.proxy" in hosts and auth_password:
-    auth_tuple = (netius.SimpleAuth(password = auth_password),)
+if "docker.proxy" in hosts and auth_tuple:
     auth["docker.proxy"] = auth_tuple
     auth["docker.stage.hive.pt"] = auth_tuple
     auth["docker.stage.hive"] = auth_tuple

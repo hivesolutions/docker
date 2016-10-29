@@ -9,7 +9,7 @@ import netius.extra
 hosts = {
 }
 regex = (
-    (re.compile(r".*"), "http://libs:8080")
+    (re.compile(r".*"), "http://libs:8080"),
 )
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,

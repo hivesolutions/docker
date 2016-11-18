@@ -7,7 +7,7 @@ import netius.common
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
 
 def set_letsencrypt(server):
-    if not if "letsencrypt" in server.hosts: return
+    if not "letsencrypt" in server.hosts: return
     server.regex.append(
         (
             re.compile(r".+/.well-known/acme-challenge/.+"),

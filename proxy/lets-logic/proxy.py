@@ -13,7 +13,7 @@ def set_letsencrypt(server):
     server.regex.append(
         (
             re.compile(r".+/.well-known/acme-challenge/.+"),
-            self.hosts["letsencrypt"]
+            server.hosts["letsencrypt"]
         )
     )
 

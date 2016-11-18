@@ -10,6 +10,7 @@ ENV HOST 0.0.0.0
 ENV PORT 8080
 ENV SAFE 0
 ENV CHILDREN 0
+ENV ECHO 1
 
 ADD proxy.py /proxy.py
 

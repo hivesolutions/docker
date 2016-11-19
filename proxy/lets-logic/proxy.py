@@ -24,7 +24,8 @@ def set_letsencrypt(server):
 def set_ssl_contexts(server):
     hosts = netius.legacy.keys(server.hosts)
     alias = netius.legacy.keys(server.alias)
-    hosts = list(set(hosts + alias))
+    redirect = netius.legacy.keys(server.redirect)
+    hosts = list(set(hosts + alias + redirect))
     server._ssl_contexts = netius.common.LetsEncryptDict(
         server,
         hosts,

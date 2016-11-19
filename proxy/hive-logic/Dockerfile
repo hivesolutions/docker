@@ -5,6 +5,8 @@ EXPOSE 8080
 
 VOLUME /workers
 VOLUME /data/letsencrypt
+VOLUME /etc/letsencrypt
+VOLUME /var/lib/letsencrypt
 
 ENV LEVEL INFO
 ENV HOST 0.0.0.0

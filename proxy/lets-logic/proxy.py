@@ -36,7 +36,7 @@ def echo_hosts(server, hosts, contexts = None, sort = True):
     contexts = contexts or server._ssl_contexts
     hosts = list(hosts)
     if sort: hosts.sort()
-    server.info("Let’s Encrypt host registration information")
+    server.info("Let’s Encrypt host certificate information")
     for host in hosts:
         match = "match" if host in context else "no match"
         server.info("%s => %s" % (host, match))

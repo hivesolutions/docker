@@ -30,13 +30,13 @@ def set_ssl_contexts(server):
         hosts,
         letse_path = letse_path
     )
-    if server.echo: echo_hosts(server, hosts)
+    if server.echo: echo_contexts(server, hosts)
 
-def echo_hosts(server, hosts, contexts = None, sort = True):
+def echo_contexts(server, hosts, contexts = None, sort = True):
     contexts = contexts or server._ssl_contexts
     hosts = list(hosts)
     if sort: hosts.sort()
-    server.info("Let’s Encrypt host certificate information")
+    server.info("Let’s Encrypt host context information")
     for host in hosts:
         match = "match" if host in contexts else "no match"
         server.info("%s => %s" % (host, match))

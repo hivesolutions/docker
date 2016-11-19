@@ -38,7 +38,7 @@ def echo_hosts(server, hosts, contexts = None, sort = True):
     if sort: hosts.sort()
     server.info("Let’s Encrypt host certificate information")
     for host in hosts:
-        match = "match" if host in context else "no match"
+        match = "match" if host in contexts else "no match"
         server.info("%s => %s" % (host, match))
 
 server = netius.extra.DockerProxyServer()

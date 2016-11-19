@@ -8,6 +8,10 @@ import netius.common
 
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
 
+def on_start(server):
+    set_letsencrypt(server)
+    set_ssl_contexts(server)
+
 def set_letsencrypt(server):
     if not "letsencrypt" in server.hosts: return
     server.regex.append(
@@ -35,11 +39,7 @@ def echo_hosts(self, server, hosts, contexts = None, sort = True):
     self.info("Let’s Encrypt host registration information")
     for host in hosts:
         match = "match" if host in context else "no match"
-        self.info("%s => %s" % (host, match))
-
-def on_start(server):
-    set_letsencrypt(server)
-    set_ssl_contexts(server)
+        server.info("%s => %s" % (host, match))
 
 server = netius.extra.DockerProxyServer()
 server.bind("start", on_start)

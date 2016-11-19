@@ -20,11 +20,22 @@ def set_letsencrypt(server):
 def set_ssl_contexts(server):
     hosts = netius.legacy.keys(server.hosts)
     alias = netius.legacy.keys(server.alias)
+    hosts = list(set(hosts + alias))
     server._ssl_contexts = netius.common.LetsEncryptDict(
         server,
-        hosts + alias,
+        hosts,
         letse_path = letse_path
     )
+    if server.echo: echo_hosts(server, hosts)
+
+def echo_hosts(self, server, hosts, contexts = None, sort = True):
+    contexts = contexts or server._ssl_contexts
+    hosts = list(hosts)
+    if sort: hosts.sort()
+    self.info("Let’s Encrypt host registration information")
+    for host in hosts:
+        match = "match" if host in context else "no match"
+        self.info("%s => %s" % (host, match))
 
 def on_start(server):
     set_letsencrypt(server)

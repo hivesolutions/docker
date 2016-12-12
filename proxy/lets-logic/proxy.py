@@ -14,7 +14,7 @@ def on_start(server):
 
 def set_letsencrypt(server):
     if not "letsencrypt" in server.hosts: return
-    server.regex.append(
+    server.regex.insert(0,
         (
             re.compile(r".+/.well-known/acme-challenge/.+"),
             server.hosts["letsencrypt"]

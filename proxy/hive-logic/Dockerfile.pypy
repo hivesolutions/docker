@@ -1,4 +1,4 @@
-FROM hivesolutions/pypy:latest
+FROM hivesolutions/pypy:alpine
 MAINTAINER Hive Solutions
 
 EXPOSE 8080

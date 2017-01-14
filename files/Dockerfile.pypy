@@ -12,6 +12,6 @@ ENV CACHE 86400
 ENV CORS 1
 ENV BASE_PATH /data
 
-RUN pip3 install --upgrade netius
+RUN pip install --upgrade netius
 
 CMD ["/usr/bin/python", "-m", "netius.extra.filea"]

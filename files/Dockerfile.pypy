@@ -1,0 +1,17 @@
+FROM hivesolutions/pypy:latest
+MAINTAINER Hive Solutions
+
+EXPOSE 8080
+
+VOLUME /data
+
+ENV LEVEL INFO
+ENV HOST 0.0.0.0
+ENV PORT 8080
+ENV CACHE 86400
+ENV CORS 1
+ENV BASE_PATH /data
+
+RUN pip3 install --upgrade netius
+
+CMD ["/usr/bin/python", "-m", "netius.extra.filea"]

@@ -12,4 +12,6 @@ if [ "$1" = 'haproxy' ]; then
 	set -- "$(which haproxy-systemd-wrapper)" -p /run/haproxy.pid "$@"
 fi
 
+sleep 3
+
 exec "$@"

@@ -1,7 +1,9 @@
 FROM hivesolutions/alpine:latest
 MAINTAINER Hive Solutions
 
-EXPOSE 8080
+EXPOSE 137
+EXPOSE 138
+EXPOSE 139
 
 VOLUME /data
 

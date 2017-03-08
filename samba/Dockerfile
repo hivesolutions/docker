@@ -13,4 +13,4 @@ ADD run.sh /run.sh
 RUN apk update &&\
     apk add samba samba-common-tools
 
-CMD ["/usr/sbin/smbd", "-FS"]
+CMD ["/run.sh"]

@@ -3,8 +3,8 @@
 
 set -e +h
 
-adduser -D admin
+adduser -D samba
 
-(echo $PASSWORD && echo $PASSWORD) | smbpasswd -a admin
+(echo $PASSWORD && echo $PASSWORD) | smbpasswd -a samba
 
 /usr/sbin/smbd -FS

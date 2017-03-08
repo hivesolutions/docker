@@ -5,7 +5,12 @@ EXPOSE 8080
 
 VOLUME /data
 
+ENV PASSWORD password
+
+ADD smb.conf /etc/samba/smb.conf
+ADD run.sh /run.sh
+
 RUN apk update &&\
     apk add samba samba-common-tools
 
-CMD ["smbd"]
+CMD ["/usr/sbin/smbd", "-FS"]

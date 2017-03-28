@@ -9,6 +9,7 @@ EXPOSE 445
 VOLUME /data
 
 ENV PASSWORD password
+ENV ENCRYPTION auto
 
 ADD smb.conf /etc/samba/smb.conf
 ADD run.sh /run.sh

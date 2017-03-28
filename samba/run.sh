@@ -4,6 +4,7 @@
 set -e +h
 
 sed -ie "s/{ENCRYPTION}/$ENCRYPTION/g" /etc/samba/smb.conf
+sed -ie "s/{SIGNING}/$SIGNING/g" /etc/samba/smb.conf
 
 adduser -D samba
 

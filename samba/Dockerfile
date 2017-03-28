@@ -10,6 +10,7 @@ VOLUME /data
 
 ENV PASSWORD password
 ENV ENCRYPTION auto
+ENV SIGNING auto
 
 ADD smb.conf /etc/samba/smb.conf
 ADD run.sh /run.sh

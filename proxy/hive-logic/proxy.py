@@ -66,7 +66,8 @@ if "docker.proxy" in hosts and auth_tuple:
     auth["docker.proxy"] = auth_tuple
     auth["docker.stage.hive.pt"] = auth_tuple
     auth["docker.stage.hive"] = auth_tuple
-
+    
+contexts = netius.legacy.keys(hosts) + extra_contexts
 server = netius.extra.ReverseProxyServer(
     hosts = hosts,
     regex = regex,
@@ -76,7 +77,7 @@ server = netius.extra.ReverseProxyServer(
 )
 server._ssl_contexts = netius.common.LetsEncryptDict(
     server,
-    list(hosts.keys()) + extra_contexts,
+    contexts,
     letse_path = letse_path
 )
 server.serve(env = True)

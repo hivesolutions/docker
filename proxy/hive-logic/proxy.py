@@ -12,6 +12,7 @@ base_port = netius.conf("BASE_PORT", 9001, cast = int)
 workers_path = netius.conf("WORKERS_PATH", "/workers")
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
 auth_passwords = netius.conf("AUTH_PASSWORDS", [], cast = list)
+extra_contexts = netius.conf("EXTRA_CONTEXTS", [], cast = list)
 host_prefixes = netius.conf(
     "HOST_PREFIXES",
     ["%s.stage.hive.pt", "%s.stage.hive"],
@@ -75,7 +76,7 @@ server = netius.extra.ReverseProxyServer(
 )
 server._ssl_contexts = netius.common.LetsEncryptDict(
     server,
-    hosts.keys(),
+    list(hosts.keys()) + extra_contexts,
     letse_path = letse_path
 )
 server.serve(env = True)

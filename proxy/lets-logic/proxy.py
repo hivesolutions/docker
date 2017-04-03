@@ -7,7 +7,6 @@ import netius.extra
 import netius.common
 
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
-extra = netius.conf("EXTRA_CONTEXTS", [], cast = list)
 
 def on_start(server):
     set_letsencrypt(server)
@@ -32,7 +31,7 @@ def set_ssl_contexts(server):
     hosts = netius.legacy.keys(server.hosts)
     alias = netius.legacy.keys(server.alias)
     redirect = netius.legacy.keys(server.redirect)
-    hosts = list(set(hosts + alias + redirect + extra))
+    hosts = list(set(hosts + alias + redirect))
     server._ssl_contexts = netius.common.LetsEncryptDict(
         server,
         hosts,

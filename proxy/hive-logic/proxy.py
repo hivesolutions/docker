@@ -10,7 +10,6 @@ import netius.common
 
 base_port = netius.conf("BASE_PORT", 9001, cast = int)
 workers_path = netius.conf("WORKERS_PATH", "/workers")
-forward = netius.conf("FORWARD", None)
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
 auth_passwords = netius.conf("AUTH_PASSWORDS", [], cast = list)
 host_prefixes = netius.conf(
@@ -18,6 +17,7 @@ host_prefixes = netius.conf(
     ["%s.stage.hive.pt", "%s.stage.hive"],
     cast = list
 )
+forward = netius.conf("FORWARD", None)
 host_prefixes += ["%s.proxy"]
 
 hosts = {}

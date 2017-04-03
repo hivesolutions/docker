@@ -10,6 +10,7 @@ import netius.common
 
 base_port = netius.conf("BASE_PORT", 9001, cast = int)
 workers_path = netius.conf("WORKERS_PATH", "/workers")
+forward = netius.conf("FORWARD", None)
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
 auth_passwords = netius.conf("AUTH_PASSWORDS", [], cast = list)
 host_prefixes = netius.conf(
@@ -69,6 +70,7 @@ server = netius.extra.ReverseProxyServer(
     hosts = hosts,
     regex = regex,
     auth = auth,
+    forward = forward,
     level = logging.INFO
 )
 server._ssl_contexts = netius.common.LetsEncryptDict(

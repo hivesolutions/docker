@@ -24,6 +24,7 @@ host_prefixes += ["%s.proxy"]
 hosts = {}
 regex = []
 auth = {}
+auth_regex = []
 auth_tuple = []
 workers = os.listdir(workers_path)
 workers.sort()
@@ -61,6 +62,12 @@ if "letsencrypt.proxy" in hosts:
             hosts["letsencrypt.proxy"]
         )
     )
+    auth_regex.append(
+        (
+            re.compile(r".+/.well-known/acme-challenge/.+"),
+            None
+        )
+    )
 
 if "docker.proxy" in hosts and auth_tuple:
     auth["docker.proxy"] = auth_tuple
@@ -72,6 +79,7 @@ server = netius.extra.ReverseProxyServer(
     hosts = hosts,
     regex = regex,
     auth = auth,
+    auth_regex = auth_regex,
     forward = forward,
     level = logging.INFO
 )

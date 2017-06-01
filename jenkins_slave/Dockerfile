@@ -3,7 +3,7 @@ MAINTAINER Hive Solutions
 
 EXPOSE 22
 
-RUN apk update && apk add openssh openjdk7 docker
+RUN apk update && apk add openssh openjdk8 docker
 RUN ssh-keygen -A
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN adduser -D jenkins && (echo "jenkins:jenkins" | chpasswd) && (echo "root:root" | chpasswd)

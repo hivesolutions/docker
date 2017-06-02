@@ -3,7 +3,7 @@ MAINTAINER Hive Solutions
 
 EXPOSE 22
 
-RUN apt-get update && apt-get install -y ssh openjdk-8-jre
+RUN apt-get update && apt-get install -y ssh openjdk-8-jdk
 RUN ssh-keygen -A && mkdir -p /var/run/sshd
 RUN sed -i '/PermitRootLogin prohibit-password/c\PermitRootLogin yes' /etc/ssh/sshd_config
 RUN adduser --disabled-login --disabled-password --gecos "jenkins" jenkins &&\

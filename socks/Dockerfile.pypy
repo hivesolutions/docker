@@ -1,0 +1,14 @@
+FROM hivesolutions/pypy:latest
+MAINTAINER Hive Solutions
+
+EXPOSE 1080
+
+VOLUME /data
+
+ENV LEVEL INFO
+ENV HOST 0.0.0.0
+ENV PORT 1080
+
+RUN pip install --upgrade netius
+
+CMD ["/usr/bin/python", "-m", "netius.servers.socks"]

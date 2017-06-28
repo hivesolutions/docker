@@ -2,7 +2,7 @@ FROM alpine:latest
 MAINTAINER Hive Solutions
 
 RUN apk update &&\
-    apk add bash git openssl ca-certificates python python3 &&\
+    apk add bash git libressl ca-certificates python python3 &&\
     wget "https://bootstrap.pypa.io/get-pip.py" &&\
     python3 get-pip.py &&\
     python get-pip.py &&\

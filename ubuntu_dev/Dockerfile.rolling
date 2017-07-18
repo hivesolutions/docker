@@ -1,0 +1,8 @@
+FROM hivesolutions/ubuntu:rolling
+MAINTAINER Hive Solutions
+
+RUN apt-get update &&\
+    apt-get install -y -q sudo gcc make curl pypy dotnet-dev-1.0.0 linux-headers-generic\
+    libssl-dev python-dev python3-dev pypy-dev
+
+CMD ["/bin/bash"]

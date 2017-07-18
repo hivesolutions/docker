@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:rolling
 MAINTAINER Hive Solutions
 
 RUN apt-get update &&\

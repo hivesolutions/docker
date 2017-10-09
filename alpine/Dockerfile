@@ -1,5 +1,6 @@
 FROM alpine:latest
 
+LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 RUN apk update &&\

@@ -1,4 +1,5 @@
 FROM jenkins
-MAINTAINER Hive Solutions
+
+LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 USER root

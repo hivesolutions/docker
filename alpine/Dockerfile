@@ -1,5 +1,6 @@
 FROM alpine:latest
-MAINTAINER Hive Solutions
+
+LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 RUN apk update &&\
     apk add bash git libressl ca-certificates python python3 &&\

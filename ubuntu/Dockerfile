@@ -1,5 +1,6 @@
 FROM ubuntu:latest
-MAINTAINER Hive Solutions
+
+LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 RUN apt-get update &&\
     apt-get install -y -q bash wget git openssl ca-certificates dirmngr apt-transport-https python python3 &&\

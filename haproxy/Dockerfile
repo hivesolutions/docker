@@ -1,4 +1,5 @@
 FROM haproxy:latest
-MAINTAINER Hive Solutions
+
+LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 COPY docker-entrypoint.sh /

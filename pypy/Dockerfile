@@ -1,5 +1,6 @@
 FROM pypy:2
-MAINTAINER Hive Solutions
+
+LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 RUN if [ -e /usr/bin/python ]; then mv /usr/bin/python /usr/bin/python.old; fi &&\
     if [ -e /usr/bin/pip ]; then mv /usr/bin/pip /usr/bin/pip.old; fi &&\

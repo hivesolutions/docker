@@ -16,3 +16,4 @@ RUN wget https://gethstore.blob.core.windows.net/builds/geth-linux-$PLATFORM-$VE
     rm -rf geth-linux-$PLATFORM-$VERSION
 
 CMD ["/usr/bin/geth", "-rpc", "--rpcaddr", "$HOST", "--datadir", "/data"]
+ 

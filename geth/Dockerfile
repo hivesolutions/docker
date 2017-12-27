@@ -14,4 +14,4 @@ RUN wget https://gethstore.blob.core.windows.net/builds/geth-linux-$PLATFORM-$VE
     tar -zxvf geth-linux-$PLATFORM-$VERSION.tar.gz && mv geth-linux-$PLATFORM-$VERSION/geth /usr/bin &&\
     rm -rf geth-linux-$PLATFORM-$VERSION
 
-CMD ["/usr/bin/geth", "-rpc", "--rpcaddr", "0.0.0.0", "--datadir", "/data"]
+CMD ["/usr/bin/geth", "-rpc", "--rpcaddr", "0.0.0.0", "--datadir", "/data", "--rpcapi", "db,eth,net,web3,personal,web3"]

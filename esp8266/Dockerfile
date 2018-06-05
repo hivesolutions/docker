@@ -9,7 +9,7 @@ RUN echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython dependenci
         autoconf automake libtool libtool-bin gcc g++ gperf\
         flex bison texinfo gawk ncurses-dev libexpat-dev\
         python sed libreadline-dev libffi-dev pkg-config\
-        help2man python-dev python-serial wget &&\
+        help2man python-dev python-serial wget sudo &&\
     echo "Installing Espressif ESP32 toolchain..." &&\
     cd ~ &&\
     wget https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-61-gab8375a-5.2.0.tar.gz 2> /dev/null &&\
@@ -18,4 +18,4 @@ RUN echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython dependenci
     echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython source..." &&\
     git clone --recursive https://github.com/pfalcon/esp-open-sdk.git &&\
     git clone --recursive https://github.com/espressif/esp-idf.git &&\
-    git clone https://github.com/micropython/micropython.git 
+    git clone https://github.com/micropython/micropython.git

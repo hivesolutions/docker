@@ -22,4 +22,7 @@ RUN echo "Installing Espressif ESP32 toolchain..." &&\
     echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython source..." &&\
     git clone --recursive https://github.com/pfalcon/esp-open-sdk.git &&\
     git clone --recursive https://github.com/espressif/esp-idf.git &&\
-    git clone https://github.com/micropython/micropython.git
+    git clone https://github.com/micropython/micropython.git &&\
+    cd ~/esp-open-sdk &&\
+    make STANDALONE=y &&\
+    echo "PATH=$(pwd)/xtensa-lx106-elf/bin:\$PATH" >> ~/.profile

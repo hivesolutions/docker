@@ -4,6 +4,7 @@ LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 RUN echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython dependencies..." &&\
+    echo "Europe/London" > /etc/timezone &&\
     apt-get update &&\
     apt-get install -y -q build-essential git make unrar-free unzip\
         autoconf automake libtool libtool-bin gcc g++ gperf\

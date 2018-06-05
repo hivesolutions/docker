@@ -18,5 +18,4 @@ RUN echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython dependenci
     echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython source..." &&\
     git clone --recursive https://github.com/pfalcon/esp-open-sdk.git &&\
     git clone --recursive https://github.com/espressif/esp-idf.git &&\
-    git clone https://github.com/micropython/micropython.git &&\
-    echo "Finished provisioning, now run 'vagrant ssh' to enter te virtual machine."
+    git clone https://github.com/micropython/micropython.git

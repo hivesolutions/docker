@@ -6,7 +6,7 @@ LABEL maintainer="Hive Solutions <development@hive.pt>"
 RUN echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython dependencies..." &&\
     apt-get update &&\
     apt-get install -y -q build-essential git make unrar-free unzip\
-        autoconf automake libtool gcc g++ gperf\
+        autoconf automake libtool libtool-bin gcc g++ gperf\
         flex bison texinfo gawk ncurses-dev libexpat-dev\
         python sed libreadline-dev libffi-dev pkg-config\
         help2man python-dev python-serial wget &&\
@@ -18,4 +18,6 @@ RUN echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython dependenci
     echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython source..." &&\
     git clone --recursive https://github.com/pfalcon/esp-open-sdk.git &&\
     git clone --recursive https://github.com/espressif/esp-idf.git &&\
-    git clone https://github.com/micropython/micropython.git
+    git clone https://github.com/micropython/micropython.git &&\
+    cd ~/esp-open-sdk &&\
+    make STANDALONE=y

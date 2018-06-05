@@ -4,8 +4,8 @@ LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 RUN echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython dependencies..." &&\
-    sudo apt-get update &&\
-    sudo apt-get install -y build-essential git make unrar-free unzip\
+    apt-get update &&\
+    apt-get install -y -q build-essential git make unrar-free unzip\
         autoconf automake libtool gcc g++ gperf\
         flex bison texinfo gawk ncurses-dev libexpat-dev\
         python sed libreadline-dev libffi-dev pkg-config\

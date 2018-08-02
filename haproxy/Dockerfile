@@ -1,4 +1,4 @@
-FROM haproxy:1.8.8
+FROM haproxy:1.8.3
 
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"

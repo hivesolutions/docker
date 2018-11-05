@@ -1,8 +1,11 @@
-FROM python:3-alpine
+FROM hivesolutions/python
 
 WORKDIR /curator
 
-RUN ln -s /curator /root/.curator
-RUN pip install elasticsearch-curator
+ENV CURATOR_UNIT days
+ENV CURATOR_COUNT 15
 
-ENTRYPOINT ["/usr/local/bin/curator"]
+RUN ln -s /curator /root/.curator
+RUN pip3 install elasticsearch-curator==5.5
+
+CMD ["/run.sh"]

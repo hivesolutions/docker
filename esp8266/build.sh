@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 export XTENSA_FILE="xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz"
+export IDF_VERSION="v3.1.2"
 
 echo "Installing Espressif ESP32 toolchain..."
 
@@ -18,7 +19,7 @@ echo "PATH=$(pwd)/xtensa-lx106-elf/bin:\$PATH" >> ~/.profile
 source ~/.profile
 
 cd ..
-git clone --recursive https://github.com/espressif/esp-idf.git
+git clone -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git
 cd esp-idf
 make all
 
@@ -26,4 +27,6 @@ cd ..
 git clone --recursive https://github.com/micropython/micropython.git
 cd micropython
 make -C mpy-cross
-make -C esp8266 axtls
+cd ports/esp8266
+make axtls
+make

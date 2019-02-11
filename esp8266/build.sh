@@ -18,14 +18,5 @@ make STANDALONE=y
 echo "PATH=$(pwd)/xtensa-lx106-elf/bin:\$PATH" >> ~/.profile
 source ~/.profile
 
-cd ..
 git clone -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git
-cd esp-idf
-make all
-
-cd ..
 git clone --recursive https://github.com/micropython/micropython.git
-cd micropython
-make -C mpy-cross
-cd ports/esp8266
-make

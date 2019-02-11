@@ -28,5 +28,4 @@ git clone --recursive https://github.com/micropython/micropython.git
 cd micropython
 make -C mpy-cross
 cd ports/esp8266
-make axtls
 make

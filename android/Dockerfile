@@ -1,0 +1,59 @@
+FROM hivesolutions/alpine_dev:latest
+
+LABEL version="1.0"
+LABEL maintainer="Hive Solutions <development@hive.pt>"
+
+ENV JAVA_VERSION "8"
+ENV JAVA_UPDATE "202"
+ENV JAVA_BUILD "08"
+ENV JAVA_PATH "1961070e4c9b4e26a04e7f5a083f551e"
+ENV JAVA_HOME "/usr/lib/jvm/default-jvm"
+ENV GLIBC_REPO "https://github.com/sgerrand/alpine-pkg-glibc"
+ENV GLIBC_VERSION "2.29-r0"
+ENV GRADLE_HOME "/usr/lib/gradle"
+ENV GRADLE_VERSION "5.2.1"
+ENV ANDROID_SDK_HOME "/opt/android-sdk-linux"
+ENV ANDROID_SDK_ROOT "/opt/android-sdk-linux"
+ENV ANDROID_HOME "/opt/android-sdk-linux"
+ENV ANDROID_SDK "/opt/android-sdk-linux"
+
+RUN apk upgrade --update
+
+RUN apk add --no-cache --virtual=build-jre wget unzip &&\
+    cd "/tmp" &&\
+    apk add libstdc++ ca-certificates java-cacerts bash &&\
+    wget --no-verbose "${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk" &&\
+    wget --no-verbose "${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk" &&\
+    wget --no-verbose "${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/glibc-i18n-${GLIBC_VERSION}.apk" &&\
+    apk add --allow-untrusted /tmp/*.apk &&\
+    (/usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 C.UTF-8 || true) &&\
+    echo "export LANG=C.UTF-8" > /etc/profile.d/locale.sh &&\
+    /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib &&\
+    wget --no-verbose --header "Cookie: oraclelicense=accept-securebackup-cookie;"\
+        "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_PATH}/jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" &&\
+    tar -xzf "jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" &&\
+    mkdir -p "/usr/lib/jvm" &&\
+    mv "/tmp/jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}" "/usr/lib/jvm/java-${JAVA_VERSION}" &&\
+    ln -s "java-${JAVA_VERSION}" "$JAVA_HOME" &&\
+    ln -s "$JAVA_HOME/bin/"* "/usr/bin/" &&\
+    ln -sf "/etc/ssl/certs/java/cacerts" "$JAVA_HOME/jre/lib/security/cacerts" &&\
+    apk del build-jre &&\
+    rm -r "/tmp/"*
+
+RUN apk add --no-cache --virtual=build-gradle wget unzip &&\
+    cd "/tmp" &&\
+    wget --no-verbose "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" &&\
+    unzip -q "gradle-${GRADLE_VERSION}-bin.zip" &&\
+    mv "gradle-${GRADLE_VERSION}" "${GRADLE_HOME}/" &&\
+    ln -s "${GRADLE_HOME}/bin/gradle" "/usr/bin/gradle" &&\
+    apk del build-gradle &&\
+    rm -r "/tmp/"*
+
+RUN [ -d $ANDROID_SDK_HOME ] || mkdir -p "$ANDROID_SDK_HOME" &&\
+    [ -d $ANDROID_SDK_ROOT ] || mkdir -p "$ANDROID_SDK_ROOT" &&\
+    [ -d $ANDROID_HOME ]  || mkdir -p "$ANDROID_HOME" &&\
+    [ -d $ANDROID_SDK ] || mkdir -p "$ANDROID_SDK"
+
+RUN mkdir -p "$ANDROID_HOME/licenses" &&\
+    echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license" &&\
+    echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license"

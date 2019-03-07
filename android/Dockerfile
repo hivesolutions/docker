@@ -46,10 +46,10 @@ RUN apk add --no-cache --virtual=build-gradle wget unzip &&\
     apk del build-gradle &&\
     rm -r "/tmp/"*
 
-ENV ANDROID_SDK_HOME "/opt/android-sdk-linux"\
-    ANDROID_SDK_ROOT "/opt/android-sdk-linux"\
-    ANDROID_HOME "/opt/android-sdk-linux"\
-    ANDROID_SDK "/opt/android-sdk-linux"
+ENV ANDROID_SDK_HOME="/opt/android-sdk-linux"\
+    ANDROID_SDK_ROOT="/opt/android-sdk-linux"\
+    ANDROID_HOME="/opt/android-sdk-linux"\
+    ANDROID_SDK="/opt/android-sdk-linux"
 
 RUN [ -d $ANDROID_SDK_HOME ] || mkdir -p "$ANDROID_SDK_HOME" &&\
     [ -d $ANDROID_SDK_ROOT ] || mkdir -p "$ANDROID_SDK_ROOT" &&\

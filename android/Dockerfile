@@ -3,13 +3,13 @@ FROM hivesolutions/alpine_dev:latest
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
 
-ENV JAVA_VERSION "8"\
-    JAVA_UPDATE "202"\
-    JAVA_BUILD "08"\
-    JAVA_PATH "1961070e4c9b4e26a04e7f5a083f551e"\
-    JAVA_HOME "/usr/lib/jvm/default-jvm"\
-    GLIBC_REPO "https://github.com/sgerrand/alpine-pkg-glibc"\
-    GLIBC_VERSION "2.29-r0"
+ENV JAVA_VERSION="8"\
+    JAVA_UPDATE="202"\
+    JAVA_BUILD="08"\
+    JAVA_PATH="1961070e4c9b4e26a04e7f5a083f551e"\
+    JAVA_HOME="/usr/lib/jvm/default-jvm"\
+    GLIBC_REPO="https://github.com/sgerrand/alpine-pkg-glibc"\
+    GLIBC_VERSION="2.29-r0"
 
 RUN apk upgrade --update
 
@@ -34,8 +34,8 @@ RUN apk add --no-cache --virtual=build-jre wget unzip &&\
     apk del build-jre &&\
     rm -r "/tmp/"*
 
-ENV GRADLE_HOME "/usr/lib/gradle"\
-    GRADLE_VERSION "5.2.1"
+ENV GRADLE_HOME="/usr/lib/gradle"\
+    GRADLE_VERSION="5.2.1"
 
 RUN apk add --no-cache --virtual=build-gradle wget unzip &&\
     cd "/tmp" &&\

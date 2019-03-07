@@ -3,19 +3,13 @@ FROM hivesolutions/alpine_dev:latest
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
 
-ENV JAVA_VERSION "8"
-ENV JAVA_UPDATE "202"
-ENV JAVA_BUILD "08"
-ENV JAVA_PATH "1961070e4c9b4e26a04e7f5a083f551e"
-ENV JAVA_HOME "/usr/lib/jvm/default-jvm"
-ENV GLIBC_REPO "https://github.com/sgerrand/alpine-pkg-glibc"
-ENV GLIBC_VERSION "2.29-r0"
-ENV GRADLE_HOME "/usr/lib/gradle"
-ENV GRADLE_VERSION "5.2.1"
-ENV ANDROID_SDK_HOME "/opt/android-sdk-linux"
-ENV ANDROID_SDK_ROOT "/opt/android-sdk-linux"
-ENV ANDROID_HOME "/opt/android-sdk-linux"
-ENV ANDROID_SDK "/opt/android-sdk-linux"
+ENV JAVA_VERSION "8"\
+    JAVA_UPDATE "202"\
+    JAVA_BUILD "08"\
+    JAVA_PATH "1961070e4c9b4e26a04e7f5a083f551e"\
+    JAVA_HOME "/usr/lib/jvm/default-jvm"\
+    GLIBC_REPO "https://github.com/sgerrand/alpine-pkg-glibc"\
+    GLIBC_VERSION "2.29-r0"
 
 RUN apk upgrade --update
 
@@ -40,6 +34,9 @@ RUN apk add --no-cache --virtual=build-jre wget unzip &&\
     apk del build-jre &&\
     rm -r "/tmp/"*
 
+ENV GRADLE_HOME "/usr/lib/gradle"\
+    GRADLE_VERSION "5.2.1"
+
 RUN apk add --no-cache --virtual=build-gradle wget unzip &&\
     cd "/tmp" &&\
     wget --no-verbose "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" &&\
@@ -48,6 +45,11 @@ RUN apk add --no-cache --virtual=build-gradle wget unzip &&\
     ln -s "${GRADLE_HOME}/bin/gradle" "/usr/bin/gradle" &&\
     apk del build-gradle &&\
     rm -r "/tmp/"*
+
+ENV ANDROID_SDK_HOME "/opt/android-sdk-linux"\
+    ANDROID_SDK_ROOT "/opt/android-sdk-linux"\
+    ANDROID_HOME "/opt/android-sdk-linux"\
+    ANDROID_SDK "/opt/android-sdk-linux"
 
 RUN [ -d $ANDROID_SDK_HOME ] || mkdir -p "$ANDROID_SDK_HOME" &&\
     [ -d $ANDROID_SDK_ROOT ] || mkdir -p "$ANDROID_SDK_ROOT" &&\

@@ -34,6 +34,34 @@ RUN apk add --no-cache --virtual=build-jre wget unzip &&\
     apk del build-jre &&\
     rm -r "/tmp/"*
 
+ENV ANDROID_SDK_HOME="/opt/android-sdk-linux"\
+    ANDROID_SDK_ROOT="/opt/android-sdk-linux"\
+    ANDROID_HOME="/opt/android-sdk-linux"\
+    ANDROID_SDK="/opt/android-sdk-linux"\
+    ANDROID_SDK_TOOLS_VERSION="4333796"
+
+RUN [ -d $ANDROID_SDK_HOME ] || mkdir -p "$ANDROID_SDK_HOME" &&\
+    [ -d $ANDROID_SDK_ROOT ] || mkdir -p "$ANDROID_SDK_ROOT" &&\
+    [ -d $ANDROID_HOME ]  || mkdir -p "$ANDROID_HOME" &&\
+    [ -d $ANDROID_SDK ] || mkdir -p "$ANDROID_SDK"
+
+RUN apk add --no-cache --virtual=build-android wget unzip &&\
+    cd "/tmp" &&\
+    wget --no-verbose "https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS_VERSION}.zip" &&\
+    unzip -q "sdk-tools-linux-${ANDROID_SDK_TOOLS_VERSION}.zip" -d "$ANDROID_SDK_HOME" &&\
+    mkdir -p "$ANDROID_SDK_HOME/licenses" &&\
+    echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_SDK_HOME/licenses/android-sdk-license" &&\
+    echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_SDK_HOME/licenses/android-sdk-license" &&\
+    mkdir -p "$ANDROID_SDK_HOME/.android" && touch "$ANDROID_SDK_HOME/.android/repositories.cfg" &&\
+    $ANDROID_SDK_HOME/tools/bin/sdkmanager --update &&\
+    ANDROID_BUILD_TOOLS_LATEST=$($ANDROID_SDK_HOME/tools/bin/sdkmanager --list | grep "build-tools" |\
+        cut -d "|" -f 1 | tr -d " " | sort -t ";" -r -g -k2 | head -n1) &&\
+    ANDROID_LATEST=$($ANDROID_SDK_HOME/tools/bin/sdkmanager --list | grep "platforms;android-" |\
+        cut -d "|" -f 1 | tr -d " " | sort -t "-" -r -g -k2 | head -n1) &&\
+    $ANDROID_SDK_HOME/tools/bin/sdkmanager "docs" "platform-tools" "${ANDROID_BUILD_TOOLS_LATEST}" "${ANDROID_LATEST}" &&\
+    apk del build-android &&\
+    rm -r "/tmp/"*
+
 ENV GRADLE_HOME="/usr/lib/gradle"\
     GRADLE_VERSION="5.2.1"
 
@@ -45,17 +73,3 @@ RUN apk add --no-cache --virtual=build-gradle wget unzip &&\
     ln -s "${GRADLE_HOME}/bin/gradle" "/usr/bin/gradle" &&\
     apk del build-gradle &&\
     rm -r "/tmp/"*
-
-ENV ANDROID_SDK_HOME="/opt/android-sdk-linux"\
-    ANDROID_SDK_ROOT="/opt/android-sdk-linux"\
-    ANDROID_HOME="/opt/android-sdk-linux"\
-    ANDROID_SDK="/opt/android-sdk-linux"
-
-RUN [ -d $ANDROID_SDK_HOME ] || mkdir -p "$ANDROID_SDK_HOME" &&\
-    [ -d $ANDROID_SDK_ROOT ] || mkdir -p "$ANDROID_SDK_ROOT" &&\
-    [ -d $ANDROID_HOME ]  || mkdir -p "$ANDROID_HOME" &&\
-    [ -d $ANDROID_SDK ] || mkdir -p "$ANDROID_SDK"
-
-RUN mkdir -p "$ANDROID_HOME/licenses" &&\
-    echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license" &&\
-    echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license"

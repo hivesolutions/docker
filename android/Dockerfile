@@ -20,8 +20,8 @@ RUN apk add --no-cache --virtual=build-jre wget unzip &&\
     wget --no-verbose "${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk" &&\
     wget --no-verbose "${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/glibc-i18n-${GLIBC_VERSION}.apk" &&\
     apk add --allow-untrusted /tmp/*.apk &&\
-    (/usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 C.UTF-8 || true) &&\
-    echo "export LANG=C.UTF-8" > /etc/profile.d/locale.sh &&\
+    (/usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8 || true) &&\
+    echo "export LANG=en_US.UTF-8" > /etc/profile.d/locale.sh &&\
     /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib &&\
     wget --no-verbose --header "Cookie: oraclelicense=accept-securebackup-cookie;"\
         "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_PATH}/jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" &&\

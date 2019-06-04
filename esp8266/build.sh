@@ -24,4 +24,8 @@ echo "PATH=$(pwd)/esp-open-sdk/xtensa-lx106-elf/bin:\$PATH" >> ~/.profile
 source ~/.profile
 
 git clone -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git
+
 git clone --recursive https://github.com/micropython/micropython.git
+pushd micropython
+make -C mpy-cross
+popd

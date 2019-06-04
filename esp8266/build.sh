@@ -11,15 +11,14 @@ cd ~
 wget https://dl.espressif.com/dl/$XTENSA_FILE
 tar -zxvf $XTENSA_FILE
 rm $XTENSA_FILE
-echo "PATH=/home/vagrant/xtensa-esp32-elf/bin:\$PATH" >> ~/.profile
 
 git clone --recursive https://github.com/pfalcon/esp-open-sdk.git
-
 pushd esp-open-sdk
 make STANDALONE=y
 popd
 
-echo "PATH=$(pwd)/xtensa-lx106-elf/bin:\$PATH" >> ~/.profile
+echo "PATH=$(pwd)/xtensa-esp32-elf/bin:\$PATH" >> ~/.profile
+echo "PATH=$(pwd)/esp-open-sdk/xtensa-lx106-elf/bin:\$PATH" >> ~/.profile
 source ~/.profile
 
 git clone -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git

@@ -14,8 +14,10 @@ rm $XTENSA_FILE
 echo "PATH=/home/vagrant/xtensa-esp32-elf/bin:\$PATH" >> ~/.profile
 
 git clone --recursive https://github.com/pfalcon/esp-open-sdk.git
-cd esp-open-sdk
+pushd esp-open-sdk
 make STANDALONE=y
+popd
+
 echo "PATH=$(pwd)/xtensa-lx106-elf/bin:\$PATH" >> ~/.profile
 source ~/.profile
 

@@ -4,13 +4,15 @@
 export XTENSA_FILE="xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz"
 export IDF_VERSION="v3.1.2"
 
-echo "Installing Espressif ESP32 toolchain..."
-
 cd ~
+
+echo "Installing Espressif ESP32 toolchain..."
 
 wget https://dl.espressif.com/dl/$XTENSA_FILE
 tar -zxvf $XTENSA_FILE
 rm $XTENSA_FILE
+
+echo "Installing ESP Open SDK..."
 
 git clone --recursive https://github.com/pfalcon/esp-open-sdk.git
 pushd esp-open-sdk

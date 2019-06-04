@@ -56,7 +56,9 @@ if "repos.proxy" in hosts:
     hosts["colony.private.hive.pt"] = hosts["repos.proxy"]
 
 if "gitlab.proxy" in hosts:
-    hosts["gitlab-registry.stage.hive.pt"] = "http://127.0.0.1:5005"
+    for host_prefix in host_prefixes:
+        hosts[host_prefix % "gitlab_registry"] = "http://127.0.0.1:5005"
+        hosts[host_prefix % "gitlab-registry"] = "http://127.0.0.1:5005"
 
 if "letsencrypt.proxy" in hosts:
     regex.append(

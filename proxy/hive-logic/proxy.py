@@ -55,6 +55,9 @@ if "viriatum.proxy" in hosts:
 if "repos.proxy" in hosts:
     hosts["colony.private.hive.pt"] = hosts["repos.proxy"]
 
+if "gitlab.proxy" in hosts:
+    hosts["gitlab-registry.stage.hive.pt"] = "http://127.0.0.1:5005"
+
 if "letsencrypt.proxy" in hosts:
     regex.append(
         (

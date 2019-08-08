@@ -46,6 +46,7 @@ for worker in workers:
 
 if "viriatum.proxy" in hosts:
     hosts["hq.hive.pt"] = hosts["viriatum.proxy"]
+    hosts["ipv6.hq.hive.pt"] = hosts["viriatum.proxy"]
     hosts["archive.hive.pt"] = hosts["viriatum.proxy"]
     hosts["mirrors.hive.pt"] = hosts["viriatum.proxy"]
     hosts["hq.hive"] = hosts["viriatum.proxy"]

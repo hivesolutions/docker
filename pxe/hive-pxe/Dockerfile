@@ -12,6 +12,6 @@ ENV BASE_PATH /
 
 ADD tftpboot /tftpboot
 
-RUN pip3 install --upgrade netius
+RUN pip3 install --upgrade "netius<1.17.0"
 
 CMD ["/usr/bin/python3", "-m", "netius.servers.tftp"]

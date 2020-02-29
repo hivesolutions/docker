@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 export XTENSA_FILE="xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz"
-export IDF_VERSION="v3.1.2"
+export IDF_VERSION="v3.3.1"
 
 cd ~
 

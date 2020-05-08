@@ -8,7 +8,7 @@ sed -ie "s/{SIGNING}/$SIGNING/g" /etc/samba/smb.conf
 
 getent passwd $USERNAME > /dev/null 2&>1
 if [ ! $? -eq 0 ]; then
-    adduser -D $USERNAME
+    adduser -D $USERNAME > /dev/null 2&>1 || useradd $USERNAME
 fi
 
 (echo $PASSWORD && echo $PASSWORD) | smbpasswd -a $USERNAME

@@ -16,10 +16,11 @@ ENV WORKGROUP WORKGROUP
 ENV ENCRYPTION auto
 ENV SIGNING auto
 
-ADD smb.conf /etc/samba/smb.conf
 ADD run.sh /run.sh
 
 RUN apk update &&\
     apk add samba samba-common-tools
+
+ADD smb.conf /etc/samba/smb.conf
 
 CMD ["/run.sh"]

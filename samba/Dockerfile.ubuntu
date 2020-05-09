@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:bionic
 
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
@@ -16,10 +16,11 @@ ENV WORKGROUP WORKGROUP
 ENV ENCRYPTION auto
 ENV SIGNING auto
 
-ADD smb.conf /etc/samba/smb.conf
 ADD run.sh /run.sh
 
 RUN apt-get update &&\
     apt-get install -y -q samba
+
+ADD smb.conf /etc/samba/smb.conf
 
 CMD ["/run.sh"]

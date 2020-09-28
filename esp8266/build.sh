@@ -3,9 +3,9 @@
 
 set -e +h
 
-export XTENSA_FILE="xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz"
-export IDF_VERSION="v3.3.1"
-export MICROPYTHON_VERSION="v1.12"
+export XTENSA_FILE="xtensa-esp32-elf-linux64-1.22.0-96-g2852398-5.2.0.tar.gz"
+export IDF_VERSION="v3.3.4"
+export MICROPYTHON_VERSION="v1.13"
 
 cd ~
 

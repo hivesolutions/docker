@@ -18,10 +18,10 @@ rm $XTENSA_FILE
 echo "Installing ESP Open SDK..."
 
 git clone --recursive https://github.com/pfalcon/esp-open-sdk.git
+pushd esp-open-sdk
 pushd crosstool-NG
 git checkout xtensa-1.22.x
 popd
-pushd esp-open-sdk
 make STANDALONE=y
 popd
 

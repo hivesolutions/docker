@@ -1,6 +1,8 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
 
+set -e +h
+
 export TZ=Europe/London
 export DEBIAN_FRONTEND=noninteractive
 

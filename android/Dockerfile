@@ -63,7 +63,7 @@ RUN apk add --no-cache --virtual=build-android wget unzip &&\
     rm -r "/tmp/"*
 
 ENV GRADLE_HOME="/usr/lib/gradle"\
-    GRADLE_VERSION="5.2.1"
+    GRADLE_VERSION="6.7.1"
 
 RUN apk add --no-cache --virtual=build-gradle wget unzip &&\
     cd "/tmp" &&\

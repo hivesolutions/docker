@@ -4,9 +4,7 @@ LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 ENV JAVA_VERSION="8"\
-    JAVA_UPDATE="202"\
-    JAVA_BUILD="08"\
-    JAVA_PATH="1961070e4c9b4e26a04e7f5a083f551e"\
+    JAVA_UPDATE="271"\
     JAVA_HOME="/usr/lib/jvm/default-jvm"\
     GLIBC_REPO="https://github.com/sgerrand/alpine-pkg-glibc"\
     GLIBC_VERSION="2.29-r0"
@@ -24,7 +22,7 @@ RUN apk add --no-cache --virtual=build-jre wget unzip &&\
     echo "export LANG=en_US.UTF-8" > /etc/profile.d/locale.sh &&\
     /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib &&\
     wget --no-verbose --header "Cookie: oraclelicense=accept-securebackup-cookie;"\
-        "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_PATH}/jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" &&\
+        "https://archive.hive.pt/files/jdk/jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" &&\
     tar -xzf "jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" &&\
     mkdir -p "/usr/lib/jvm" &&\
     mv "/tmp/jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}" "/usr/lib/jvm/java-${JAVA_VERSION}" &&\
@@ -58,7 +56,7 @@ RUN apk add --no-cache --virtual=build-android wget unzip &&\
         cut -d "|" -f 1 | tr -d " " | sort -t ";" -r -g -k2 | head -n1) &&\
     ANDROID_LATEST=$($ANDROID_SDK_HOME/tools/bin/sdkmanager --list | grep "platforms;android-" |\
         cut -d "|" -f 1 | tr -d " " | sort -t "-" -r -g -k2 | head -n1) &&\
-    $ANDROID_SDK_HOME/tools/bin/sdkmanager "docs" "platform-tools" "${ANDROID_BUILD_TOOLS_LATEST}" "${ANDROID_LATEST}" &&\
+    $ANDROID_SDK_HOME/tools/bin/sdkmanager "platform-tools" "${ANDROID_BUILD_TOOLS_LATEST}" "${ANDROID_LATEST}" &&\
     apk del build-android &&\
     rm -r "/tmp/"*
 

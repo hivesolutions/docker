@@ -26,6 +26,12 @@ def set_letsencrypt(server):
             None
         )
     )
+    server.redirect_regex.insert(0,
+        (
+            re.compile(r".+/.well-known/acme-challenge/.+"),
+            None
+        )
+    )
 
 def set_ssl_contexts(server):
     hosts = netius.legacy.keys(server.hosts)

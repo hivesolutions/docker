@@ -6,7 +6,7 @@ LABEL maintainer="Hive Solutions <development@hive.pt>"
 RUN apk update &&\
     apk add bash git libressl ca-certificates python2 python3 &&\
     wget "https://bootstrap.pypa.io/get-pip.py" &&\
-    wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -o get-pip-2.py &&\
+    wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py &&\
     python3 get-pip.py &&\
     python get-pip-2.py &&\
     rm get-pip.py &&\

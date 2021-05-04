@@ -52,11 +52,11 @@ RUN apk add --no-cache --virtual=build-android wget unzip &&\
     echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_SDK_HOME/licenses/android-sdk-license" &&\
     mkdir -p "$ANDROID_SDK_HOME/.android" && touch "$ANDROID_SDK_HOME/.android/repositories.cfg" &&\
     $ANDROID_SDK_HOME/tools/bin/sdkmanager --update &&\
-    ANDROID_BUILD_TOOLS_LATEST=$($ANDROID_SDK_HOME/tools/bin/sdkmanager --list | grep "build-tools" |\
+    ANDROID_BUILD_TOOLS_LATEST=$($ANDROID_SDK_HOME/tools/bin/sdkmanager --list --channel=0 | grep "build-tools" |\
         cut -d "|" -f 1 | tr -d " " | sort -t ";" -r -g -k2 | head -n1) &&\
-    ANDROID_LATEST=$($ANDROID_SDK_HOME/tools/bin/sdkmanager --list | grep "platforms;android-" |\
+    ANDROID_LATEST=$($ANDROID_SDK_HOME/tools/bin/sdkmanager --list --channel=0 | grep "platforms;android-" |\
         cut -d "|" -f 1 | tr -d " " | sort -t "-" -r -g -k2 | head -n1) &&\
-    $ANDROID_SDK_HOME/tools/bin/sdkmanager "platform-tools" "${ANDROID_BUILD_TOOLS_LATEST}" "${ANDROID_LATEST}" &&\
+    yes | $ANDROID_SDK_HOME/tools/bin/sdkmanager "platform-tools" "${ANDROID_BUILD_TOOLS_LATEST}" "${ANDROID_LATEST}" &&\
     apk del build-android &&\
     rm -r "/tmp/"*
 

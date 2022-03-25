@@ -27,7 +27,8 @@ make STANDALONE=y
 popd
 
 # adds the binaries to the path so that they can be used directly
-# in the new bash processed from now on
+# in the new bash processed from now on (xtensa-lx106 refers to
+# the ESP 8266 architecture)
 echo "PATH=$(pwd)/xtensa-esp32-elf/bin:\$PATH" >> ~/.profile
 echo "PATH=$(pwd)/esp-open-sdk/xtensa-lx106-elf/bin:\$PATH" >> ~/.profile
 source ~/.profile

@@ -40,7 +40,4 @@ git clone -b $MICROPYTHON_VERSION --recursive https://github.com/micropython/mic
 
 pushd micropython
 make -C mpy-cross
-pushd ports/esp8266
-make
-popd
 popd

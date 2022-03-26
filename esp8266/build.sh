@@ -22,7 +22,8 @@ pushd esp-open-sdk
 make STANDALONE=y
 
 # fixes invalid path of lwip_open library which is meant to be found
-# under `usr/lib` by the linker
+# under `usr/lib` by the linker, otherwise linking issues would occur
+# when trying to build the Micropython firmware
 cp -p xtensa-lx106-elf/xtensa-lx106-elf/sysroot/lib/liblwip_open.a xtensa-lx106-elf/xtensa-lx106-elf/sysroot/usr/lib
 
 popd

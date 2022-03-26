@@ -4,7 +4,6 @@
 set -e +h
 
 export XTENSA_FILE="xtensa-esp32-elf-linux64-1.22.0-97-gc752ad5-5.2.0.tar.gz"
-export XTENSA_VERSION="1.22.x"
 export IDF_VERSION="v3.3.6"
 export MICROPYTHON_VERSION="v1.18"
 
@@ -20,9 +19,6 @@ echo "Installing ESP Open SDK..."
 
 git clone --recursive https://github.com/someburner/esp-open-sdk
 pushd esp-open-sdk
-pushd crosstool-ng
-git checkout xtensa-$XTENSA_VERSION
-popd
 make STANDALONE=y
 popd
 

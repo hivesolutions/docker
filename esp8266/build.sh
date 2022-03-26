@@ -20,6 +20,11 @@ echo "Installing ESP Open SDK..."
 git clone --recursive https://github.com/someburner/esp-open-sdk
 pushd esp-open-sdk
 make STANDALONE=y
+
+# fixes invalid path of lwip_open library which is meant to be found
+# under `usr/lib` by the linker
+cp -p xtensa-lx106-elf/xtensa-lx106-elf/sysroot/lib/liblwip_open.a xtensa-lx106-elf/xtensa-lx106-elf/sysroot/usr/lib
+
 popd
 
 # adds the binaries to the path so that they can be used directly
@@ -34,4 +39,7 @@ git clone -b $MICROPYTHON_VERSION --recursive https://github.com/micropython/mic
 
 pushd micropython
 make -C mpy-cross
+pushd ports/esp8266
+make
+popd
 popd

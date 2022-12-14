@@ -4,7 +4,8 @@ LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 RUN apt-get update &&\
-    apt-get install -y -q bash wget git openssl ca-certificates dirmngr apt-transport-https python python3 python3-distutils &&\
+    apt-get install -y -q bash wget git openssl ca-certificates dirmngr apt-transport-https python2 python3 python3-distutils &&\
+    ln -s /usr/bin/python2 /usr/bin/python &&\
     wget "https://bootstrap.pypa.io/get-pip.py" &&\
     wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py &&\
     python3 get-pip.py &&\

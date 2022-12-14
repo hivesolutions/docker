@@ -5,6 +5,6 @@ LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 RUN apt-get update &&\
     apt-get install -y -q sudo gcc make curl pypy linux-headers-generic\
-    libssl-dev python-dev python3-dev pypy-dev
+    libssl-dev python2-dev python3-dev pypy-dev
 
 CMD ["/bin/bash"]

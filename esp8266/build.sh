@@ -6,7 +6,7 @@ set -e +h
 export XTENSA_FILE="xtensa-esp32-elf-linux64-1.22.0-97-gc752ad5-5.2.0.tar.gz"
 export XTENSA_VERSION="1.22.x"
 export IDF_VERSION="v3.3.6"
-export MICROPYTHON_VERSION="v1.19.1"
+export MICROPYTHON_VERSION="v1.13"
 
 cd ~
 

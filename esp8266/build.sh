@@ -3,6 +3,8 @@
 
 set -e +h
 
+export MAKEFLAGS="-j 16"
+
 export ESP_OPEN_SDK_VERSION="2018-06-10"
 export IDF_VERSION="v3.3.6"
 export MICROPYTHON_VERSION="v1.19.1"
@@ -25,9 +27,10 @@ source ~/.profile
 
 # clones both the ESP IDF repository and the MicroPython one so that
 # they can be latter used for MicroPython related activities
-git clone -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git
-git clone -b $MICROPYTHON_VERSION --recursive https://github.com/micropython/micropython.git
+git clone -b $IDF_VERSION --no-recurse-submodules --depth 1 https://github.com/espressif/esp-idf.git
+git clone -b $MICROPYTHON_VERSION --no-recurse-submodules --depth=1 https://github.com/micropython/micropython.git
 
 pushd micropython
+git submodule update --init lib/axtls lib/berkeley-db-1.xx
 make -C mpy-cross
 popd

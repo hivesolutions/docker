@@ -3,17 +3,26 @@
 
 set -e +h
 
+export MAKEFLAGS="-j 16"
+
 export TZ=Europe/London
 export DEBIAN_FRONTEND=noninteractive
+export PYTHON_VERSION="2.7.18"
 
 echo "Installing esp-open-sdk, Espressif ESP-IDF, and MicroPython dependencies..."
 echo "Europe/London" > /etc/timezone
 
-apt-get update
-apt-get install -y -q git wget flex bison gperf python2 python3 python3-pip\
-    python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
+apk update
+apk add gcompat git wget curl gcc g++ make flex bison gperf python3 py3-pip cmake\
+    ccache libffi-dev openssl-dev zlib-dev
 
-ln -s /usr/bin/python2 /usr/bin/python
+wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
+tar -zxf Python-$PYTHON_VERSION.tgz 
+rm Python-$PYTHON_VERSION.tgz
+
+pushd Python-$PYTHON_VERSION
+./configure --prefix=/usr && make && make install
+popd
 
 wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py"
 python get-pip.py

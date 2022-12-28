@@ -23,15 +23,10 @@ rm xtensa-lx106-elf-standalone.tar.gz
 echo "PATH=$(pwd)/xtensa-lx106-elf/bin:\$PATH" >> ~/.profile
 source ~/.profile
 
-# clons both the ESP IDF repository and the MicroPython one so that
+# clones both the ESP IDF repository and the MicroPython one so that
 # they can be latter used for MicroPython related activities
 git clone -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git
 git clone -b $MICROPYTHON_VERSION --recursive https://github.com/micropython/micropython.git
-
-# patches the "etshal.h" file to make it compatible with more up-to-date
-# Open SDKs 2.2+ which have different signatures for some methods
-#sed -i -e 's/void ets_delay_us(uint16_t us);/void ets_delay_us(uint32_t us);/g' micropython/ports/esp8266/etshal.h
-sed -i -e 's/void ets_delay_us(uint32_t us);/void ets_delay_us(uint16_t us);/g' micropython/ports/esp8266/etshal.h
 
 pushd micropython
 make -C mpy-cross

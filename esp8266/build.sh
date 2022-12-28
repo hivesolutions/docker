@@ -5,7 +5,7 @@ set -e +h
 
 export ESP_OPEN_SDK_VERSION="2018-06-10"
 export IDF_VERSION="v3.3.6"
-export MICROPYTHON_VERSION="v1.18"
+export MICROPYTHON_VERSION="v1.19.1"
 
 cd ~
 

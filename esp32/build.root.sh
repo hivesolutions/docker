@@ -6,7 +6,7 @@ set -e +h
 export TZ=Europe/London
 export DEBIAN_FRONTEND=noninteractive
 
-echo "Installing esp-open-sdk, Espressif ESP-IDF, and micropython dependencies..."
+echo "Installing esp-open-sdk, Espressif ESP-IDF, and MicroPython dependencies..."
 echo "Europe/London" > /etc/timezone
 
 apt-get update

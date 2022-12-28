@@ -7,7 +7,7 @@ export MAKEFLAGS="-j 16"
 
 export TZ=Europe/London
 export DEBIAN_FRONTEND=noninteractive
-export PYTHON_VERSION="2.7.13"
+export PYTHON_VERSION="2.7.18"
 
 echo "Installing esp-open-sdk, Espressif ESP-IDF, and MicroPython dependencies..."
 echo "Europe/London" > /etc/timezone

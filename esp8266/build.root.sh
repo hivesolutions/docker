@@ -13,7 +13,7 @@ echo "Installing esp-open-sdk, Espressif ESP-IDF, and MicroPython dependencies..
 echo "Europe/London" > /etc/timezone
 
 apk update
-apk add gcompat git wget curl gcc g++ make flex bison gperf python3 py3-pip cmake\
+apk add gcompat git wget curl openssh gcc g++ make flex bison gperf python3 py3-pip cmake\
     ccache libffi-dev openssl-dev zlib-dev
 
 wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz

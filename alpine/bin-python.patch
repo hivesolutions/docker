@@ -1,0 +1,15 @@
+diff --git a/community/python2/APKBUILD b/community/python2/APKBUILD
+index fc83fccc..579f3c4a 100644
+--- a/community/python2/APKBUILD
++++ b/community/python2/APKBUILD
+@@ -95,9 +95,7 @@ package() {
+ 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+ 	rm "$pkgdir/usr/bin/2to3"
+ 
+-	# This symlink should be owned by python3 but due to lots of packages
+-	# wanting it to be python2, leave it as is
+-	# rm -f "$pkgdir"/usr/bin/python
++	rm -f "$pkgdir"/usr/bin/python
+ }
+ 
+ _mv_files() {

@@ -1,8 +1,6 @@
 name: Build and Push Python Images
 on:
   push:
-    branches-ignore:
-      - none
     paths:
       - "python/**"
   workflow_dispatch:

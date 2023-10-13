@@ -1,8 +1,8 @@
 name: Build and Push Python Images
 on:
   push:
-    branches:
-      - master
+    branches-ignore:
+      - none
     paths:
       - "python/**"
   workflow_dispatch:
@@ -19,6 +19,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set tag name based on branch
+        id: set_tag
+        run: |
+          if [[ "${{ github.ref_name }}" == "master" ]]; then
+            echo "::set-output name=tag::latest"
+          else
+            echo "::set-output name=tag::${{ github.ref_name }}"
+          fi
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -26,4 +34,4 @@ jobs:
           file: ./python/Dockerfile
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8
           push: true
-          tags: hivesolutions/python:latest
+          tags: hivesolutions/python:${{ steps.set_tag.outputs.tag }}

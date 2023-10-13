@@ -1,8 +1,8 @@
 name: Build and Push Alpine Images
 on:
   push:
-    branches:
-      - master
+    branches-ignore:
+      - none
     paths:
       - "alpine/**"
       - "alpine_dev/**"
@@ -26,6 +26,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set tag name based on branch
+        id: set_tag
+        run: |
+          if [[ "${{ github.ref_name }}" == "master" ]]; then
+            echo "::set-output name=tag::latest"
+          else
+            echo "::set-output name=tag::${{ github.ref_name }}"
+          fi
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -33,4 +41,4 @@ jobs:
           file: ${{ matrix.config.dockerfile }}
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8
           push: true
-          tags: hivesolutions/${{ matrix.config.image_name }}:latest
+          tags: hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}

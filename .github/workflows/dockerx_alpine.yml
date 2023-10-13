@@ -1,6 +1,8 @@
 name: Build and Push Alpine Images
 on:
   push:
+    branches-ignore:
+      - none
     paths:
       - "alpine/**"
       - "alpine_dev/**"

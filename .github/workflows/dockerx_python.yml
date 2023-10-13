@@ -34,4 +34,4 @@ jobs:
           file: ./python/Dockerfile
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8
           push: true
-          tags: hivesolutions/python:${{ steps.set_tag.outputs.tag }}
+          tags: hugoagomes/python:${{ steps.set_tag.outputs.tag }}

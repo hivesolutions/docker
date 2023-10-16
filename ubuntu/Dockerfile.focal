@@ -11,8 +11,8 @@ RUN apt-get update &&\
     echo | openssl s_client -connect bootstrap.pypa.io:443 -showcerts 2>/dev/null | openssl x509 -outform PEM > /tmp/bootstrap.pypa.io.crt &&\
     wget --ca-certificate=/tmp/bootstrap.pypa.io.crt "https://bootstrap.pypa.io/get-pip.py" &&\
     wget --ca-certificate=/tmp/bootstrap.pypa.io.crt "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py &&\
-    python3 --no-cache-dir --no-compile get-pip.py &&\
-    python --no-cache-dir --no-compile get-pip-2.py &&\
+    python3 get-pip.py --no-cache-dir --no-compile &&\
+    python get-pip-2.py --no-cache-dir --no-compile &&\
     rm get-pip.py &&\
     rm get-pip-2.py
 

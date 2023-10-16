@@ -10,8 +10,8 @@ RUN apt-get update &&\
     apt-get clean && rm -rf /var/lib/apt/lists/* &&\
     wget "https://bootstrap.pypa.io/pip/3.6/get-pip.py" &&\
     wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py &&\
-    python3 --no-cache-dir --no-compile get-pip.py &&\
-    python --no-cache-dir --no-compile get-pip-2.py &&\
+    python3 get-pip.py --no-cache-dir --no-compile &&\
+    python get-pip-2.py --no-cache-dir --no-compile &&\
     rm get-pip.py &&\
     rm get-pip-2.py
 

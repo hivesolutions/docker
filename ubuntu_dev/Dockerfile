@@ -1,4 +1,4 @@
-FROM hivesolutions/ubuntu:latest
+FROM hugoagomes/ubuntu:latest
 
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"

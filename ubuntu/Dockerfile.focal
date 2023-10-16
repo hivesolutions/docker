@@ -9,7 +9,7 @@ RUN apt-get update &&\
     true | openssl s_client -connect bootstrap.pypa.io:443 -servername bootstrap.pypa.io 2>/dev/null | openssl x509 > /etc/ssl/certs/ca-certificates.crt &&\
     wget "https://bootstrap.pypa.io/get-pip.py" &&\
     wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py &&\
-    python3 get-pip.py &&\
+    PIP_CERT=/etc/ssl/certs/ca-certificates.crt python3 get-pip.py &&\
     PIP_CERT=/etc/ssl/certs/ca-certificates.crt python get-pip-2.py &&\
     rm get-pip.py &&\
     rm get-pip-2.py

@@ -26,7 +26,9 @@ jobs:
           if [[ "${{ github.ref_name }}" == "master" ]]; then
             echo "tag=latest" >> $GITHUB_OUTPUT
           else
-            echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+            GITHUB_REFNAME=${{ github.ref_name }}
+            BRANCH_NAME=${GITHUB_REFNAME//\//_}
+            echo "tag=$BRANCH_NAME" >> $GITHUB_OUTPUT
           fi
       - name: Build and push
         uses: docker/build-push-action@v5

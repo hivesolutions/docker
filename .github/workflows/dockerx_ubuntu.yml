@@ -17,14 +17,12 @@ jobs:
         config:
           - { dockerfile: "ubuntu/Dockerfile", context: "ubuntu", image_name: "ubuntu", tag_name: "latest" }
           - { dockerfile: "ubuntu/Dockerfile.rolling", context: "ubuntu", image_name: "ubuntu", tag_name: "rolling" }
-          - { dockerfile: "ubuntu/Dockerfile.trusty", context: "ubuntu", image_name: "ubuntu", tag_name: "trusty" }
           - { dockerfile: "ubuntu/Dockerfile.xenial", context: "ubuntu", image_name: "ubuntu", tag_name: "xenial" }
           - { dockerfile: "ubuntu/Dockerfile.bionic", context: "ubuntu", image_name: "ubuntu", tag_name: "bionic" }
           - { dockerfile: "ubuntu/Dockerfile.focal", context: "ubuntu", image_name: "ubuntu", tag_name: "focal" }
           - { dockerfile: "ubuntu/Dockerfile.jammy", context: "ubuntu", image_name: "ubuntu", tag_name: "jammy" }
           - { dockerfile: "ubuntu_dev/Dockerfile", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "latest" }
           - { dockerfile: "ubuntu_dev/Dockerfile.rolling", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "rolling" }
-          - { dockerfile: "ubuntu_dev/Dockerfile.trusty", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "trusty" }
           - { dockerfile: "ubuntu_dev/Dockerfile.xenial", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "xenial" }
           - { dockerfile: "ubuntu_dev/Dockerfile.bionic", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "bionic" }
           - { dockerfile: "ubuntu_dev/Dockerfile.focal", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "focal" }

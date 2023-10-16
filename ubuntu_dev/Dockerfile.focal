@@ -1,4 +1,4 @@
-FROM hugoagomes/ubuntu:focal
+FROM hivesolutions/ubuntu:focal
 
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"

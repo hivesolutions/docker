@@ -6,6 +6,7 @@ LABEL maintainer="Hive Solutions <development@hive.pt>"
 RUN apt-get update &&\
     apt-get install -y -q --no-install-recommends bash wget git openssl ca-certificates dirmngr apt-transport-https python python3 python3-distutils &&\
     apt-get clean && rm -rf /var/lib/apt/lists/* &&\
+    for i in /etc/ssl/certs/*.pem; do HASH=$(openssl x509 -hash -noout -in $i); ln -s $(basename $i) /etc/ssl/certs/$HASH.0; done &&\
     wget "https://bootstrap.pypa.io/get-pip.py" &&\
     wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py &&\
     python3 get-pip.py &&\

@@ -31,9 +31,9 @@ jobs:
         id: set_tag
         run: |
           if [[ "${{ github.ref_name }}" == "master" ]]; then
-            echo "::set-output name=tag::latest"
+            echo "tag=latest >> $DOCKER_TAG"
           else
-            echo "::set-output name=tag::${{ github.ref_name }}"
+            echo "tag=${{ github.ref_name }} >> $DOCKER_TAG"
           fi
       - name: Build and push
         uses: docker/build-push-action@v5
@@ -42,4 +42,4 @@ jobs:
           file: ${{ matrix.config.dockerfile }}
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8
           push: true
-          tags: hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}
+          tags: hugoagomes/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}

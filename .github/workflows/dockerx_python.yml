@@ -24,9 +24,9 @@ jobs:
         id: set_tag
         run: |
           if [[ "${{ github.ref_name }}" == "master" ]]; then
-            echo "tag=latest >> $DOCKER_TAG"
+            echo "tag=latest" >> $GITHUB_OUTPUT
           else
-            echo "tag=${{ github.ref_name }} >> $DOCKER_TAG"
+            echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
           fi
       - name: Build and push
         uses: docker/build-push-action@v5

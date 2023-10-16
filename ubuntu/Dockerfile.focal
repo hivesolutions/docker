@@ -6,11 +6,11 @@ LABEL maintainer="Hive Solutions <development@hive.pt>"
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update &&\
-    apt-get install -y -q --no-install-recommends bash curl wget git openssl ca-certificates dirmngr apt-transport-https python python3 python3-distutils &&\
+    apt-get install -y -q --no-install-recommends bash curlwget git openssl ca-certificates dirmngr apt-transport-https python python3 python3-distutils &&\
     apt-get clean && rm -rf /var/lib/apt/lists/* &&\
-    apt-get update && apt-get install -y dnsutils && nslookup pypi.org &&\
-    curl "https://bootstrap.pypa.io/get-pip.py" --output "get-pip.py" --silent &&\
-    curl "https://bootstrap.pypa.io/pip/2.7/get-pip.py" --output "get-pip-2.py" --silent &&\
+    echo | openssl s_client -connect bootstrap.pypa.io:443 -showcerts 2>/dev/null | openssl x509 -outform PEM > /tmp/bootstrap.pypa.io.crt &&\
+    wget --ca-certificate=/tmp/bootstrap.pypa.io.crt "https://bootstrap.pypa.io/get-pip.py" &&\
+    wget --ca-certificate=/tmp/bootstrap.pypa.io.crt "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py &&\
     python3 get-pip.py &&\
     python get-pip-2.py &&\
     rm get-pip.py &&\

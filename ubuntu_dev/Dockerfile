@@ -11,11 +11,13 @@ ENV DENO_VERSION 1.37.1
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update &&\
-    apt-get install -y -q --no-install-recommends sudo gcc make curl pypy linux-headers-generic\
-    libssl-dev python2-dev python3-dev pypy-dev &&\
-    curl --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain $RUST_VERSION -y &&\
-    apt-get install -y -q --no-install-recommends build-essential clang cmake libglib2.0-dev\
+RUN apt-get update && apt-get install -y -q --no-install-recommends sudo gcc make curl pypy\
+    linux-headers-generic libssl-dev python2-dev python3-dev pypy-dev &&\
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN curl --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain $RUST_VERSION -y
+
+RUN apt-get update && apt-get install -y -q --no-install-recommends build-essential clang cmake libglib2.0-dev\
     lld protobuf-compiler &&\
     /usr/local/cargo/bin/cargo install --locked --version $DENO_VERSION deno &&\
     apt-get remove -y build-essential clang cmake libglib2.0-dev lld protobuf-compiler && apt-get autoremove -y &&\

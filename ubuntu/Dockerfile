@@ -6,7 +6,7 @@ LABEL maintainer="Hive Solutions <development@hive.pt>"
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update &&\
-    apt-get install -y -q --no-install-recommends bash wget git openssl unzip ca-certificates dirmngr apt-transport-https python2 python3 python3-distutils &&\
+    apt-get install -y -q --no-install-recommends sudo bash wget git openssl unzip ca-certificates dirmngr apt-transport-https python2 python3 python3-distutils &&\
     ln -s /usr/bin/python2 /usr/bin/python &&\
     apt-get clean && rm -rf /var/lib/apt/lists/* &&\
     wget "https://bootstrap.pypa.io/get-pip.py" &&\

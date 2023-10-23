@@ -1,0 +1,21 @@
+FROM hivesolutions/ubuntu:latest
+
+LABEL version="1.0"
+LABEL maintainer="Hive Solutions <development@hive.pt>"
+
+ENV RUST_VERSION 1.73.0
+ENV CARGO_HOME /usr/local/cargo
+ENV PATH $CARGO_HOME/bin:$PATH
+
+ENV DENO_VERSION 1.37.1
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y -q --no-install-recommends build-essential curl clang\
+    cmake libglib2.0-dev lld protobuf-compiler &&\
+    curl --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain $RUST_VERSION -y &&\
+    /usr/local/cargo/bin/cargo install --locked --version $DENO_VERSION deno &&\
+    apt-get remove -y build-essential clang cmake libglib2.0-dev lld protobuf-compiler && apt-get autoremove -y &&\
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+CMD ["/bin/bash"]

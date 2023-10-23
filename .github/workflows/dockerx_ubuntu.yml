@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-    timeout-minutes: 240
+    timeout-minutes: 180
     strategy:
       fail-fast: false
       matrix:
@@ -52,6 +52,6 @@ jobs:
         with:
           context: ${{ matrix.config.context }}
           file: ${{ matrix.config.dockerfile }}
-          platforms: linux/amd64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
           push: true
           tags: hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}

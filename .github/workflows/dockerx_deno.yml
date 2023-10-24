@@ -15,6 +15,7 @@ jobs:
       matrix:
         config:
           - { dockerfile: "deno/Dockerfile", context: "deno", image_name: "deno", tag_name: "latest" }
+          - { dockerfile: "deno/Dockerfile.alpine", context: "deno", image_name: "deno", tag_name: "alpine" }
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

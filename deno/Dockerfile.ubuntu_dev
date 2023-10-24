@@ -9,6 +9,8 @@ FROM hivesolutions/ubuntu_dev:latest
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 WORKDIR /usr/bin/
 
 COPY --from=builder /tmp/deno/bin .

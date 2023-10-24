@@ -11,6 +11,6 @@ LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 WORKDIR /usr/local/bin
 
-COPY --from=builder /tmp/deno .
+COPY --from=builder /tmp/deno/bin .
 
 CMD ["deno --version"]

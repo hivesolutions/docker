@@ -13,4 +13,4 @@ WORKDIR /usr/bin/
 
 COPY --from=builder /tmp/deno/bin .
 
-CMD ["deno --version"]
+CMD ["/usr/bin/deno --version"]

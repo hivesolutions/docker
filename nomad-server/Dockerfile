@@ -24,6 +24,8 @@ RUN adduser nomad && usermod -aG nomad nomad &&\
     mkdir -p /opt/nomad && mkdir -p /etc/nomad &&\
     chown -R nomad:nomad /opt/nomad /etc/nomad
 
+RUN echo "49152 65535" > /proc/sys/net/ipv4/ip_local_port_range
+
 RUN apt-get update && apt-get install -y gpg lsb-release wget &&\
     wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg &&\
     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list &&\

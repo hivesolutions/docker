@@ -13,7 +13,7 @@ VOLUME /opt/nomad/
 ENV NOMAD_VERSION 1.6.3-1
 
 RUN case "$(uname -m)" in \
-    x86_64|amd64|i386) ;; aarch64|arm64|arm64e) ;; \
+    x86_64|amd64) ;; aarch64|arm64|arm64e) ;; \
     *) \
     echo "Unsupported architecture detected, build will fail." \
     exit 1 \

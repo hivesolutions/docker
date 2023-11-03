@@ -14,12 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {
-              dockerfile: "nomad-server/Dockerfile",
-              context: "nomad-server",
-              image_name: "nomad-server",
-              tag_name: "latest",
-            }
+          - { dockerfile: "nomad-server/Dockerfile", context: "nomad-server", image_name: "nomad-server", tag_name: "latest" }
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

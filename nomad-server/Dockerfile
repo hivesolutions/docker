@@ -3,6 +3,8 @@ FROM debian:stable-slim
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
 
+ARG DEBIAN_FRONTEND noninteractive
+
 EXPOSE 4646 4647 4648
 
 VOLUME /etc/nomad/

@@ -40,7 +40,8 @@ RUN SECTOR_SIZE=$(fdisk -lu ${RPI_IMAGE_FILE} | awk '/Sector size/ {print $4}') 
 
 # Creating user and activating ssh
 RUN mkdir -p /tmp && touch /tmp/ssh && \
-    echo "${USERNAME}:`openssl passwd -6 ${PASSWORD}`" | tee /tmp/userconf &&\
+    PASSWORD=`openssl passwd -6 ${PASSWORD}` && \
+    echo "${USERNAME}:${PASSWORD}" | tee /tmp/userconf &&\
     mcopy /tmp/ssh x:/ && mcopy /tmp/userconf x:/
 
 # Cleaning up

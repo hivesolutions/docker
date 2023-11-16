@@ -1,4 +1,4 @@
-name: Build and Push QEMU RPi Images
+name: Build and Push QEMU RPi Image
 on:
   push:
     branches-ignore:

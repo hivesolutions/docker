@@ -1,13 +1,11 @@
 FROM debian:bookworm-slim
 
+ARG RPI_IMAGE_URL=https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2023-05-03/2023-05-03-raspios-bullseye-arm64.img.xz
+ARG RPI_IMAGE_SHA512=e7c0c89db32d457298fbe93195e9d11e3e6b4eb9e0683a7beb1598ea39a0a7aa
+ARG RPI_IMAGE_FILE=2023-05-03-raspios-bullseye-arm64.img
+
 ARG USERNAME=pi
 ARG PASSWORD=raspberry
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-ENV RPI_IMAGE_URL=https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2023-05-03/2023-05-03-raspios-bullseye-arm64.img.xz
-ENV RPI_IMAGE_SHA512=e7c0c89db32d457298fbe93195e9d11e3e6b4eb9e0683a7beb1598ea39a0a7aa
-ENV RPI_IMAGE_FILE=2023-05-03-raspios-bullseye-arm64.img
 
 ENV QEMU_MACHINE raspi3b
 ENV QEMU_DTB bcm2710-rpi-3-b-plus.dtb
@@ -16,6 +14,8 @@ ENV QEMU_MEM 1G
 ENV QEMU_CORES 4
 
 EXPOSE 2222
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y &&\
     apt-get install -y fdisk mtools openssl python3-minimal qemu-system-aarch64 wget xz-utils

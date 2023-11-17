@@ -39,8 +39,8 @@ RUN SECTOR_SIZE=$(fdisk -lu ${RPI_IMAGE_FILE} | awk '/Sector size/ {print $4}') 
     mcopy x:/${QEMU_DTB} . && mcopy x:/kernel8.img .
 
 # Creating user and activating ssh
-RUN mkdir -p /tmp && touch /tmp/ssh && \
-    PASSWORD=`openssl passwd -6 ${PASSWORD}` && \
+RUN mkdir -p /tmp && touch /tmp/ssh &&\
+    PASSWORD=`openssl passwd -6 ${PASSWORD}` &&\
     echo "${USERNAME}:${PASSWORD}" | tee /tmp/userconf &&\
     mcopy /tmp/ssh x:/ && mcopy /tmp/userconf x:/
 

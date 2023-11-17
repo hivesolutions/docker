@@ -58,5 +58,5 @@ ENTRYPOINT qemu-system-aarch64 \
     -kernel kernel8.img \
     -nographic \
     -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2 rootdelay=1" \
-    -device usb-net,netdev=ulan,mac=02:ca:fe:f0:0d:01 \
+    -device usb-net,netdev=ulan,mac=b8:27:eb:4f:15:95 \
     -netdev user,id=ulan,hostfwd=tcp::2222-:22

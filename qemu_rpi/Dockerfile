@@ -17,11 +17,12 @@ EXPOSE 2222
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+WORKDIR /qemu
+
 RUN apt-get update -y &&\
     apt-get install -y fdisk mtools openssl python3-minimal qemu-system-aarch64 wget xz-utils
 
-WORKDIR /qemu
-
+# Downloading RPi image and validating its checksum
 RUN wget "${RPI_IMAGE_URL}" -O "${RPI_IMAGE_FILE}.xz" &&\
     echo "${RPI_IMAGE_SHA512}  ${RPI_IMAGE_FILE}.xz" | sha256sum -c - &&\
     xz -d ${RPI_IMAGE_FILE}.xz

@@ -24,7 +24,7 @@ RUN apt-get update -y &&\
 
 # Downloading RPi image and validating its checksum
 RUN wget "${RPI_IMAGE_URL}" -O "${RPI_IMAGE_FILE}.xz" &&\
-    echo "${RPI_IMAGE_SHA512}  ${RPI_IMAGE_FILE}.xz" | sha256sum -c - &&\
+    echo "${RPI_IMAGE_SHA512} ${RPI_IMAGE_FILE}.xz" | sha256sum -c - &&\
     xz -d ${RPI_IMAGE_FILE}.xz
 
 # Resizing the image to the next power of two as required by QEMU

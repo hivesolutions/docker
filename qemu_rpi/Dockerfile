@@ -4,7 +4,7 @@ ARG USERNAME=pi
 ARG PASSWORD=raspberry
 
 ARG RPI_IMAGE_URL=https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2023-05-03/2023-05-03-raspios-bullseye-arm64.img.xz
-ARG RPI_IMAGE_SHA512=e7c0c89db32d457298fbe93195e9d11e3e6b4eb9e0683a7beb1598ea39a0a7aa
+ARG RPI_IMAGE_SHA256=e7c0c89db32d457298fbe93195e9d11e3e6b4eb9e0683a7beb1598ea39a0a7aa
 ARG RPI_IMAGE_FILE=2023-05-03-raspios-bullseye-arm64.img
 
 ENV QEMU_MACHINE raspi3b
@@ -24,7 +24,7 @@ RUN apt-get update -y &&\
 
 # Downloading RPi image and validating its checksum
 RUN wget "${RPI_IMAGE_URL}" -O "${RPI_IMAGE_FILE}.xz" &&\
-    echo "${RPI_IMAGE_SHA512} ${RPI_IMAGE_FILE}.xz" | sha256sum -c - &&\
+    echo "${RPI_IMAGE_SHA256} ${RPI_IMAGE_FILE}.xz" | sha256sum -c - &&\
     xz -d ${RPI_IMAGE_FILE}.xz
 
 # Resizing the image to the next power of two as required by QEMU

@@ -3,7 +3,7 @@ FROM alpine:latest
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
 
-RUN apk update && apk add bash
+RUN apk update && apk add --no-cache bash
 
 ADD build.sh /build.sh
 ADD build.root.sh /build.root.sh

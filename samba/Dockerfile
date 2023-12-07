@@ -19,7 +19,7 @@ ENV SIGNING auto
 ADD run.sh /run.sh
 
 RUN apk update &&\
-    apk add samba samba-common-tools
+    apk add --no-cache samba samba-common-tools
 
 ADD smb.conf /etc/samba/smb.conf
 

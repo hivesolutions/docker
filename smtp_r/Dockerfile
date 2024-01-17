@@ -16,6 +16,6 @@ ENV SMTP_HOST SMTP_HOST
 
 WORKDIR /data
 
-RUN pip3 install --upgrade "netius<1.17.0"
+RUN pip3 install --upgrade netius
 
 CMD ["/usr/bin/python3", "-m", "netius.extra.smtp_r"]

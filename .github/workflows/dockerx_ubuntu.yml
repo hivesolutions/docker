@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: self-hosted
+    name: Build
     timeout-minutes: 180
     strategy:
       fail-fast: false
@@ -27,6 +27,7 @@ jobs:
           - { dockerfile: "ubuntu_dev/Dockerfile.bionic", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "bionic" }
           - { dockerfile: "ubuntu_dev/Dockerfile.focal", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "focal" }
           - { dockerfile: "ubuntu_dev/Dockerfile.jammy", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "jammy" }          
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

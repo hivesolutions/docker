@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: self-hosted
+    name: Build
     timeout-minutes: 20
     strategy:
       fail-fast: false
@@ -17,6 +17,7 @@ jobs:
         config:
           - { dockerfile: "alpine/Dockerfile", context: "alpine", image_name: "alpine" }
           - { dockerfile: "alpine_dev/Dockerfile", context: "alpine_dev", image_name: "alpine_dev" }
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

@@ -8,13 +8,14 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: self-hosted
+    name: Build
     timeout-minutes: 180
     strategy:
       fail-fast: false
       matrix:
         config:
           - { dockerfile: "nomad-server/Dockerfile", context: "nomad-server", image_name: "nomad-server", tag_name: "latest" }
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

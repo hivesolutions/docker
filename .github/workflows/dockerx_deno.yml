@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: self-hosted
+    name: Build
     timeout-minutes: 180
     strategy:
       fail-fast: false
@@ -17,6 +17,7 @@ jobs:
           - { dockerfile: "deno/Dockerfile", context: "deno", image_name: "deno", tag_name: "latest" }
           - { dockerfile: "deno/Dockerfile.ubuntu", context: "deno", image_name: "deno", tag_name: "ubuntu" }
           - { dockerfile: "deno/Dockerfile.ubuntu_dev", context: "deno", image_name: "deno", tag_name: "ubuntu_dev" }
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

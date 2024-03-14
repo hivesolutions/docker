@@ -17,7 +17,7 @@ apk add gcompat git wget curl gcc g++ make flex bison gperf python3 py3-pip cmak
     ccache libffi-dev openssl-dev zlib-dev
 
 wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
-tar -zxf Python-$PYTHON_VERSION.tgz 
+tar -zxf Python-$PYTHON_VERSION.tgz
 rm Python-$PYTHON_VERSION.tgz
 
 pushd Python-$PYTHON_VERSION

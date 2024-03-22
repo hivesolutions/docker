@@ -30,6 +30,8 @@ source ~/.profile
 git clone -b $IDF_VERSION --no-recurse-submodules --depth 1 https://github.com/espressif/esp-idf.git
 git clone -b $MICROPYTHON_VERSION --no-recurse-submodules --depth=1 https://github.com/micropython/micropython.git
 
+# jumps into the MicroPython directory, initializes some of the submodules
+# and compiles the MicroPython cross-compiler (mpy-cross)
 pushd micropython
 git submodule update --init lib/axtls lib/berkeley-db-1.xx
 make -C mpy-cross

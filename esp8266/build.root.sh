@@ -26,4 +26,4 @@ popd
 
 wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py"
 python get-pip.py
-pip install serial
+pip install "pyyaml<5" serial

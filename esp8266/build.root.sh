@@ -20,6 +20,8 @@ wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tg
 tar -zxf Python-$PYTHON_VERSION.tgz
 rm Python-$PYTHON_VERSION.tgz
 
+# jumps into the Python directory, configures the build, compiles it, and
+# installs it in the system
 pushd Python-$PYTHON_VERSION
 ./configure --prefix=/usr && make && make install
 popd

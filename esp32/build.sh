@@ -12,7 +12,7 @@ cd ~
 
 echo "Installing Python dependencies..."
 
-pip install virtualenv
+pip install --break-system-packages virtualenv
 
 echo "Installing Espressif ESP32 toolchain..."
 

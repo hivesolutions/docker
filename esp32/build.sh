@@ -5,8 +5,8 @@ set -e +h
 
 export MAKEFLAGS="-j 16"
 
-export IDF_VERSION="v4.3.2"
-export MICROPYTHON_VERSION="v1.18"
+export IDF_VERSION="v4.4.7"
+export MICROPYTHON_VERSION="v1.22.1"
 
 cd ~
 

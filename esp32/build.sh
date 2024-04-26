@@ -10,6 +10,10 @@ export MICROPYTHON_VERSION="v1.18"
 
 cd ~
 
+echo "Installing Python dependencies..."
+
+pip install virtualenv
+
 echo "Installing Espressif ESP32 toolchain..."
 
 git clone -b $IDF_VERSION --recursive --depth=1 https://github.com/espressif/esp-idf.git

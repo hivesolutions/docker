@@ -9,7 +9,7 @@ RUN apt-get update &&\
     apt-get install -y -q --no-install-recommends sudo bash wget git openssl unzip ca-certificates dirmngr apt-transport-https python3 python-is-python3 &&\
     apt-get clean && rm -rf /var/lib/apt/lists/* &&\
     wget "https://bootstrap.pypa.io/get-pip.py" &&\
-    python get-pip.py --no-cache-dir --no-compile &&\
+    python get-pip.py --no-cache-dir --no-compile --break-system-packages &&\
     rm get-pip.py
 
 CMD ["/bin/bash"]

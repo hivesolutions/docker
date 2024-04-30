@@ -6,7 +6,7 @@ LABEL maintainer="Hive Solutions <development@hive.pt>"
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update &&\
-    apt-get install -y -q --no-install-recommends sudo bash wget git openssl unzip ca-certificates dirmngr apt-transport-https python python3 python3-distutils &&\
+    apt-get install -y -q --no-install-recommends sudo bash wget git openssl unzip ca-certificates dirmngr apt-transport-https python python3 &&\
     apt-get clean && rm -rf /var/lib/apt/lists/* &&\
     wget "https://bootstrap.pypa.io/pip/3.6/get-pip.py" &&\
     wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py &&\

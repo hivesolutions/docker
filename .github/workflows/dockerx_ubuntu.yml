@@ -21,12 +21,14 @@ jobs:
           - { dockerfile: "ubuntu/Dockerfile.bionic", context: "ubuntu", image_name: "ubuntu", tag_name: "bionic" }
           - { dockerfile: "ubuntu/Dockerfile.focal", context: "ubuntu", image_name: "ubuntu", tag_name: "focal" }
           - { dockerfile: "ubuntu/Dockerfile.jammy", context: "ubuntu", image_name: "ubuntu", tag_name: "jammy" }
+          - { dockerfile: "ubuntu/Dockerfile.noble", context: "ubuntu", image_name: "ubuntu", tag_name: "noble" }
           - { dockerfile: "ubuntu_dev/Dockerfile", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "latest" }
           - { dockerfile: "ubuntu_dev/Dockerfile.rolling", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "rolling" }
           - { dockerfile: "ubuntu_dev/Dockerfile.xenial", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "xenial" }
           - { dockerfile: "ubuntu_dev/Dockerfile.bionic", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "bionic" }
           - { dockerfile: "ubuntu_dev/Dockerfile.focal", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "focal" }
           - { dockerfile: "ubuntu_dev/Dockerfile.jammy", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "jammy" }
+          - { dockerfile: "ubuntu_dev/Dockerfile.noble", context: "ubuntu_dev", image_name: "ubuntu_dev", tag_name: "noble" }
     runs-on: self-hosted
     steps:
       - name: Checkout code

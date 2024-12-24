@@ -10,6 +10,12 @@ jobs:
   build:
     name: Build
     timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { dockerfile: "python/Dockerfile", context: "python", image_name: "python" }
+          - { dockerfile: "alpine/Dockerfile.neo", context: "python", image_name: "python_neo" }
     runs-on: self-hosted
     steps:
       - name: Checkout code
@@ -36,8 +42,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: python
-          file: ./python/Dockerfile
+          context: ${{ matrix.config.context }}
+          file: ${{ matrix.config.dockerfile }}
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8
           push: true
-          tags: hivesolutions/python:${{ steps.set_tag.outputs.tag }}
+          tags: hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}

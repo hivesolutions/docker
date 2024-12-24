@@ -16,7 +16,9 @@ jobs:
       matrix:
         config:
           - { dockerfile: "alpine/Dockerfile", context: "alpine", image_name: "alpine" }
+          - { dockerfile: "alpine/Dockerfile.neo", context: "alpine", image_name: "alpine_neo" }
           - { dockerfile: "alpine_dev/Dockerfile", context: "alpine_dev", image_name: "alpine_dev" }
+          - { dockerfile: "alpine_dev/Dockerfile.neo", context: "alpine_dev", image_name: "alpine_dev_neo" }
     runs-on: self-hosted
     steps:
       - name: Checkout code

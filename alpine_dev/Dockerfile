@@ -5,6 +5,7 @@ LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 ENV LD_LIBRARY_PATH "/opt/lib:/usr/local/lib:/usr/lib:/lib"
 ENV LIBRARY_PATH "/opt/lib:/usr/local/lib:/usr/lib:/lib"
+ENV PATH "/opt/bin:/usr/local/bin:/usr/bin:/bin"
 ENV PYTHON2_VERSION "2.7.18"
 
 RUN apk update && apk add sudo gcc make linux-headers libc-dev openssl-dev python3-dev zlib-dev jpeg-dev &&\

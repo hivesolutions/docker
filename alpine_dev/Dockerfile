@@ -9,7 +9,7 @@ ENV PYTHON2_VERSION "2.7.18"
 
 RUN apk update && apk add sudo gcc make linux-headers libc-dev openssl-dev python3-dev zlib-dev jpeg-dev &&\
     wget https://www.python.org/ftp/python/${PYTHON2_VERSION}/Python-${PYTHON2_VERSION}.tgz &&\
-    tar -xvzf Python-${PYTHON2_VERSION}.tgz &&\
+    tar -xzf Python-${PYTHON2_VERSION}.tgz &&\
     cd Python-${PYTHON2_VERSION} &&\
     ./configure &&\
     make &&\

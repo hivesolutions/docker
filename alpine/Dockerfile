@@ -1,7 +1,9 @@
-FROM alpine:3.20
+FROM alpine:latest
 
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
+
+ENV PIP_BREAK_SYSTEM_PACKAGES "1"
 
 RUN apk update &&\
     apk add bash git ca-certificates python3 &&\

@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.20
 
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"

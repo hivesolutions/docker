@@ -11,6 +11,6 @@ RUN apk update &&\
     python get-pip-2.py &&\
     rm get-pip.py &&\
     rm get-pip-2.py &&\
-    pip3 install --upgrade pip "setuptools<70"
+    pip3 install --upgrade pip "setuptools<50"
 
 CMD ["/bin/bash"]

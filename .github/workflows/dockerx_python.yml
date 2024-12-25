@@ -15,7 +15,7 @@ jobs:
       matrix:
         config:
           - { dockerfile: "python/Dockerfile", context: "python", image_name: "python" }
-          - { dockerfile: "alpine/Dockerfile.neo", context: "python", image_name: "python_neo" }
+          - { dockerfile: "python/Dockerfile.neo", context: "python", image_name: "python_neo" }
     runs-on: self-hosted
     steps:
       - name: Checkout code

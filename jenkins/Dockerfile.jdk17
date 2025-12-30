@@ -1,0 +1,8 @@
+FROM jenkins/jenkins:lts-jdk17
+
+LABEL version="1.0"
+LABEL maintainer="Hive Solutions <development@hive.pt>"
+
+USER root
+
+RUN rm -rf rm /etc/apt/sources.list.d/github*

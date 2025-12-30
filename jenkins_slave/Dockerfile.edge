@@ -8,12 +8,22 @@ EXPOSE 22
 ENV LD_LIBRARY_PATH="/opt/lib:/usr/local/lib:/usr/lib:/lib"
 ENV LIBRARY_PATH="/opt/lib:/usr/local/lib:/usr/lib:/lib"
 
-RUN apk update && apk add bash git ca-certificates python3 sudo gcc make linux-headers \
+RUN apk update && apk add --no-cache bash git ca-certificates python3 sudo gcc make linux-headers \
     libc-dev openssl-dev python3-dev zlib-dev jpeg-dev openssh openjdk8 openjdk11 openjdk25 docker
-RUN  wget "https://bootstrap.pypa.io/get-pip.py" && \
-    python3 get-pip.py --no-cache-dir --no-compile --break-system-packages && \
-    rm get-pip.py && \
-    pip3 install --break-system-packages --upgrade pip setuptools
+RUN apk add --no-cache build-base openssl-dev zlib-dev bzip2-dev xz-dev readline-dev sqlite-dev libffi-dev wget && \
+    wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz && tar -zxf Python-2.7.18.tgz && rm Python-2.7.18.tgz && \
+    rm -f /usr/bin/python && \
+    cd Python-2.7.18 && CFLAGS="-std=gnu89" ./configure --prefix=/usr/local/python2 && make -j$(nproc) && make install && \
+    ln -s /usr/local/python2/bin/python2 /usr/bin/python2 && \
+    ln -s /usr/local/python2/bin/python2 /usr/bin/python && \
+    cd .. && rm -rf Python-2.7.18
+RUN wget "https://bootstrap.pypa.io/get-pip.py" &&\
+    wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py &&\
+    python3 get-pip.py --no-cache-dir --no-compile --break-system-packages &&\
+    python2 get-pip-2.py --no-cache-dir --no-compile &&\
+    rm get-pip.py &&\
+    rm get-pip-2.py &&\
+    pip3 install --break-system-packages --upgrade pip "setuptools<50"
 RUN ssh-keygen -A
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
     echo "PubkeyAcceptedAlgorithms +ssh-rsa" >> /etc/ssh/sshd_config && \

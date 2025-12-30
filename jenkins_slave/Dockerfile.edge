@@ -1,0 +1,23 @@
+FROM alpine:latest
+
+LABEL version="1.0"
+LABEL maintainer="Hive Solutions <development@hive.pt>"
+
+EXPOSE 22
+
+ENV LD_LIBRARY_PATH="/opt/lib:/usr/local/lib:/usr/lib:/lib"
+ENV LIBRARY_PATH="/opt/lib:/usr/local/lib:/usr/lib:/lib"
+
+RUN apk update && apk add bash git ca-certificates python3 sudo gcc make linux-headers \
+    libc-dev openssl-dev python3-dev zlib-dev jpeg-dev openssh openjdk8 openjdk11 openjdk25 docker
+RUN  wget "https://bootstrap.pypa.io/get-pip.py" && \
+    python3 get-pip.py --no-cache-dir --no-compile --break-system-packages && \
+    rm get-pip.py && \
+    pip3 install --break-system-packages --upgrade pip setuptools
+RUN ssh-keygen -A
+RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
+    echo "PubkeyAcceptedAlgorithms +ssh-rsa" >> /etc/ssh/sshd_config && \
+    echo "HostkeyAlgorithms +ssh-rsa" >> /etc/ssh/sshd_config
+RUN adduser -D jenkins && (echo "jenkins:jenkins" | chpasswd) && (echo "root:root" | chpasswd)
+
+CMD ["/usr/sbin/sshd", "-D"]

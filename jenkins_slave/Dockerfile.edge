@@ -19,12 +19,12 @@ RUN apk add --no-cache build-base openssl-dev zlib-dev bzip2-dev xz-dev readline
     ln -s /usr/local/python2/bin/pip2 /usr/bin/pip2 && \
     ln -s /usr/bin/pip2 /usr/bin/pip && \
     cd .. && rm -rf Python-2.7.18
-RUN wget "https://bootstrap.pypa.io/get-pip.py" &&\
-    wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py &&\
-    python3 get-pip.py --no-cache-dir --no-compile --break-system-packages &&\
-    python2 get-pip-2.py --no-cache-dir --no-compile &&\
-    rm get-pip.py &&\
-    rm get-pip-2.py &&\
+RUN wget "https://bootstrap.pypa.io/get-pip.py" && \
+    wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py && \
+    python3 get-pip.py --no-cache-dir --no-compile --break-system-packages && \
+    python2 get-pip-2.py --no-cache-dir --no-compile && \
+    rm get-pip.py && \
+    rm get-pip-2.py && \
     pip3 install --break-system-packages --upgrade pip "setuptools<50"
 RUN ssh-keygen -A
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \

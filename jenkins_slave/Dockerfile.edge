@@ -15,9 +15,9 @@ RUN apk add --no-cache build-base openssl-dev zlib-dev bzip2-dev xz-dev readline
     rm -f /usr/bin/python && rm -f /usr/bin/pip && \
     cd Python-2.7.18 && CFLAGS="-std=gnu89" ./configure --prefix=/usr/local/python2 && make -j$(nproc) && make install && \
     ln -s /usr/local/python2/bin/python2 /usr/bin/python2 && \
-    ln -s usr/bin/python2 /usr/bin/python && \
+    ln -s /usr/local/python2/bin/python2 /usr/bin/python && \
     ln -s /usr/local/python2/bin/pip2 /usr/bin/pip2 && \
-    ln -s /usr/bin/pip2 /usr/bin/pip && \
+    ln -s /usr/local/python2/bin/pip2 /usr/bin/pip && \
     cd .. && rm -rf Python-2.7.18
 RUN wget "https://bootstrap.pypa.io/get-pip.py" && \
     wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -O get-pip-2.py && \

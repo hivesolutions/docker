@@ -1,6 +1,44 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+"""
+File-system-driven reverse proxy with automatic Let's Encrypt TLS and
+per-worker virtual host routing.
+
+Unlike the Docker-aware `lets-logic` proxy, this variant discovers
+backend services by scanning a local `workers` directory. Each file in
+that directory represents a worker process; the proxy derives a hostname
+from the filename and maps it to a sequential localhost port starting at
+`BASE_PORT` (default 9001). For every worker, virtual host entries are
+generated for each pattern in `HOST_PREFIXES` (e.g.
+`<name>.stage.hive.pt`, `<name>.proxy`), with underscores also
+normalized to hyphens.
+
+After the worker scan, the proxy applies additional static host aliases
+for well-known services (`hq.hive.pt`, `archive.hive.pt`, etc.) and
+special-cases like the GitLab container registry (port 5005).
+
+Security and routing layers:
+
+* **ACME challenges** — If a `letsencrypt` worker exists, HTTP-01
+  validation requests are routed to it and exempted from authentication.
+* **Basic auth** — The `docker` worker endpoint is optionally protected
+  via `AUTH_PASSWORDS`.
+* **TLS termination** — SSL contexts are loaded per-host from the shared
+  Let's Encrypt live directory via `LetsEncryptDict`.
+
+Environment / configuration:
+    BASE_PORT      — First port in the sequential worker port range (default 9001).
+    WORKERS_PATH   — Directory containing worker descriptor files (default `/workers`).
+    LETSE_PATH     — Let's Encrypt live certificates directory (default
+                     `/data/letsencrypt/etc/live`).
+    AUTH_PASSWORDS — Comma-separated list of passwords for protected endpoints.
+    EXTRA_CONTEXTS — Additional hostnames to include in the SSL context map.
+    HOST_PREFIXES  — Printf-style patterns for generating virtual hostnames
+                     (default `%s.stage.hive.pt`, `%s.stage.hive`).
+    FORWARD        — Optional fixed forwarding target override.
+"""
+
 import os
 import re
 import logging

@@ -2,11 +2,17 @@
 # -*- coding: utf-8 -*-
 
 """
-Docker-aware reverse proxy with automatic Let's Encrypt TLS termination.
+Reverse proxy with automatic Let's Encrypt TLS termination and
+pluggable service-discovery backends.
 
-Uses netius DockerProxyServer to auto-discover backend services via the
-Docker API and route incoming HTTP/HTTPS traffic to the appropriate
-containers based on host configuration (hosts, aliases, and redirects).
+Supports two backend engines, selectable via the `BACKEND` configuration
+variable:
+
+* `docker` (default) — Uses `DockerProxyServer` to auto-discover
+  backend services through the Docker API (via env vars) and route incoming
+  HTTP/HTTPS traffic to containers based on their host configuration.
+* `consul` — Uses `ConsulProxyServer` to discover services registered
+  in Consul's service catalog and route traffic accordingly.
 
 On startup, the proxy:
 
@@ -21,6 +27,7 @@ On startup, the proxy:
    transparent TLS for every configured virtual host.
 
 Environment / configuration:
+    BACKEND    — Backend engine: `docker` (default) or `consul`.
     LETSE_PATH — Base path to the Let's Encrypt live certificates directory.
     HOST       — Bind address (default `0.0.0.0`).
     PORT       — Bind port (default `8080`).
@@ -33,6 +40,7 @@ import re
 import netius.extra
 import netius.common
 
+backend = netius.conf("BACKEND", "docker")
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
 
 
@@ -77,6 +85,11 @@ def echo_contexts(server, hosts, contexts=None, sort=True):
         server.info("%s => %s" % (host, match))
 
 
-server = netius.extra.DockerProxyServer()
+server_classes = dict(
+    docker=netius.extra.DockerProxyServer,
+    consul=netius.extra.ConsulProxyServer,
+)
+server_cls = server_classes[backend]
+server = server_cls()
 server.bind("start", on_start)
 server.serve(env=True)

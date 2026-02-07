@@ -46,15 +46,13 @@ import logging
 import netius.extra
 import netius.common
 
-base_port = netius.conf("BASE_PORT", 9001, cast = int)
+base_port = netius.conf("BASE_PORT", 9001, cast=int)
 workers_path = netius.conf("WORKERS_PATH", "/workers")
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
-auth_passwords = netius.conf("AUTH_PASSWORDS", [], cast = list)
-extra_contexts = netius.conf("EXTRA_CONTEXTS", [], cast = list)
+auth_passwords = netius.conf("AUTH_PASSWORDS", [], cast=list)
+extra_contexts = netius.conf("EXTRA_CONTEXTS", [], cast=list)
 host_prefixes = netius.conf(
-    "HOST_PREFIXES",
-    ["%s.stage.hive.pt", "%s.stage.hive"],
-    cast = list
+    "HOST_PREFIXES", ["%s.stage.hive.pt", "%s.stage.hive"], cast=list
 )
 forward = netius.conf("FORWARD", None)
 host_prefixes += ["%s.proxy"]
@@ -68,7 +66,7 @@ workers = os.listdir(workers_path)
 workers.sort()
 
 for auth_password in auth_passwords:
-    simple_auth = netius.SimpleAuth(password = auth_password)
+    simple_auth = netius.SimpleAuth(password=auth_password)
     auth_tuple.append(simple_auth)
 
 for worker in workers:
@@ -101,17 +99,9 @@ if "gitlab.proxy" in hosts:
 
 if "letsencrypt.proxy" in hosts:
     regex.append(
-        (
-            re.compile(r".+/.well-known/acme-challenge/.+"),
-            hosts["letsencrypt.proxy"]
-        )
+        (re.compile(r".+/.well-known/acme-challenge/.+"), hosts["letsencrypt.proxy"])
     )
-    auth_regex.append(
-        (
-            re.compile(r".+/.well-known/acme-challenge/.+"),
-            None
-        )
-    )
+    auth_regex.append((re.compile(r".+/.well-known/acme-challenge/.+"), None))
 
 if "docker.proxy" in hosts and auth_tuple:
     auth["docker.proxy"] = auth_tuple
@@ -120,16 +110,14 @@ if "docker.proxy" in hosts and auth_tuple:
 
 contexts = netius.legacy.keys(hosts) + extra_contexts
 server = netius.extra.ReverseProxyServer(
-    hosts = hosts,
-    regex = regex,
-    auth = auth,
-    auth_regex = auth_regex,
-    forward = forward,
-    level = logging.INFO
+    hosts=hosts,
+    regex=regex,
+    auth=auth,
+    auth_regex=auth_regex,
+    forward=forward,
+    level=logging.INFO,
 )
 server._ssl_contexts = netius.common.LetsEncryptDict(
-    server,
-    contexts,
-    letse_path = letse_path
+    server, contexts, letse_path=letse_path
 )
-server.serve(env = True)
+server.serve(env=True)

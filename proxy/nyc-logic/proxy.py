@@ -5,14 +5,7 @@ import re
 
 import netius.extra
 
-hosts = {
-}
-regex = (
-    (re.compile(r".*"), "http://libs:8080"),
-)
-server = netius.extra.ReverseProxyServer(
-    hosts = hosts,
-    regex = regex,
-    reuse = False
-)
-server.serve(env = True)
+hosts = {}
+regex = ((re.compile(r".*"), "http://libs:8080"),)
+server = netius.extra.ReverseProxyServer(hosts=hosts, regex=regex, reuse=False)
+server.serve(env=True)

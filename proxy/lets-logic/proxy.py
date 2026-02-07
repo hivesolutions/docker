@@ -35,30 +35,24 @@ import netius.common
 
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
 
+
 def on_start(server):
     set_letsencrypt(server)
     set_ssl_contexts(server)
 
+
 def set_letsencrypt(server):
-    if not "letsencrypt" in server.hosts: return
-    server.regex.insert(0,
-        (
-            re.compile(r".+/.well-known/acme-challenge/.+"),
-            server.hosts["letsencrypt"]
-        )
+    if not "letsencrypt" in server.hosts:
+        return
+    server.regex.insert(
+        0,
+        (re.compile(r".+/.well-known/acme-challenge/.+"), server.hosts["letsencrypt"]),
     )
-    server.auth_regex.insert(0,
-        (
-            re.compile(r".+/.well-known/acme-challenge/.+"),
-            None
-        )
+    server.auth_regex.insert(0, (re.compile(r".+/.well-known/acme-challenge/.+"), None))
+    server.redirect_regex.insert(
+        0, (re.compile(r".+/.well-known/acme-challenge/.+"), None)
     )
-    server.redirect_regex.insert(0,
-        (
-            re.compile(r".+/.well-known/acme-challenge/.+"),
-            None
-        )
-    )
+
 
 def set_ssl_contexts(server):
     hosts = netius.legacy.keys(server.hosts)
@@ -66,13 +60,13 @@ def set_ssl_contexts(server):
     redirect = netius.legacy.keys(server.redirect)
     hosts = list(set(hosts + alias + redirect))
     server._ssl_contexts = netius.common.LetsEncryptDict(
-        server,
-        hosts,
-        letse_path = letse_path
+        server, hosts, letse_path=letse_path
     )
-    if server.echo: echo_contexts(server, hosts)
+    if server.echo:
+        echo_contexts(server, hosts)
 
-def echo_contexts(server, hosts, contexts = None, sort = True):
+
+def echo_contexts(server, hosts, contexts=None, sort=True):
     contexts = contexts or server._ssl_contexts
     hosts = list(hosts)
     if sort: hosts.sort()
@@ -81,6 +75,7 @@ def echo_contexts(server, hosts, contexts = None, sort = True):
         match = "match" if host in contexts else "no match"
         server.info("%s => %s" % (host, match))
 
+
 server = netius.extra.DockerProxyServer()
 server.bind("start", on_start)
-server.serve(env = True)
+server.serve(env=True)

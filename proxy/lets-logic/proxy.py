@@ -69,7 +69,8 @@ def set_ssl_contexts(server):
 def echo_contexts(server, hosts, contexts=None, sort=True):
     contexts = contexts or server._ssl_contexts
     hosts = list(hosts)
-    if sort: hosts.sort()
+    if sort:
+        hosts.sort()
     server.info("Let's Encrypt host context information")
     for host in hosts:
         match = "match" if host in contexts else "no match"

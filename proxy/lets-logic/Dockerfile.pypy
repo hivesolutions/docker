@@ -18,6 +18,6 @@ ENV ECHO=1
 
 ADD proxy.py /proxy.py
 
-RUN pip install --upgrade netius hpack appier
+RUN pip install --upgrade "netius<1.17.0" hpack appier
 
 CMD ["/usr/bin/python", "/proxy.py"]

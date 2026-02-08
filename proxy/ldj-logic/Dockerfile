@@ -5,11 +5,11 @@ LABEL maintainer="Hive Solutions <development@hive.pt>"
 
 EXPOSE 8080
 
-ENV LEVEL INFO
-ENV HOST 0.0.0.0
-ENV PORT 8080
-ENV SAFE 0
-ENV CHILDREN 0
+ENV LEVEL=INFO
+ENV HOST=0.0.0.0
+ENV PORT=8080
+ENV SAFE=0
+ENV CHILDREN=0
 
 ADD proxy.py /proxy.py
 

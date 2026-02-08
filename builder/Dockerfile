@@ -7,10 +7,10 @@ VOLUME /repo
 
 USER root
 
-ENV NAME ""
-ENV EXEC "/"
-ENV BUILDER "Dockerfile"
-ENV REPO "docker.stage.hive.pt"
+ENV NAME=""
+ENV EXEC="/"
+ENV BUILDER="Dockerfile"
+ENV REPO="docker.stage.hive.pt"
 
 ADD run.sh /run.sh
 

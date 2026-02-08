@@ -10,7 +10,7 @@ EXPOSE 4646 4647 4648
 VOLUME /etc/nomad/
 VOLUME /opt/nomad/
 
-ENV NOMAD_VERSION 1.6.10-1
+ENV NOMAD_VERSION=1.6.10-1
 
 RUN case "$(uname -m)" in \
     x86_64|amd64) ;; aarch64|arm64|arm64e) ;; \

@@ -20,7 +20,7 @@ RUN case "$(uname -m)" in \
     ;; \
     esac
 
-RUN adduser nomad && usermod -aG nomad nomad &&\
+RUN useradd -r -m nomad &&\
     mkdir -p /opt/nomad && mkdir -p /etc/nomad &&\
     chown -R nomad:nomad /opt/nomad /etc/nomad
 

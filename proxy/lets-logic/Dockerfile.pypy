@@ -9,15 +9,15 @@ VOLUME /data/letsencrypt
 VOLUME /etc/letsencrypt
 VOLUME /var/lib/letsencrypt
 
-ENV LEVEL INFO
-ENV HOST 0.0.0.0
-ENV PORT 8080
-ENV SAFE 0
-ENV CHILDREN 0
-ENV ECHO 1
+ENV LEVEL=INFO
+ENV HOST=0.0.0.0
+ENV PORT=8080
+ENV SAFE=0
+ENV CHILDREN=0
+ENV ECHO=1
 
 ADD proxy.py /proxy.py
 
-RUN pip install --upgrade "netius<1.17.0" hpack appier
+RUN pip install --upgrade netius hpack appier
 
 CMD ["/usr/bin/python", "/proxy.py"]

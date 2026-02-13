@@ -8,17 +8,17 @@ pluggable service-discovery backends.
 Supports two backend engines, selectable via the `BACKEND` configuration
 variable:
 
-* `docker` (default) — Uses `DockerProxyServer` to auto-discover
+* `docker` (default) - Uses `DockerProxyServer` to auto-discover
   backend services through the Docker API (via env vars) and route incoming
   HTTP/HTTPS traffic to containers based on their host configuration.
-* `consul` — Uses `ConsulProxyServer` to discover services registered
+* `consul` - Uses `ConsulProxyServer` to discover services registered
   in Consul's service catalog and route traffic accordingly.
 
 On startup, the proxy:
 
 1. Registers ACME challenge route priority rules so that Let's Encrypt
    HTTP-01 validation requests (`/.well-known/acme-challenge/`) are
-   always forwarded to the letsencrypt service — bypassing any
+   always forwarded to the letsencrypt service - bypassing any
    authentication or HTTPS redirect rules that would otherwise block them.
 
 2. Builds per-host SSL contexts backed by `LetsEncryptDict`, which
@@ -27,12 +27,12 @@ On startup, the proxy:
    transparent TLS for every configured virtual host.
 
 Environment / configuration:
-    BACKEND    — Backend engine: `docker` (default) or `consul`.
-    LETSE_PATH — Base path to the Let's Encrypt live certificates directory.
-    HOST       — Bind address (default `0.0.0.0`).
-    PORT       — Bind port (default `8080`).
-    LEVEL      — Logging level (default `INFO`).
-    ECHO       — When enabled, logs certificate match status per host at startup.
+    BACKEND    - Backend engine: `docker` (default) or `consul`.
+    LETSE_PATH - Base path to the Let's Encrypt live certificates directory.
+    HOST       - Bind address (default `0.0.0.0`).
+    PORT       - Bind port (default `8080`).
+    LEVEL      - Logging level (default `INFO`).
+    ECHO       - When enabled, logs certificate match status per host at startup.
 """
 
 import re

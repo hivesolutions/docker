@@ -20,23 +20,23 @@ special-cases like the GitLab container registry (port 5005).
 
 Security and routing layers:
 
-* **ACME challenges** — If a `letsencrypt` worker exists, HTTP-01
+* **ACME challenges** - If a `letsencrypt` worker exists, HTTP-01
   validation requests are routed to it and exempted from authentication.
-* **Basic auth** — The `docker` worker endpoint is optionally protected
+* **Basic auth** - The `docker` worker endpoint is optionally protected
   via `AUTH_PASSWORDS`.
-* **TLS termination** — SSL contexts are loaded per-host from the shared
+* **TLS termination** - SSL contexts are loaded per-host from the shared
   Let's Encrypt live directory via `LetsEncryptDict`.
 
 Environment / configuration:
-    BASE_PORT      — First port in the sequential worker port range (default 9001).
-    WORKERS_PATH   — Directory containing worker descriptor files (default `/workers`).
-    LETSE_PATH     — Let's Encrypt live certificates directory (default
+    BASE_PORT      - First port in the sequential worker port range (default 9001).
+    WORKERS_PATH   - Directory containing worker descriptor files (default `/workers`).
+    LETSE_PATH     - Let's Encrypt live certificates directory (default
                      `/data/letsencrypt/etc/live`).
-    AUTH_PASSWORDS — Comma-separated list of passwords for protected endpoints.
-    EXTRA_CONTEXTS — Additional hostnames to include in the SSL context map.
-    HOST_PREFIXES  — Printf-style patterns for generating virtual hostnames
+    AUTH_PASSWORDS - Comma-separated list of passwords for protected endpoints.
+    EXTRA_CONTEXTS - Additional hostnames to include in the SSL context map.
+    HOST_PREFIXES  - Printf-style patterns for generating virtual hostnames
                      (default `%s.stage.hive.pt`, `%s.stage.hive`).
-    FORWARD        — Optional fixed forwarding target override.
+    FORWARD        - Optional fixed forwarding target override.
 """
 
 import os

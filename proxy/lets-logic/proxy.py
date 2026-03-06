@@ -40,8 +40,13 @@ import re
 import netius.extra
 import netius.common
 
+ACME_PATTERN = re.compile(r".+/.well-known/acme-challenge/.+")
+
 backend = netius.conf("BACKEND", "docker")
 letse_path = netius.conf("LETSE_PATH", "/data/letsencrypt/etc/live")
+
+_letse_url = None
+_ssl_hosts = None
 
 
 def on_start(server):
@@ -49,29 +54,49 @@ def on_start(server):
     set_ssl_contexts(server)
 
 
+def on_tick(server):
+    set_letsencrypt(server)
+    set_ssl_contexts(server)
+
+
 def set_letsencrypt(server):
-    if not "letsencrypt" in server.hosts:
+    global _letse_url
+
+    if "letsencrypt" not in server.hosts:
         return
+
+    letse_url = server.hosts["letsencrypt"]
+    if letse_url == _letse_url:
+        return
+    _letse_url = letse_url
+
+    for rule_list in (server.regex, server.auth_regex, server.redirect_regex):
+        rule_list[:] = [entry for entry in rule_list if entry[0] is not ACME_PATTERN]
+
     server.regex.insert(
         0,
-        (re.compile(r".+/.well-known/acme-challenge/.+"), server.hosts["letsencrypt"]),
+        (ACME_PATTERN, letse_url),
     )
-    server.auth_regex.insert(0, (re.compile(r".+/.well-known/acme-challenge/.+"), None))
-    server.redirect_regex.insert(
-        0, (re.compile(r".+/.well-known/acme-challenge/.+"), None)
-    )
+    server.auth_regex.insert(0, (ACME_PATTERN, None))
+    server.redirect_regex.insert(0, (ACME_PATTERN, None))
 
 
 def set_ssl_contexts(server):
+    global _ssl_hosts
+
     hosts = netius.legacy.keys(server.hosts)
     alias = netius.legacy.keys(server.alias)
     redirect = netius.legacy.keys(server.redirect)
-    hosts = list(set(hosts + alias + redirect))
+    ssl_hosts = frozenset(hosts + alias + redirect)
+    if ssl_hosts == _ssl_hosts:
+        return
+    _ssl_hosts = ssl_hosts
+
     server._ssl_contexts = netius.common.LetsEncryptDict(
-        server, hosts, letse_path=letse_path
+        server, list(ssl_hosts), letse_path=letse_path
     )
     if server.echo:
-        echo_contexts(server, hosts)
+        echo_contexts(server, list(ssl_hosts))
 
 
 def echo_contexts(server, hosts, contexts=None, sort=True):
@@ -92,4 +117,5 @@ server_classes = dict(
 server_cls = server_classes[backend]
 server = server_cls()
 server.bind("start", on_start)
+server.bind("tick", on_tick)
 server.serve(env=True)

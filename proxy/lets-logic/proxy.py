@@ -73,6 +73,8 @@ def set_letsencrypt(server):
     for rule_list in (server.regex, server.auth_regex, server.redirect_regex):
         rule_list[:] = [entry for entry in rule_list if entry[0] is not ACME_PATTERN]
 
+    server.info("Registering Let's Encrypt ACME rules for %s" % letse_url)
+
     server.regex.insert(
         0,
         (ACME_PATTERN, letse_url),
@@ -91,6 +93,8 @@ def set_ssl_contexts(server):
     if ssl_hosts == _ssl_hosts:
         return
     _ssl_hosts = ssl_hosts
+
+    server.info("Rebuilding SSL contexts for %d host(s)" % len(ssl_hosts))
 
     server._ssl_contexts = netius.common.LetsEncryptDict(
         server, list(ssl_hosts), letse_path=letse_path

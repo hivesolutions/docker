@@ -62,7 +62,7 @@ def on_tick(server):
 def set_letsencrypt(server):
     global _letse_url
 
-    if "letsencrypt" not in server.hosts:
+    if not "letsencrypt" in server.hosts:
         return
 
     letse_url = server.hosts["letsencrypt"]

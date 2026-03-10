@@ -7,7 +7,7 @@ export MAKEFLAGS="-j 16"
 
 export ESP_SDK_VERSION="gcc8_4_0-esp-2020r3"
 export IDF_VERSION="v3.3.6"
-export MICROPYTHON_VERSION="v1.22.1"
+export MICROPYTHON_VERSION="v1.27.0"
 
 cd ~
 

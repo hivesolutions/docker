@@ -27,5 +27,5 @@ pushd Python-$PYTHON_VERSION
 popd
 
 wget "https://bootstrap.pypa.io/pip/2.7/get-pip.py"
-python get-pip.py
+python get-pip.py "pip<21" "setuptools<45"
 pip install "pyyaml<5" serial

@@ -5,19 +5,19 @@ set -e +h
 
 export MAKEFLAGS="-j 16"
 
-export ESP_OPEN_SDK_VERSION="2018-06-10"
+export ESP_SDK_VERSION="gcc8_4_0-esp-2020r3"
 export IDF_VERSION="v3.3.6"
 export MICROPYTHON_VERSION="v1.22.1"
 
 cd ~
 
-echo "Installing ESP Open SDK..."
+echo "Installing ESP SDK..."
 
-# obtains the pre-built version of the ESP Open SDK and unpacks it
-# putting it in the expected location
-wget https://github.com/jepler/esp-open-sdk/releases/download/$ESP_OPEN_SDK_VERSION/xtensa-lx106-elf-standalone.tar.gz
-tar -zxf xtensa-lx106-elf-standalone.tar.gz
-rm xtensa-lx106-elf-standalone.tar.gz
+# obtains the pre-built version of the Xtensa toolchain from the
+# official Espressif download server and unpacks it
+wget https://dl.espressif.com/dl/xtensa-lx106-elf-${ESP_SDK_VERSION}-linux-amd64.tar.gz
+tar -zxf xtensa-lx106-elf-${ESP_SDK_VERSION}-linux-amd64.tar.gz
+rm xtensa-lx106-elf-${ESP_SDK_VERSION}-linux-amd64.tar.gz
 
 # adds the binaries to the path so that they can be used directly
 # in the new bash processed from now on (xtensa-lx106 refers to

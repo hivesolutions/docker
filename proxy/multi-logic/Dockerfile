@@ -17,6 +17,6 @@ ENV CHILDREN=0
 
 ADD proxy.py /proxy.py
 
-RUN pip3 install --upgrade netius hpack appier
+RUN pip install --upgrade netius hpack appier
 
-CMD ["/usr/bin/python3", "/proxy.py"]
+CMD ["/usr/local/bin/python", "/proxy.py"]

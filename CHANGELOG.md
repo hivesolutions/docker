@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+* Added module-level documentation to the multi-logic reverse proxy script
 * Switched ESP8266 toolchain to MicroPython-hosted standalone esp-open-sdk
 * Bumped MicroPython to v1.27.0 for both ESP8266 and ESP32
 * Bumped ESP-IDF to v5.5.3 for ESP32

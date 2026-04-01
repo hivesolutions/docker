@@ -1,4 +1,4 @@
-FROM hivesolutions/pypy:alpine
+FROM pypy:slim
 
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
@@ -20,4 +20,4 @@ ADD proxy.py /proxy.py
 
 RUN pip install --upgrade netius hpack appier
 
-CMD ["/usr/bin/python", "/proxy.py"]
+CMD ["/opt/pypy/bin/python", "/proxy.py"]

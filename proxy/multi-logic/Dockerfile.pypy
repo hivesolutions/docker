@@ -1,4 +1,4 @@
-FROM hivesolutions/pypy:alpine
+FROM pypy:alpine
 
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"

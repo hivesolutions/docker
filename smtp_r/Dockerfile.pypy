@@ -1,4 +1,4 @@
-FROM hivesolutions/pypy:latest
+FROM pypy:slim
 
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
@@ -18,4 +18,4 @@ WORKDIR /data
 
 RUN pip install --upgrade netius logstash-api
 
-CMD ["/usr/bin/python", "-m", "netius.extra.smtp_r"]
+CMD ["/opt/pypy/bin/python", "-m", "netius.extra.smtp_r"]

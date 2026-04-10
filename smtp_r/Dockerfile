@@ -1,4 +1,4 @@
-FROM hivesolutions/python:latest
+FROM python:alpine
 
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
@@ -16,6 +16,6 @@ ENV SMTP_HOST=SMTP_HOST
 
 WORKDIR /data
 
-RUN pip3 install --upgrade netius logstash-api
+RUN pip install --upgrade netius logstash-api
 
-CMD ["/usr/bin/python3", "-m", "netius.extra.smtp_r"]
+CMD ["/usr/local/bin/python", "-m", "netius.extra.smtp_r"]

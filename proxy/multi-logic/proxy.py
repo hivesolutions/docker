@@ -17,11 +17,12 @@ that can be used together:
 * Address-based (`AddressAuth`) - restricts access by source IP.
 
 Environment / configuration:
-    BASE_PORT        - Starting port for the backend pool (default `8080`).
-    NUMBER_PROCESSES - Number of backend processes to load-balance (default `8`).
-    NODE_TEMPLATE    - URL template for each backend node (default `http://172.17.0.1:%d`).
-    AUTH_PASSWORD    - Shared password for `SimpleAuth` (default `None`, disabled).
-    AUTH_ADDRESSES   - List of allowed source addresses for `AddressAuth` (default `[]`).
+    BASE_PORT              - Starting port for the backend pool (default `8080`).
+    NUMBER_PROCESSES       - Number of backend processes to load-balance (default `8`).
+    PROXY_NUMBER_PROCESSES - Override for NUMBER_PROCESSES (default `None`, uses NUMBER_PROCESSES).
+    NODE_TEMPLATE          - URL template for each backend node (default `http://172.17.0.1:%d`).
+    AUTH_PASSWORD          - Shared password for `SimpleAuth` (default `None`, disabled).
+    AUTH_ADDRESSES         - List of allowed source addresses for `AddressAuth` (default `[]`).
 """
 
 import re
@@ -30,6 +31,7 @@ import netius.extra
 
 BASE_PORT = netius.conf("BASE_PORT", 8080, cast=int)
 NUMBER_PROCESSES = netius.conf("NUMBER_PROCESSES", 8, cast=int)
+NUMBER_PROCESSES = netius.conf("PROXY_NUMBER_PROCESSES", NUMBER_PROCESSES, cast=int)
 NODE_TEMPLATE = netius.conf("NODE_TEMPLATE", "http://172.17.0.1:%d")
 AUTH_PASSWORD = netius.conf("AUTH_PASSWORD", None)
 AUTH_ADDRESSES = netius.conf("AUTH_ADDRESSES", [], cast=list)

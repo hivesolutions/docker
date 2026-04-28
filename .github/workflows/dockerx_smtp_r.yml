@@ -31,15 +31,27 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Set tag name based on branch
+      - name: Read image version
+        id: version
+        run: echo "version=$(cat ${{ matrix.config.context }}/VERSION)" >> $GITHUB_OUTPUT
+      - name: Set tag names based on branch
         id: set_tag
         run: |
+          VERSION=${{ steps.version.outputs.version }}
+          TAG_NAME=${{ matrix.config.tag_name }}
+          if [[ "$TAG_NAME" == "latest" ]]; then
+            VERSION_TAG="$VERSION"
+          else
+            VERSION_TAG="$VERSION-$TAG_NAME"
+          fi
           if [[ "${{ github.ref_name }}" == "master" ]]; then
-            echo "tag=${{ matrix.config.tag_name }}" >> $GITHUB_OUTPUT
+            echo "tag=$TAG_NAME" >> $GITHUB_OUTPUT
+            echo "version_tag=$VERSION_TAG" >> $GITHUB_OUTPUT
           else
             GITHUB_REFNAME=${{ github.ref_name }}
             BRANCH_NAME=${GITHUB_REFNAME//\//_}
-            echo "tag=${{ matrix.config.tag_name }}-$BRANCH_NAME" >> $GITHUB_OUTPUT
+            echo "tag=$TAG_NAME-$BRANCH_NAME" >> $GITHUB_OUTPUT
+            echo "version_tag=$VERSION_TAG-$BRANCH_NAME" >> $GITHUB_OUTPUT
           fi
       - name: Build and push
         uses: docker/build-push-action@v5
@@ -48,4 +60,6 @@ jobs:
           file: ${{ matrix.config.dockerfile }}
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8
           push: true
-          tags: hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}
+          tags: |
+            hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}
+            hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.version_tag }}

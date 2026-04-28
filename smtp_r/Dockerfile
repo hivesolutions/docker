@@ -19,4 +19,3 @@ WORKDIR /data
 RUN pip install --upgrade netius logstash-api
 
 CMD ["/usr/local/bin/python", "-m", "netius.extra.smtp_r"]
-

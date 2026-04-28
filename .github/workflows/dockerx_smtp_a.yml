@@ -1,0 +1,63 @@
+name: Build and Push SMTP-A Images
+on:
+  push:
+    branches-ignore:
+      - none
+    paths:
+      - "smtp_a/**"
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { dockerfile: "smtp_a/Dockerfile", context: "smtp_a", image_name: "smtp-a", tag_name: "latest", platforms: "linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8" }
+          - { dockerfile: "smtp_a/Dockerfile.pypy", context: "smtp_a", image_name: "smtp-a", tag_name: "pypy", platforms: "linux/386,linux/amd64,linux/arm64/v8" }
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Read image version
+        id: version
+        run: echo "version=$(tr -d '\r\n' < ${{ matrix.config.context }}/VERSION)" >> $GITHUB_OUTPUT
+      - name: Set tag names based on branch
+        id: set_tag
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          TAG_NAME=${{ matrix.config.tag_name }}
+          if [[ "$TAG_NAME" == "latest" ]]; then
+            VERSION_TAG="$VERSION"
+          else
+            VERSION_TAG="$VERSION-$TAG_NAME"
+          fi
+          if [[ "${{ github.ref_name }}" == "master" ]]; then
+            echo "tag=$TAG_NAME" >> $GITHUB_OUTPUT
+            echo "version_tag=$VERSION_TAG" >> $GITHUB_OUTPUT
+          else
+            GITHUB_REFNAME=${{ github.ref_name }}
+            BRANCH_NAME=${GITHUB_REFNAME//\//_}
+            echo "tag=$TAG_NAME-$BRANCH_NAME" >> $GITHUB_OUTPUT
+            echo "version_tag=$VERSION_TAG-$BRANCH_NAME" >> $GITHUB_OUTPUT
+          fi
+      - name: Build and push
+        uses: docker/build-push-action@v7
+        with:
+          context: ${{ matrix.config.context }}
+          file: ${{ matrix.config.dockerfile }}
+          platforms: ${{ matrix.config.platforms }}
+          push: true
+          tags: |
+            hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}
+            hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.version_tag }}

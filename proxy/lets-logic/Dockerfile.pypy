@@ -20,4 +20,9 @@ ADD proxy.py /proxy.py
 
 RUN pip install --upgrade netius hpack appier
 
+RUN groupadd --system app && useradd --system --gid app app && \
+    mkdir -p /data/letsencrypt /etc/letsencrypt /var/lib/letsencrypt && \
+    chown -R app:app /data/letsencrypt /etc/letsencrypt /var/lib/letsencrypt
+USER app
+
 CMD ["/opt/pypy/bin/python", "/proxy.py"]

@@ -13,6 +13,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+*
+
+### Fixed
+
+*
+
+## [1.1.0]
+
+### Added
+
+* Non-root `app` user runs the proxy process for `lets-logic` and `multi-logic`
+* SBOM and provenance attestations on the published images
+
+### Changed
+
+*
+
+### Fixed
+
+*
+
+## [1.0.0]
+
+### Added
+
+*
+
+### Changed
+
 * New mono-repo structure with proxy building
 * Automation of CI docker file building
 

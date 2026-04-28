@@ -90,9 +90,11 @@ def set_ssl_contexts(server):
     alias = netius.legacy.keys(server.alias)
     redirect = netius.legacy.keys(server.redirect)
     ssl_hosts = frozenset(hosts + alias + redirect)
+
     if ssl_hosts == _ssl_hosts:
         server._ssl_reload()
         return
+
     _ssl_hosts = ssl_hosts
 
     server.info("Rebuilding SSL contexts for %d host(s)" % len(ssl_hosts))

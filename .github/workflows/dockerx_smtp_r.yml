@@ -60,6 +60,8 @@ jobs:
           file: ${{ matrix.config.dockerfile }}
           platforms: ${{ matrix.config.platforms }}
           push: true
+          sbom: true
+          provenance: mode=max
           tags: |
             hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}
             hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.version_tag }}

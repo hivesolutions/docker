@@ -1,0 +1,51 @@
+name: Build and Push SMTP-R Images
+on:
+  push:
+    branches-ignore:
+      - none
+    paths:
+      - "smtp_r/**"
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { dockerfile: "smtp_r/Dockerfile", context: "smtp_r", image_name: "smtp_r", tag_name: "latest" }
+          - { dockerfile: "smtp_r/Dockerfile.legacy", context: "smtp_r", image_name: "smtp_r", tag_name: "legacy" }
+          - { dockerfile: "smtp_r/Dockerfile.pypy", context: "smtp_r", image_name: "smtp_r", tag_name: "pypy" }
+          - { dockerfile: "smtp_r/Dockerfile.legacy-pypy", context: "smtp_r", image_name: "smtp_r", tag_name: "legacy-pypy" }
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set tag name based on branch
+        id: set_tag
+        run: |
+          if [[ "${{ github.ref_name }}" == "master" ]]; then
+            echo "tag=${{ matrix.config.tag_name }}" >> $GITHUB_OUTPUT
+          else
+            GITHUB_REFNAME=${{ github.ref_name }}
+            BRANCH_NAME=${GITHUB_REFNAME//\//_}
+            echo "tag=${{ matrix.config.tag_name }}-$BRANCH_NAME" >> $GITHUB_OUTPUT
+          fi
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ matrix.config.context }}
+          file: ${{ matrix.config.dockerfile }}
+          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8
+          push: true
+          tags: hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}

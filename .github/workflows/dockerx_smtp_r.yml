@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Read image version
         id: version
-        run: echo "version=$(cat ${{ matrix.config.context }}/VERSION)" >> $GITHUB_OUTPUT
+        run: echo "version=$(tr -d '\r\n' < ${{ matrix.config.context }}/VERSION)" >> $GITHUB_OUTPUT
       - name: Set tag names based on branch
         id: set_tag
         run: |

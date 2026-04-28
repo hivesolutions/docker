@@ -14,10 +14,10 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { dockerfile: "smtp_r/Dockerfile", context: "smtp_r", image_name: "smtp_r", tag_name: "latest" }
-          - { dockerfile: "smtp_r/Dockerfile.legacy", context: "smtp_r", image_name: "smtp_r", tag_name: "legacy" }
-          - { dockerfile: "smtp_r/Dockerfile.pypy", context: "smtp_r", image_name: "smtp_r", tag_name: "pypy" }
-          - { dockerfile: "smtp_r/Dockerfile.legacy-pypy", context: "smtp_r", image_name: "smtp_r", tag_name: "legacy-pypy" }
+          - { dockerfile: "smtp_r/Dockerfile", context: "smtp_r", image_name: "smtp_r", tag_name: "latest", platforms: "linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8" }
+          - { dockerfile: "smtp_r/Dockerfile.legacy", context: "smtp_r", image_name: "smtp_r", tag_name: "legacy", platforms: "linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8" }
+          - { dockerfile: "smtp_r/Dockerfile.pypy", context: "smtp_r", image_name: "smtp_r", tag_name: "pypy", platforms: "linux/386,linux/amd64,linux/arm64/v8" }
+          - { dockerfile: "smtp_r/Dockerfile.legacy-pypy", context: "smtp_r", image_name: "smtp_r", tag_name: "legacy-pypy", platforms: "linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8" }
     runs-on: self-hosted
     steps:
       - name: Checkout code
@@ -58,7 +58,7 @@ jobs:
         with:
           context: ${{ matrix.config.context }}
           file: ${{ matrix.config.dockerfile }}
-          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8
+          platforms: ${{ matrix.config.platforms }}
           push: true
           tags: |
             hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}

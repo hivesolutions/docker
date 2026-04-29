@@ -52,21 +52,11 @@ _ssl_hosts = None
 def on_start(server):
     set_letsencrypt(server)
     set_ssl_contexts(server)
-    server.bind("config", on_config)
-
-
-def on_stop(server):
-    server.unbind("config", on_config)
 
 
 def on_tick(server):
     set_letsencrypt(server)
     set_ssl_contexts(server)
-
-
-def on_config(server):
-    set_letsencrypt(server, force=True)
-    set_ssl_contexts(server, force=True)
 
 
 def set_letsencrypt(server, force=False):
@@ -135,6 +125,5 @@ server_classes = dict(
 server_cls = server_classes[backend]
 server = server_cls()
 server.bind("start", on_start)
-server.bind("stop", on_stop)
 server.bind("tick", on_tick)
 server.serve(env=True)

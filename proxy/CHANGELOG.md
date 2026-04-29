@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
+## [1.2.2]
+
+### Changed
+
+* Delegate SIGHUP reload to netius's bundled `on_config` hook; with the `consul` backend an immediate service refresh is now forced via `_consul_tick(timeout=0)`
+
 ## [1.2.1]
 
 ### Changed

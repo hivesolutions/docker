@@ -52,6 +52,11 @@ _ssl_hosts = None
 def on_start(server):
     set_letsencrypt(server)
     set_ssl_contexts(server)
+    server.bind("config", on_config)
+
+
+def on_stop(server):
+    server.unbind("config", on_config)
 
 
 def on_tick(server):
@@ -59,7 +64,12 @@ def on_tick(server):
     set_ssl_contexts(server)
 
 
-def set_letsencrypt(server):
+def on_config(server):
+    set_letsencrypt(server, force=True)
+    set_ssl_contexts(server, force=True)
+
+
+def set_letsencrypt(server, force=False):
     global _letse_url
 
     if not "letsencrypt" in server.hosts:
@@ -83,7 +93,7 @@ def set_letsencrypt(server):
     server.redirect_regex.insert(0, (ACME_PATTERN, None))
 
 
-def set_ssl_contexts(server):
+def set_ssl_contexts(server, force=False):
     global _ssl_hosts
 
     hosts = netius.legacy.keys(server.hosts)
@@ -91,7 +101,8 @@ def set_ssl_contexts(server):
     redirect = netius.legacy.keys(server.redirect)
     ssl_hosts = frozenset(hosts + alias + redirect)
 
-    if ssl_hosts == _ssl_hosts:
+    if not force and ssl_hosts == _ssl_hosts:
+        server.info("Reloading SSL contexts for %d host(s)" % len(ssl_hosts))
         server._ssl_reload()
         return
 
@@ -124,5 +135,6 @@ server_classes = dict(
 server_cls = server_classes[backend]
 server = server_cls()
 server.bind("start", on_start)
+server.bind("stop", on_stop)
 server.bind("tick", on_tick)
 server.serve(env=True)

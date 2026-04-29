@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
+## [1.2.0]
+
+### Added
+
+* Forced configuration reload for `lets-logic` on `SIGHUP`, rebuilding ACME rules and SSL contexts via the new netius `config` event
+
 ## [1.1.0]
 
 ### Added
@@ -26,19 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Non-root `app` user runs the proxy process for `lets-logic` and `multi-logic`
 * SBOM and provenance attestations on the published images
 
-### Changed
-
-*
-
-### Fixed
-
-*
-
 ## [1.0.0]
-
-### Added
-
-*
 
 ### Changed
 

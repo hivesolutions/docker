@@ -31,21 +31,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Internal SMTP port moved from `25` to `2525` so the process can bind without
   root privileges. Consumers must update port mappings (e.g. `-p 25:2525`).
 
-### Fixed
-
-*
-
 ## [1.0.0]
-
-### Added
-
-*
 
 ### Changed
 
 * New mono-repo structure with smtp-a building
 * Automation of CI docker file building
-
-### Fixed
-
-*

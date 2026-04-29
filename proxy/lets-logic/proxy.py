@@ -55,6 +55,7 @@ def on_start(server):
 
 
 def on_tick(server):
+
     set_letsencrypt(server)
     set_ssl_contexts(server)
 
@@ -94,6 +95,7 @@ def set_ssl_contexts(server, force=False):
     if not force and ssl_hosts == _ssl_hosts:
         server.info("Reloading SSL contexts for %d host(s)" % len(ssl_hosts))
         server._ssl_reload()
+        server.info("SSL contexts reloaded")
         return
 
     _ssl_hosts = ssl_hosts
@@ -105,6 +107,8 @@ def set_ssl_contexts(server, force=False):
     )
     if server.echo:
         echo_contexts(server, list(ssl_hosts))
+
+    server.info("SSL contexts rebuilt")
 
 
 def echo_contexts(server, hosts, contexts=None, sort=True):

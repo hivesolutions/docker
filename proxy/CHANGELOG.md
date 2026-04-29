@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
+## [1.2.3]
+
+### Changed
+
+* Log a confirmation line after each SSL context reload / rebuild in `lets-logic`
+
 ## [1.2.2]
 
 ### Changed

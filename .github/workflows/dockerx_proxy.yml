@@ -65,3 +65,12 @@ jobs:
           tags: |
             hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}
             hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.version_tag }}
+      - name: Trigger infra-bemisc deployment
+        if: github.event_name == 'push' && github.ref_name == 'master' && matrix.config.tag_name == 'latest'
+        uses: hivesolutions/deploy-action@v1
+        with:
+          repository: hivesolutions/infra-bemisc
+          service: ${{ matrix.config.image_name }}
+          group: frontend
+          tag: ${{ steps.set_tag.outputs.version_tag }}
+          token: ${{ secrets.INFRA_DEPLOY_PAT }}

@@ -65,12 +65,26 @@ jobs:
           tags: |
             hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.tag }}
             hivesolutions/${{ matrix.config.image_name }}:${{ steps.set_tag.outputs.version_tag }}
+  deploy:
+    name: Deploy
+    if: github.event_name == 'push' && github.ref_name == 'master'
+    needs: build
+    runs-on: self-hosted
+    strategy:
+      fail-fast: false
+      matrix:
+        service: [proxy, proxy-ssl, proxy-cert]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Read image version
+        id: version
+        run: echo "version=$(tr -d '\r\n' < proxy/VERSION)" >> $GITHUB_OUTPUT
       - name: Trigger infra-bemisc deployment
-        if: github.event_name == 'push' && github.ref_name == 'master' && matrix.config.tag_name == 'latest'
         uses: hivesolutions/deploy-action@v1
         with:
           repository: hivesolutions/infra-bemisc
-          service: ${{ matrix.config.image_name }}
+          service: ${{ matrix.service }}
           group: frontend
-          tag: ${{ steps.set_tag.outputs.version_tag }}
+          tag: ${{ steps.version.outputs.version }}
           token: ${{ secrets.INFRA_DEPLOY_PAT }}

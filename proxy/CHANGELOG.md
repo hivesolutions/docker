@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
+## [1.2.12]
+
+### Changed
+
+* Bump base netius to 1.57.0
+
 ## [1.2.11]
 
 ### Changed

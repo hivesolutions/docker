@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
+## [1.2.13]
+
+### Changed
+
+* Republish image to refresh upstream dependencies and exercise the infra-bemisc deploy pipeline
+
 ## [1.2.12]
 
 ### Changed

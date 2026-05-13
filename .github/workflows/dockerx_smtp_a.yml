@@ -16,7 +16,7 @@ jobs:
         config:
           - { dockerfile: "smtp_a/Dockerfile", context: "smtp_a", image_name: "smtp-a", tag_name: "latest", platforms: "linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8" }
           - { dockerfile: "smtp_a/Dockerfile.pypy", context: "smtp_a", image_name: "smtp-a", tag_name: "pypy", platforms: "linux/386,linux/amd64,linux/arm64/v8" }
-    runs-on: self-hosted
+    runs-on: [self-hosted, ubuntu, latest]
     steps:
       - name: Checkout code
         uses: actions/checkout@v6

@@ -17,7 +17,7 @@ jobs:
           - { dockerfile: "deno/Dockerfile", context: "deno", image_name: "deno", tag_name: "latest" }
           - { dockerfile: "deno/Dockerfile.ubuntu", context: "deno", image_name: "deno", tag_name: "ubuntu" }
           - { dockerfile: "deno/Dockerfile.ubuntu_dev", context: "deno", image_name: "deno", tag_name: "ubuntu_dev" }
-    runs-on: self-hosted
+    runs-on: [self-hosted, ubuntu, latest]
     steps:
       - name: Checkout code
         uses: actions/checkout@v6

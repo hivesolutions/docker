@@ -18,7 +18,7 @@ jobs:
           - { dockerfile: "smtp_r/Dockerfile.legacy", context: "smtp_r", image_name: "smtp_r", tag_name: "legacy", platforms: "linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8" }
           - { dockerfile: "smtp_r/Dockerfile.pypy", context: "smtp_r", image_name: "smtp_r", tag_name: "pypy", platforms: "linux/386,linux/amd64,linux/arm64/v8" }
           - { dockerfile: "smtp_r/Dockerfile.legacy-pypy", context: "smtp_r", image_name: "smtp_r", tag_name: "legacy-pypy", platforms: "linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8" }
-    runs-on: self-hosted
+    runs-on: [self-hosted, ubuntu, latest]
     steps:
       - name: Checkout code
         uses: actions/checkout@v6

@@ -19,7 +19,7 @@ jobs:
           - { dockerfile: "alpine/Dockerfile.neo", context: "alpine", image_name: "alpine_neo" }
           - { dockerfile: "alpine_dev/Dockerfile", context: "alpine_dev", image_name: "alpine_dev" }
           - { dockerfile: "alpine_dev/Dockerfile.neo", context: "alpine_dev", image_name: "alpine_dev_neo" }
-    runs-on: self-hosted
+    runs-on: [self-hosted, ubuntu, latest]
     steps:
       - name: Checkout code
         uses: actions/checkout@v6

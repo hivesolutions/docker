@@ -18,7 +18,7 @@ jobs:
           - { dockerfile: "proxy/lets-logic/Dockerfile.pypy", context: "proxy/lets-logic", image_name: "lets-logic", tag_name: "pypy", platforms: "linux/386,linux/amd64,linux/arm64/v8" }
           - { dockerfile: "proxy/multi-logic/Dockerfile", context: "proxy/multi-logic", image_name: "multi-logic", tag_name: "latest", platforms: "linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8" }
           - { dockerfile: "proxy/multi-logic/Dockerfile.pypy", context: "proxy/multi-logic", image_name: "multi-logic", tag_name: "pypy", platforms: "linux/386,linux/amd64,linux/arm64/v8" }
-    runs-on: self-hosted
+    runs-on: [self-hosted, ubuntu, latest]
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -69,7 +69,7 @@ jobs:
     name: Deploy
     if: github.event_name == 'push' && github.ref_name == 'master'
     needs: build
-    runs-on: self-hosted
+    runs-on: [self-hosted, ubuntu, latest]
     strategy:
       fail-fast: false
       matrix:

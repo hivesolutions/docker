@@ -15,7 +15,7 @@ jobs:
       matrix:
         config:
           - { dockerfile: "nomad-server/Dockerfile", context: "nomad-server", image_name: "nomad-server", tag_name: "latest" }
-    runs-on: self-hosted
+    runs-on: [self-hosted, ubuntu, latest]
     steps:
       - name: Checkout code
         uses: actions/checkout@v6

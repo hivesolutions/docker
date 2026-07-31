@@ -1,4 +1,12 @@
-FROM hivesolutions/python:latest
+FROM alpine:latest AS repos
+
+RUN apk add --no-cache git
+
+RUN git clone --depth=1 https://github.com/hivesolutions/uxf_bin.git /libs/uxf && rm -rf /libs/uxf/.git /libs/uxf/.settings /libs/uxf/.project /libs/uxf/README.md
+RUN git clone --depth=1 https://github.com/hivesolutions/layout.git /libs/layout && rm -rf /libs/layout/.git /libs/layout/.settings /libs/layout/.project /libs/layout/README.md
+RUN git clone --depth=1 https://github.com/hivesolutions/pushi_js.git /libs/pushi && rm -rf /libs/pushi/.git /libs/pushi/.settings /libs/pushi/.project /libs/pushi/README.md
+
+FROM python:alpine
 
 LABEL version="1.0"
 LABEL maintainer="Hive Solutions <development@hive.pt>"
@@ -13,9 +21,8 @@ ENV CACHE=86400
 ENV CORS=1
 ENV BASE_PATH=/libs
 
-RUN git clone --depth=1 https://github.com/hivesolutions/uxf_bin.git /libs/uxf && rm -rf /libs/uxf/.git /libs/uxf/.settings /libs/uxf/.project /libs/uxf/README.md
-RUN git clone --depth=1 https://github.com/hivesolutions/layout.git /libs/layout && rm -rf /libs/layout/.git /libs/layout/.settings /libs/layout/.project /libs/layout/README.md
-RUN git clone --depth=1 https://github.com/hivesolutions/pushi_js.git /libs/pushi && rm -rf /libs/pushi/.git /libs/pushi/.settings /libs/pushi/.project /libs/pushi/README.md
-RUN pip3 install --upgrade netius
+COPY --from=repos /libs /libs
 
-CMD ["/usr/bin/python3", "-m", "netius.extra.filea"]
+RUN pip install --upgrade netius
+
+CMD ["/usr/local/bin/python", "-m", "netius.extra.filea"]

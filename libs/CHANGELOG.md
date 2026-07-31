@@ -19,6 +19,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
+## [1.1.0]
+
+### Changed
+
+* Leaner official base images: `python:alpine` and `pypy:slim`, with repositories cloned in a throwaway build stage so git is not shipped in the final image
+* Removed the `oibiquini` static files, the clone relied on a defunct Bitbucket token and was breaking the build
+
 ## [1.0.0]
 
 ### Added

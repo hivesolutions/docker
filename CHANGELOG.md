@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+* Dedicated CI workflow, `VERSION` and `CHANGELOG.md` for the `libs` image
+
 ### Changed
 
 * Added module-level documentation to the multi-logic reverse proxy script

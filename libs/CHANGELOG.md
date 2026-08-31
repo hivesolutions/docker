@@ -19,32 +19,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
-## [1.1.3]
+## [1.1.3] - 2026-08-25
 
 ### Changed
 
 * Bump base netius to 1.61.0
 
-## [1.1.2]
+## [1.1.2] - 2026-08-25
 
 ### Fixed
 
 * Republish image to pick up a further Heuristica font fix in the bundled layout library
 
-## [1.1.1]
+## [1.1.1] - 2026-08-24
 
 ### Fixed
 
 * Republish image to pick up the Heuristica font fix in the bundled layout library
 
-## [1.1.0]
+## [1.1.0] - 2026-08-01
 
 ### Changed
 
 * Leaner official base images: `python:alpine` and `pypy:slim`, with repositories cloned in a throwaway build stage so git is not shipped in the final image
 * Removed the `oibiquini` static files, the clone relied on a defunct Bitbucket token and was breaking the build
 
-## [1.0.0]
+## [1.0.0] - 2026-08-01
 
 ### Added
 

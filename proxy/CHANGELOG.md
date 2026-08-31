@@ -19,146 +19,146 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
-## [1.2.21]
+## [1.2.21] - 2026-08-31
 
 ### Changed
 
 * Bump base netius to 1.63.1
 
-## [1.2.20]
+## [1.2.20] - 2026-08-29
 
 ### Changed
 
 * Bump base netius to 1.63.0
 
-## [1.2.19]
+## [1.2.19] - 2026-08-25
 
 ### Changed
 
 * Bump base netius to 1.62.1
 
-## [1.2.18]
+## [1.2.18] - 2026-08-25
 
 ### Changed
 
 * Bump base netius to 1.61.0
 
-## [1.2.17]
+## [1.2.17] - 2026-08-25
 
 ### Changed
 
 * Bump base netius to 1.60.0
 
-## [1.2.16]
+## [1.2.16] - 2026-08-24
 
 ### Changed
 
 * Bump base netius to 1.59.0
 
-## [1.2.15]
+## [1.2.15] - 2026-06-20
 
 ### Changed
 
 * Bump base netius to 1.58.1
 
-## [1.2.14]
+## [1.2.14] - 2026-06-20
 
 ### Changed
 
 * Bump base netius to 1.58.0
 
-## [1.2.13]
+## [1.2.13] - 2026-05-11
 
 ### Changed
 
 * Republish image to refresh upstream dependencies and exercise the infra-bemisc deploy pipeline
 
-## [1.2.12]
+## [1.2.12] - 2026-05-11
 
 ### Changed
 
 * Bump base netius to 1.57.0
 
-## [1.2.11]
+## [1.2.11] - 2026-05-10
 
 ### Changed
 
 * Retry infra-bemisc deployment after upstream fix
 
-## [1.2.10]
+## [1.2.10] - 2026-05-10
 
 ### Changed
 
 * Retry infra-bemisc deployment after upstream fix
 
-## [1.2.9]
+## [1.2.9] - 2026-05-10
 
 ### Changed
 
 * Retry infra-bemisc deployment after upstream fix
 
-## [1.2.8]
+## [1.2.8] - 2026-05-10
 
 ### Changed
 
 * Retry infra-bemisc deployment after upstream fix
 
-## [1.2.7]
+## [1.2.7] - 2026-05-10
 
 ### Changed
 
 * New CI strategy for infra-bemisc deployment
 
-## [1.2.6]
+## [1.2.6] - 2026-05-10
 
 ### Changed
 
 * Bump base netius version
 
-## [1.2.5]
+## [1.2.5] - 2026-05-10
 
 ### Changed
 
 * Bump base netius version
 
-## [1.2.4]
+## [1.2.4] - 2026-05-05
 
 ### Changed
 
 * Bump base netius version
 
-## [1.2.3]
+## [1.2.3] - 2026-04-29
 
 ### Changed
 
 * Log a confirmation line after each SSL context reload / rebuild in `lets-logic`
 
-## [1.2.2]
+## [1.2.2] - 2026-04-29
 
 ### Changed
 
 * Delegate SIGHUP reload to netius's bundled `on_config` hook; with the `consul` backend an immediate service refresh is now forced via `_consul_tick(timeout=0)`
 
-## [1.2.1]
+## [1.2.1] - 2026-04-29
 
 ### Changed
 
 * Bump netius
 
-## [1.2.0]
+## [1.2.0] - 2026-04-29
 
 ### Added
 
 * Forced configuration reload for `lets-logic` on `SIGHUP`, rebuilding ACME rules and SSL contexts via the new netius `config` event
 
-## [1.1.0]
+## [1.1.0] - 2026-04-28
 
 ### Added
 
 * Non-root `app` user runs the proxy process for `lets-logic` and `multi-logic`
 * SBOM and provenance attestations on the published images
 
-## [1.0.0]
+## [1.0.0] - 2026-04-28
 
 ### Changed
 

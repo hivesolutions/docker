@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
-## [1.1.0]
+## [1.1.0] - 2026-04-28
 
 ### Added
 
@@ -31,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Internal SMTP port moved from `25` to `2525` so the process can bind without
   root privileges. Consumers must update port mappings (e.g. `-p 25:2525`).
 
-## [1.0.0]
+## [1.0.0] - 2026-04-28
 
 ### Changed
 
